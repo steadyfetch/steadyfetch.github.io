@@ -24,7 +24,8 @@
 <script>try{var t=localStorage.getItem("sf-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=Azeret+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&display=optional">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;600&display=swap">
 <link rel="stylesheet" href="/style.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"YouTube transcript, Instagram Reels transcript and speech-to-text scrapers compared","description":"YouTube caption scrapers, Instagram Reels transcript actors, Whisper-style media transcribers and the Supadata API compared on price per thousand videos or minutes. Prices checked 1 September 2026.","url":"https://steadyfetch.com/youtube-media/","dateModified":"2026-09-01","isPartOf":{"@type":"WebSite","name":"Steadyfetch","url":"https://steadyfetch.com"},"about":[{"@type":"SoftwareApplication","name":"YouTube transcripts","url":"https://apify.com/steadyfetch/youtube-transcript-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.005,"priceCurrency":"USD","description":"per video, free plan"}},{"@type":"SoftwareApplication","name":"YouTube channel, all transcripts","url":"https://apify.com/steadyfetch/youtube-channel-transcripts","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.005,"priceCurrency":"USD","description":"per video, free plan"}},{"@type":"SoftwareApplication","name":"Speech to text, any link or file","url":"https://apify.com/steadyfetch/media-transcriber","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.003,"priceCurrency":"USD","description":"per audio minute, free plan"}},{"@type":"SoftwareApplication","name":"Instagram Reels transcripts","url":"https://apify.com/steadyfetch/instagram-reel-transcript-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.015,"priceCurrency":"USD","description":"per reel, free plan"}},{"@type":"SoftwareApplication","name":"Instagram profile posts","url":"https://apify.com/steadyfetch/instagram-profile-posts","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.0024,"priceCurrency":"USD","description":"per post, free plan"}}]}</script>
 </head>
@@ -62,68 +63,68 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <section class="section"><svg class="pulse" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
 <h2>Our actors in this family</h2>
 <div class="ledger"><article class="act" id="youtube-transcript-scraper">
-<div class="act-main">
 <h3><a href="https://apify.com/steadyfetch/youtube-transcript-scraper">YouTube transcripts</a></h3>
-<p class="returns">Videos, Shorts and live VODs as JSON, plain text, SRT or VTT. Captions first; speech-to-text only when there are none, priced per minute.</p>
-<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
-<p class="links"><a href="https://apify.com/steadyfetch/youtube-transcript-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/youtube-transcript-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/youtube-transcript-scraper/api">API docs</a></p>
-</div>
 <div class="meter">
 <div><b>$5.00</b><span class="label">Free plan / 1,000</span></div>
 <div><b>$1.20</b><span class="label">Business / 1,000</span></div>
 <p class="unitline">per 1,000 videos<span class="ext">+ $0.008 per minute of built-in speech-to-text when a video has no captions</span></p>
 </div>
+<div class="act-main">
+<p class="returns">Videos, Shorts and live VODs as JSON, plain text, SRT or VTT. Captions first; speech-to-text only when there are none, priced per minute.</p>
+<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
+<p class="links"><a href="https://apify.com/steadyfetch/youtube-transcript-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/youtube-transcript-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/youtube-transcript-scraper/api">API docs</a></p>
+</div>
 </article>
 <article class="act" id="youtube-channel-transcripts">
-<div class="act-main">
 <h3><a href="https://apify.com/steadyfetch/youtube-channel-transcripts">YouTube channel, all transcripts</a></h3>
-<p class="returns">Paste a channel and get every video's transcript in one run, de-duplicated, with no per-channel fee.</p>
-<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
-<p class="links"><a href="https://apify.com/steadyfetch/youtube-channel-transcripts">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/youtube-channel-transcripts">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/youtube-channel-transcripts/api">API docs</a></p>
-</div>
 <div class="meter">
 <div><b>$5.00</b><span class="label">Free plan / 1,000</span></div>
 <div><b>$1.20</b><span class="label">Business / 1,000</span></div>
 <p class="unitline">per 1,000 videos<span class="ext">+ $0.008 per speech-to-text minute</span></p>
 </div>
+<div class="act-main">
+<p class="returns">Paste a channel and get every video's transcript in one run, de-duplicated, with no per-channel fee.</p>
+<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
+<p class="links"><a href="https://apify.com/steadyfetch/youtube-channel-transcripts">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/youtube-channel-transcripts">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/youtube-channel-transcripts/api">API docs</a></p>
+</div>
 </article>
 <article class="act" id="media-transcriber">
-<div class="act-main">
 <h3><a href="https://apify.com/steadyfetch/media-transcriber">Speech to text, any link or file</a></h3>
-<p class="returns">Any direct audio or video file link, or page links on 11 tested sites, to text, SRT and VTT with timestamped segments. Rounded up to the next whole minute; silent and unreachable items are not charged.</p>
-<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
-<p class="links"><a href="https://apify.com/steadyfetch/media-transcriber">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/media-transcriber">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/media-transcriber/api">API docs</a></p>
-</div>
 <div class="meter">
 <div><b>$3.00</b><span class="label">Free plan / 1,000</span></div>
 <div><b>$3.00</b><span class="label">Business / 1,000</span></div>
 <p class="unitline">per 1,000 audio minutes</p>
 </div>
+<div class="act-main">
+<p class="returns">Any direct audio or video file link, or page links on 11 tested sites, to text, SRT and VTT with timestamped segments. Rounded up to the next whole minute; silent and unreachable items are not charged.</p>
+<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
+<p class="links"><a href="https://apify.com/steadyfetch/media-transcriber">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/media-transcriber">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/media-transcriber/api">API docs</a></p>
+</div>
 </article>
 <article class="act" id="instagram-reel-transcript-scraper">
-<div class="act-main">
 <h3><a href="https://apify.com/steadyfetch/instagram-reel-transcript-scraper">Instagram Reels transcripts</a></h3>
-<p class="returns">A creator's handle in, their recent reels back as text: transcript, first-3-seconds hook, language, segments, plus the reel's short code, caption, plays and likes. Also takes reel links or any Instagram scraper's dataset.</p>
-<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
-<p class="links"><a href="https://apify.com/steadyfetch/instagram-reel-transcript-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/instagram-reel-transcript-scraper">Pin to Apify MCP</a> <a href="https://github.com/steadyfetch/n8n-templates/blob/master/instagram-reel-transcripts.workflow.json">n8n · instagram reel transcripts</a> <a href="https://apify.com/steadyfetch/instagram-reel-transcript-scraper/api">API docs</a></p>
-</div>
 <div class="meter">
 <div><b>$15.00</b><span class="label">Free plan / 1,000</span></div>
 <div><b>$5.00</b><span class="label">Business / 1,000</span></div>
 <p class="unitline">per 1,000 reels<span class="ext">+ $0.005 per minute beyond the first 3 minutes</span></p>
 </div>
+<div class="act-main">
+<p class="returns">A creator's handle in, their recent reels back as text: transcript, first-3-seconds hook, language, segments, plus the reel's short code, caption, plays and likes. Also takes reel links or any Instagram scraper's dataset.</p>
+<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
+<p class="links"><a href="https://apify.com/steadyfetch/instagram-reel-transcript-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/instagram-reel-transcript-scraper">Pin to Apify MCP</a> <a href="https://github.com/steadyfetch/n8n-templates/blob/master/instagram-reel-transcripts.workflow.json">n8n · instagram reel transcripts</a> <a href="https://apify.com/steadyfetch/instagram-reel-transcript-scraper/api">API docs</a></p>
+</div>
 </article>
 <article class="act" id="instagram-profile-posts">
-<div class="act-main">
 <h3><a href="https://apify.com/steadyfetch/instagram-profile-posts">Instagram profile posts</a></h3>
-<p class="returns">Every post and reel from a public profile, newest by date (pinned posts flagged, not promoted), no login and no cookies. Your result limit is exact.</p>
-<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
-<p class="links"><a href="https://apify.com/steadyfetch/instagram-profile-posts">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/instagram-profile-posts">Pin to Apify MCP</a> <a href="https://github.com/steadyfetch/n8n-templates/blob/master/instagram-profile-posts.workflow.json">n8n · instagram profile posts</a> <a href="https://apify.com/steadyfetch/instagram-profile-posts/api">API docs</a></p>
-</div>
 <div class="meter">
 <div><b>$2.40</b><span class="label">Free plan / 1,000</span></div>
 <div><b>$0.60</b><span class="label">Business / 1,000</span></div>
 <p class="unitline">per 1,000 posts</p>
+</div>
+<div class="act-main">
+<p class="returns">Every post and reel from a public profile, newest by date (pinned posts flagged, not promoted), no login and no cookies. Your result limit is exact.</p>
+<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
+<p class="links"><a href="https://apify.com/steadyfetch/instagram-profile-posts">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/instagram-profile-posts">Pin to Apify MCP</a> <a href="https://github.com/steadyfetch/n8n-templates/blob/master/instagram-profile-posts.workflow.json">n8n · instagram profile posts</a> <a href="https://apify.com/steadyfetch/instagram-profile-posts/api">API docs</a></p>
 </div>
 </article></div>
 </section>
@@ -313,11 +314,9 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 </section>
 <h3 class="outside">Outside Apify</h3>
 <div class="ledger"><article class="act vendor">
-<div class="act-main">
 <h3><a href="https://supadata.ai/pricing" rel="nofollow">Supadata API</a></h3>
-<p class="returns">Transcript API for YouTube, TikTok, Instagram and X</p>
-</div>
 <div class="meter"><p class="unitline"><span class="label">Price as published</span>$5 for 300 credits ($16.67 per 1,000) down to $897 for 1,000,000 ($0.90 per 1,000). A caption transcript is 1 credit; a generated (speech-to-text) transcript is 2 credits per minute.</p></div>
+<div class="act-main"><p class="returns">Transcript API for YouTube, TikTok, Instagram and X</p></div>
 </article></div>
 </section>
 

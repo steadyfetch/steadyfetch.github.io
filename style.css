@@ -14,6 +14,16 @@
   size-adjust: 98.7%; ascent-override: 87.8%; descent-override: 21%; line-gap-override: 0%;
 }
 @font-face {
+  font-family: "Archivo Cond Fallback";        /* h1: Archivo wght 700 wdth 66 */
+  src: local("Arial Narrow Bold"), local("Liberation Sans Narrow Bold"), local("Arial Bold"), local("Arial");
+  size-adjust: 70.5%; ascent-override: 124.5%; descent-override: 29.8%; line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Archivo Cond2 Fallback";       /* h2: Archivo wght 650 wdth 76 */
+  src: local("Arial Narrow Bold"), local("Liberation Sans Narrow Bold"), local("Arial Bold"), local("Arial");
+  size-adjust: 77.7%; ascent-override: 113%; descent-override: 27%; line-gap-override: 0%;
+}
+@font-face {
   font-family: "Azeret Fallback";
   src: local("DejaVu Sans Mono"), local("Menlo"), local("Consolas"), local("Courier New");
   size-adjust: 108%; ascent-override: 93.7%; descent-override: 23%; line-gap-override: 0%;
@@ -42,6 +52,8 @@
   --step: 1.5px;
   --sans: Archivo, "Archivo Fallback", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --mono: "Azeret Mono", "Azeret Fallback", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --display: Archivo, "Archivo Cond Fallback", "Arial Narrow", Arial, sans-serif;
+  --display-2: Archivo, "Archivo Cond2 Fallback", "Arial Narrow", Arial, sans-serif;
   --ease: cubic-bezier(.16, 1, .3, 1);
   color-scheme: light;
 }
@@ -169,9 +181,10 @@ main { max-width: var(--page); margin: 0 auto; padding: 40px 24px 72px; }
 .crumbs .sep { color: var(--ink-2); padding: 0 .45em; }
 
 h1 {
+  font-family: var(--display);
   font-size: clamp(2.15rem, 5.1vw, 3.85rem);
   font-weight: 700; font-stretch: 66%; letter-spacing: -.012em;
-  line-height: 1.02; margin: 0 0 20px; text-wrap: balance; max-width: 16ch;
+  line-height: 1.02; margin: 0 0 20px; text-wrap: balance; max-width: 27rem;
 }
 
 /* the collection stamp — what was measured, from where, when */
@@ -190,9 +203,10 @@ h1 {
 p { max-width: 70ch; margin: 0 0 16px; }
 
 h2 {
+  font-family: var(--display-2);
   font-size: clamp(1.5rem, 3vw, 2.3rem);
   font-weight: 650; font-stretch: 76%; letter-spacing: -.012em;
-  line-height: 1.1; margin: 0 0 20px; max-width: 24ch;
+  line-height: 1.1; margin: 0 0 20px; max-width: 36rem;
 }
 .section { margin-top: 68px; }
 .section > .pulse { margin-bottom: 26px; }
@@ -210,9 +224,13 @@ code { font-family: var(--mono); font-size: .84em; background: var(--band); colo
 .ledger { border-top: 1px solid var(--rule); }
 .act, .fam {
   display: grid; grid-template-columns: minmax(0, 1fr) 264px;
+  grid-template-areas: "name meter" "main meter";
   gap: 10px 36px; align-items: start;
   padding: 24px 0; border-bottom: 1px solid var(--rule);
 }
+.act > h3, .fam > h2 { grid-area: name; }
+.act > .act-main, .fam > .act-main { grid-area: main; }
+.act > .meter, .fam > .meter { grid-area: meter; }
 .act-main > :last-child { margin-bottom: 0; }
 .act h3, .fam h2 {
   margin: 0 0 10px; font-size: 1.24rem; font-weight: 650; font-stretch: 84%;
@@ -411,8 +429,8 @@ footer { background: var(--plate); border-top: 1px solid var(--rule); }
 
 /* ---------- narrow ---------- */
 @media (max-width: 900px) {
-  .act, .fam { grid-template-columns: 1fr; gap: 16px; }
-  .act .meter, .fam .meter { order: -1; border-top: 0; padding-top: 0; }
+  .act, .fam { grid-template-columns: 1fr; grid-template-areas: "name" "meter" "main"; gap: 14px; }
+  .act > .meter, .fam > .meter { border-top: 0; padding-top: 0; }
   .meter { max-width: 420px; }
 }
 

@@ -297,7 +297,11 @@ const FAMILIES = [
 
 // ---------- RENDER ----------
 // Direction contract lives in the emitted markup (see `contract` below).
-const FONTS = "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=Azeret+Mono:wght@400;600&display=swap";
+// Archivo is display=optional: it either arrives before first paint or this view keeps the
+// metric-matched fallback, so the swap can never reflow a heading. Azeret is swap-safe,
+// because every figure it sets lives in a fixed-width table column.
+const FONT_SANS = "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&display=optional";
+const FONT_MONO = "https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;600&display=swap";
 const N_OURS = Object.keys(OURS).length;
 const N_COMP = Object.keys(C).length;
 const N_VEND = Object.keys(VENDORS).length;
@@ -357,7 +361,8 @@ function head(title, desc, path, extraJsonLd) {
 <script>try{var t=localStorage.getItem("sf-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="${FONTS}">
+<link rel="stylesheet" href="${FONT_SANS}">
+<link rel="stylesheet" href="${FONT_MONO}">
 <link rel="stylesheet" href="/style.css">
 ${extraJsonLd ? `<script type="application/ld+json">${JSON.stringify(extraJsonLd)}</script>` : ""}
 </head>
@@ -397,16 +402,16 @@ function ourCard(slug) {
   const o = OURS[slug];
   const templates = [o.template, o.template2].filter(Boolean);
   return `<article class="act" id="${slug}">
-<div class="act-main">
 <h3><a href="${store(slug)}">${esc(o.name)}</a></h3>
-<p class="returns">${esc(o.returns)}</p>
-<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
-<p class="links"><a href="${store(slug)}">Store page</a> <a href="${mcp(slug)}">Pin to Apify MCP</a>${templates.map(t => ` <a href="${tpl(t)}">n8n · ${esc(t.replace(".workflow.json", "").replace(/-/g, " "))}</a>`).join("")} <a href="https://apify.com/steadyfetch/${slug}/api">API docs</a></p>
-</div>
 <div class="meter">
 <div><b>${perK(o.free)}</b><span class="label">Free plan / 1,000</span></div>
 <div><b>${perK(o.gold)}</b><span class="label">Business / 1,000</span></div>
 <p class="unitline">per 1,000 ${esc(o.unit)}s${o.extra ? `<span class="ext">${esc(o.extra)}</span>` : ""}</p>
+</div>
+<div class="act-main">
+<p class="returns">${esc(o.returns)}</p>
+<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
+<p class="links"><a href="${store(slug)}">Store page</a> <a href="${mcp(slug)}">Pin to Apify MCP</a>${templates.map(t => ` <a href="${tpl(t)}">n8n · ${esc(t.replace(".workflow.json", "").replace(/-/g, " "))}</a>`).join("")} <a href="https://apify.com/steadyfetch/${slug}/api">API docs</a></p>
 </div>
 </article>`;
 }
@@ -464,11 +469,9 @@ function vendorRows(keys) {
 <div class="ledger">${keys.map(k => {
     const v = VENDORS[k];
     return `<article class="act vendor">
-<div class="act-main">
 <h3><a href="${v.url}" rel="nofollow">${esc(v.name)}</a></h3>
-<p class="returns">${esc(v.returns)}</p>
-</div>
 <div class="meter"><p class="unitline"><span class="label">Price as published</span>${esc(v.price)}</p></div>
+<div class="act-main"><p class="returns">${esc(v.returns)}</p></div>
 </article>`;
   }).join("\n")}</div>`;
 }
@@ -541,7 +544,8 @@ function indexPage() {
   const title = "Steadyfetch: honest comparison pages for data actors on Apify";
   const desc = "Five comparison pages, one per data family, listing every Apify actor and the main vendors next to Steadyfetch's 25 actors with the same price columns. Ad transcripts, Google Trends and keywords, jobs, Amazon, YouTube and media.";
   const jsonld = { "@context": "https://schema.org", "@type": "WebSite", name: "Steadyfetch", url: SITE, description: desc };
-  const size = (f) => f.ours.length + f.groups.reduce((n, g) => n + g.ids.length, 0) + f.vendors.length;
+  // actors on the plate only — outside vendors are named separately and sit on no plate
+  const size = (f) => f.ours.length + f.groups.reduce((n, g) => n + g.ids.length, 0);
   const widest = Math.max(...FAMILIES.map(size));
   return head(title, desc, "/", jsonld) + `
 <h1>Data actors on Apify, compared honestly</h1>
@@ -555,15 +559,15 @@ ${proofBlock()}
 <section class="section">${pulse()}
 <div class="ledger">
 ${FAMILIES.map(f => `<article class="fam">
-<div class="act-main">
 <h2><a href="/${f.dir}/">${esc(navLabel(f))}</a></h2>
-<p class="desc">${esc(f.desc.replace(/ Prices checked.*$/, ""))}</p>
-<p class="roster">${f.ours.map(s => `<a href="${store(s)}">${esc(OURS[s].name)}</a>`).join("")}</p>
-</div>
 <div class="meter">
 <div><b>${size(f)}</b><span class="label">Actors on this plate</span></div>
 <span class="gauge"><span style="--w:${((size(f) / widest) * 100).toFixed(1)}%"></span></span>
-<p class="unitline">${f.ours.length} of ours · ${f.groups.reduce((n, g) => n + g.ids.length, 0)} competing${f.vendors.length ? ` · ${f.vendors.length} outside Apify` : ""}</p>
+<p class="unitline">${f.ours.length} of ours · ${f.groups.reduce((n, g) => n + g.ids.length, 0)} competing${f.vendors.length ? ` · plus ${f.vendors.length} vendor${f.vendors.length > 1 ? "s" : ""} outside Apify, on no plate` : ""}</p>
+</div>
+<div class="act-main">
+<p class="desc">${esc(f.desc.replace(/ Prices checked.*$/, ""))}</p>
+<p class="roster">${f.ours.map(s => `<a href="${store(s)}">${esc(OURS[s].name)}</a>`).join("")}</p>
 </div>
 </article>`).join("\n")}
 </div>

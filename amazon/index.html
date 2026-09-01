@@ -24,7 +24,8 @@
 <script>try{var t=localStorage.getItem("sf-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=Azeret+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&display=optional">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;600&display=swap">
 <link rel="stylesheet" href="/style.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Amazon product, search, bestseller and seller scrapers compared","description":"Amazon scrapers on Apify and the Rainforest API compared on what one product row contains and what a thousand products cost, including add-on events. Prices checked 1 September 2026.","url":"https://steadyfetch.com/amazon/","dateModified":"2026-09-01","isPartOf":{"@type":"WebSite","name":"Steadyfetch","url":"https://steadyfetch.com"},"about":[{"@type":"SoftwareApplication","name":"Amazon product","url":"https://apify.com/steadyfetch/amazon-product-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.006,"priceCurrency":"USD","description":"per product, free plan"}},{"@type":"SoftwareApplication","name":"Amazon search results","url":"https://apify.com/steadyfetch/amazon-search-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.006,"priceCurrency":"USD","description":"per product, free plan"}},{"@type":"SoftwareApplication","name":"Amazon bestsellers","url":"https://apify.com/steadyfetch/amazon-bestsellers-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.006,"priceCurrency":"USD","description":"per bestseller, free plan"}},{"@type":"SoftwareApplication","name":"Amazon seller","url":"https://apify.com/steadyfetch/amazon-seller-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.006,"priceCurrency":"USD","description":"per record, free plan"}}]}</script>
 </head>
@@ -62,55 +63,55 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <section class="section"><svg class="pulse" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
 <h2>Our actors in this family</h2>
 <div class="ledger"><article class="act" id="amazon-product-scraper">
-<div class="act-main">
 <h3><a href="https://apify.com/steadyfetch/amazon-product-scraper">Amazon product</a></h3>
+<div class="meter">
+<div><b>$6.00</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$1.50</b><span class="label">Business / 1,000</span></div>
+<p class="unitline">per 1,000 products</p>
+</div>
+<div class="act-main">
 <p class="returns">ASIN or product URL in; price, buy box, stock, rating, review count, variants, bestseller ranks, images and the full specifications table in one row, one flat fee. Blocked or missing ASINs are not charged.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/amazon-product-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/amazon-product-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/amazon-product-scraper/api">API docs</a></p>
 </div>
+</article>
+<article class="act" id="amazon-search-scraper">
+<h3><a href="https://apify.com/steadyfetch/amazon-search-scraper">Amazon search results</a></h3>
 <div class="meter">
 <div><b>$6.00</b><span class="label">Free plan / 1,000</span></div>
 <div><b>$1.50</b><span class="label">Business / 1,000</span></div>
 <p class="unitline">per 1,000 products</p>
 </div>
-</article>
-<article class="act" id="amazon-search-scraper">
 <div class="act-main">
-<h3><a href="https://apify.com/steadyfetch/amazon-search-scraper">Amazon search results</a></h3>
 <p class="returns">A search keyword in; the full product row for every result, with search rank, page and sponsored flag.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/amazon-search-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/amazon-search-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/amazon-search-scraper/api">API docs</a></p>
 </div>
-<div class="meter">
-<div><b>$6.00</b><span class="label">Free plan / 1,000</span></div>
-<div><b>$1.50</b><span class="label">Business / 1,000</span></div>
-<p class="unitline">per 1,000 products</p>
-</div>
 </article>
 <article class="act" id="amazon-bestsellers-scraper">
-<div class="act-main">
 <h3><a href="https://apify.com/steadyfetch/amazon-bestsellers-scraper">Amazon bestsellers</a></h3>
-<p class="returns">A category name or Best Sellers link in; the full product row for every rank, in rank order.</p>
-<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
-<p class="links"><a href="https://apify.com/steadyfetch/amazon-bestsellers-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/amazon-bestsellers-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/amazon-bestsellers-scraper/api">API docs</a></p>
-</div>
 <div class="meter">
 <div><b>$6.00</b><span class="label">Free plan / 1,000</span></div>
 <div><b>$1.50</b><span class="label">Business / 1,000</span></div>
 <p class="unitline">per 1,000 bestsellers</p>
 </div>
+<div class="act-main">
+<p class="returns">A category name or Best Sellers link in; the full product row for every rank, in rank order.</p>
+<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
+<p class="links"><a href="https://apify.com/steadyfetch/amazon-bestsellers-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/amazon-bestsellers-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/amazon-bestsellers-scraper/api">API docs</a></p>
+</div>
 </article>
 <article class="act" id="amazon-seller-scraper">
-<div class="act-main">
 <h3><a href="https://apify.com/steadyfetch/amazon-seller-scraper">Amazon seller</a></h3>
-<p class="returns">Seller ID or storefront link in; the seller profile (feedback history, registered business details) plus a full product row for every listing.</p>
-<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
-<p class="links"><a href="https://apify.com/steadyfetch/amazon-seller-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/amazon-seller-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/amazon-seller-scraper/api">API docs</a></p>
-</div>
 <div class="meter">
 <div><b>$6.00</b><span class="label">Free plan / 1,000</span></div>
 <div><b>$1.50</b><span class="label">Business / 1,000</span></div>
 <p class="unitline">per 1,000 records</p>
+</div>
+<div class="act-main">
+<p class="returns">Seller ID or storefront link in; the seller profile (feedback history, registered business details) plus a full product row for every listing.</p>
+<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
+<p class="links"><a href="https://apify.com/steadyfetch/amazon-seller-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/amazon-seller-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/amazon-seller-scraper/api">API docs</a></p>
 </div>
 </article></div>
 </section>
@@ -251,11 +252,9 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 </section>
 <h3 class="outside">Outside Apify</h3>
 <div class="ledger"><article class="act vendor">
-<div class="act-main">
 <h3><a href="https://trajectdata.com/pricing/rainforest-api" rel="nofollow">Rainforest API (Traject Data)</a></h3>
-<p class="returns">Amazon product, search, bestsellers, sellers, reviews and more, one request per page</p>
-</div>
 <div class="meter"><p class="unitline"><span class="label">Price as published</span>$23 per month for 500 requests ($46 per 1,000) down to $9,000 for 20,000,000 ($0.45 per 1,000), annual billing.</p></div>
+<div class="act-main"><p class="returns">Amazon product, search, bestsellers, sellers, reviews and more, one request per page</p></div>
 </article></div>
 </section>
 
