@@ -450,12 +450,17 @@ footer { background: var(--plate); border-top: 1px solid var(--rule); }
   .act, .fam { padding: 20px 0; }
   .meter b { font-size: 1.34rem; }
 
+  /* the plate runs to the page edge on a phone: gutters cost the reader a whole column */
+  .plate-scroll {
+    margin-left: -18px; margin-right: -18px;
+    border-left: 0; border-right: 0; border-radius: 0;
+  }
   col.c-tx { width: 68px; }
-  col.c-n { width: 116px; }
-  col.c-fee { width: 92px; }
-  col.c-u { width: 76px; }
-  table { min-width: 574px; }
-  .plate-scroll.has-tx table { min-width: 642px; }
+  col.c-n { width: 112px; }
+  col.c-fee { width: 88px; }
+  col.c-u { width: 72px; }
+  table { min-width: 624px; }
+  .plate-scroll.has-tx table { min-width: 628px; }
   tbody th, tbody td { padding: 9px 9px; }
   thead th { padding: 8px 9px; font-size: .62rem; letter-spacing: .07em; }
   .bi { font-size: .735rem; }
@@ -464,16 +469,19 @@ footer { background: var(--plate); border-top: 1px solid var(--rule); }
   .gauge { width: 94px; height: 5px; }
 }
 
-/* both prices readable before the first swipe */
+/* both prices readable before the first swipe:
+   132 + 52 + 94 + 94 = 372, which still clears a 15px classic scrollbar at 390 */
 @media (max-width: 480px) {
-  col.c-tx { width: 58px; }
-  col.c-n { width: 96px; }
-  col.c-fee { width: 80px; }
-  col.c-u { width: 66px; }
-  table { min-width: 478px; }
-  .plate-scroll.has-tx table { min-width: 536px; }
-  .gauge { width: 74px; }
+  col.c-tx { width: 52px; }
+  col.c-n { width: 94px; }
+  col.c-fee { width: 78px; }
+  col.c-u { width: 64px; }
+  table { min-width: 462px; }
+  .plate-scroll.has-tx table { min-width: 514px; }
+  .gauge { width: 70px; }
   td.tx { font-size: .78rem; }
+  tbody th, tbody td { padding: 9px 8px; }
+  thead th { padding: 8px 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
