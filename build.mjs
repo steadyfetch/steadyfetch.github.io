@@ -1,0 +1,440 @@
+// Static builder for steadyfetch.github.io — run `node build.mjs`, commit the output.
+// Every price below was read on 1 September 2026 from the public Apify store API
+// (currentPricingInfo / pricingInfos, FREE-plan and GOLD-plan tiers) or the vendor's own pricing page.
+import { writeFileSync, mkdirSync } from "node:fs";
+
+const SITE = "https://steadyfetch.github.io";
+const CHECKED = "1 September 2026";
+const ISO = "2026-09-01";
+const store = (slug) => `https://apify.com/steadyfetch/${slug}`;
+const mcp = (slug) => `https://mcp.apify.com?tools=steadyfetch/${slug}`;
+const tpl = (file) => `https://github.com/steadyfetch/n8n-templates/blob/master/${file}`;
+const perK = (v) => (v == null ? "—" : "$" + (v * 1000).toLocaleString("en-US", { maximumFractionDigits: 2 }));
+const usd = (v) => "$" + v.toLocaleString("en-US", { maximumFractionDigits: 5 });
+const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+// ---------- OUR ACTORS (FREE-plan / Business-plan price per unit, live Sep-1) ----------
+const OURS = {
+  "facebook-ads-transcript-scraper": { name: "Facebook Ad Library transcripts", unit: "ad creative", free: 0.02, gold: 0.01, extra: "+ $0.005 per minute beyond the first 3 minutes of a video", returns: "Search the Ad Library by keyword or advertiser, or chain any Ad Library scraper's dataset. Video ads come back as a full transcript, the first-3-seconds hook, CTA and timestamped segments; image ads as headline, body and CTA read off the creative.", template: "facebook-ad-transcripts.workflow.json", template2: "competitor-ad-teardown.workflow.json" },
+  "tiktok-ads-transcript-scraper": { name: "TikTok Top Ads transcripts", unit: "ad", free: 0.02, gold: 0.008, extra: "+ $0.005 per minute beyond the first 3 minutes", returns: "Pick a region and industry and it finds the current Creative Center Top Ads itself, then transcribes them: transcript, hook, brand, CTR, cost and likes on one row. Also accepts video URLs, material IDs or a scraper's dataset ID." },
+  "linkedin-ads-transcript-scraper": { name: "LinkedIn Ad Library transcripts", unit: "ad", free: 0.02, gold: 0.008, extra: "+ $0.005 per minute beyond the first 3 minutes", returns: "Advertiser names, keywords, or just a market and date range. Video ads become transcripts with the hook; image ads (about four in five LinkedIn ads) have their on-image copy read out. Advertiser, headline, paying entity and language on every row." },
+  "google-ads-video-transcript-scraper": { name: "Google Ads video transcripts", unit: "ad", free: 0.02, gold: 0.008, extra: "+ $0.005 per minute beyond the first 3 minutes", returns: "Advertiser names, domains or Transparency Center links in; one row per video ad with the transcript (caption track first, speech-to-text otherwise), hook, creative ID and language." },
+  "google-ads-creative-text-scraper": { name: "Google Ads creative text (OCR)", unit: "creative", free: 0.015, gold: 0.004, returns: "The Transparency Center renders every ad as an image, so metadata scrapers never return the copy. This one reads it: headline, body, CTA, display URL and the raw text per creative." },
+  "google-trends-scraper": { name: "Google Trends", unit: "report", free: 0.009, gold: 0.0075, returns: "Interest over time, multi-keyword compare on one shared scale, related queries (top and rising with growth), related topics with knowledge-graph IDs, interest by region and Trending Now. Schema-stable JSON, one row per keyword and surface.", template: null },
+  "google-trends-now-scraper": { name: "Google Trends Now", unit: "trending search", free: 0.002, gold: 0.0005, returns: "Trending searches for any country with rank, Google's traffic floor, start time and the news behind each trend. No start fee, built for hourly schedules." },
+  "breakout-keywords-scraper": { name: "Breakout keywords", unit: "keyword row", free: 0.006, gold: 0.0015, returns: "Rising and Breakout queries for seed keywords, with the growth percentage Google's UI hides behind the word Breakout." },
+  "google-keyword-suggest-scraper": { name: "Autocomplete keywords, 5 engines", unit: "suggestion", free: 0.002, gold: 0.0005, returns: "Google, YouTube, Amazon, Bing and App Store autocomplete for one seed in one run. No API key, no login, no start fee." },
+  "keyword-search-volume-scraper": { name: "Keyword volume and CPC", unit: "keyword result", free: 0.008, gold: 0.002, returns: "Google Ads Keyword Planner figures through a licensed provider: average monthly searches, competition, top-of-page bid range, 12-month series and trend direction, CPC where Google publishes one. No minimum batch, no charge on keywords with no data.", template: "keyword-search-volume.workflow.json" },
+  "social-trends-scraper": { name: "Social trends, 5 platforms", unit: "trend", free: 0.004, gold: 0.001, returns: "What is trending on X, TikTok, Pinterest, YouTube Charts and Google, normalised to one row shape with rank, metric and link." },
+  "indeed-jobs-scraper": { name: "Indeed jobs", unit: "listing", free: 0.006, gold: 0.0015, extra: "+ $0.0008 per full job description (optional)", returns: "Exact-country search that stops exactly at your row cap and deadline. Optional full descriptions as a second event." },
+  "glassdoor-jobs-scraper": { name: "Glassdoor jobs with employer rating", unit: "listing", free: 0.0048, gold: 0.0012, returns: "Job listings with the employer's star rating on the same row (about four in five rows carry one), so there is no second run for the rating." },
+  "google-jobs-scraper": { name: "Google Jobs", unit: "listing", free: 0.004, gold: 0.001, returns: "The full Google Jobs panel, about 90 to 130 cards per search where Google has them, with apply links. Stops at your cap." },
+  "company-jobs-by-domain": { name: "Career-site jobs by domain", unit: "job", free: 0.0032, gold: 0.0008, extra: "+ $0.002 per company domain checked", returns: "Paste a company domain; it finds the Greenhouse, Lever, Ashby or Workday board (nine ATS platforms) and returns every live opening." },
+  "multi-job-board-scraper": { name: "Multi-board jobs, de-duplicated", unit: "listing", free: 0.0072, gold: 0.0018, returns: "One keyword across Indeed and company hiring boards, merged into one feed. The same role on two boards is one row and one charge." },
+  "amazon-product-scraper": { name: "Amazon product", unit: "product", free: 0.006, gold: 0.0015, returns: "ASIN or product URL in; price, buy box, stock, rating, review count, variants, bestseller ranks, images and the full specifications table in one row, one flat fee. Blocked or missing ASINs are not charged." },
+  "amazon-search-scraper": { name: "Amazon search results", unit: "product", free: 0.006, gold: 0.0015, returns: "A search keyword in; the full product row for every result, with search rank, page and sponsored flag." },
+  "amazon-bestsellers-scraper": { name: "Amazon bestsellers", unit: "bestseller", free: 0.006, gold: 0.0015, returns: "A category name or Best Sellers link in; the full product row for every rank, in rank order." },
+  "amazon-seller-scraper": { name: "Amazon seller", unit: "record", free: 0.006, gold: 0.0015, returns: "Seller ID or storefront link in; the seller profile (feedback history, registered business details) plus a full product row for every listing." },
+  "youtube-transcript-scraper": { name: "YouTube transcripts", unit: "video", free: 0.005, gold: 0.0012, extra: "+ $0.008 per minute of built-in speech-to-text when a video has no captions", returns: "Videos, Shorts and live VODs as JSON, plain text, SRT or VTT. Captions first; speech-to-text only when there are none, priced per minute." },
+  "youtube-channel-transcripts": { name: "YouTube channel, all transcripts", unit: "video", free: 0.005, gold: 0.0012, extra: "+ $0.008 per speech-to-text minute", returns: "Paste a channel and get every video's transcript in one run, de-duplicated, with no per-channel fee." },
+  "media-transcriber": { name: "Speech to text, any link or file", unit: "audio minute", free: 0.003, gold: 0.003, returns: "Any direct audio or video file link, or page links on 11 tested sites, to text, SRT and VTT with timestamped segments. Rounded up to the next whole minute; silent and unreachable items are not charged." },
+  "instagram-reel-transcript-scraper": { name: "Instagram Reels transcripts", unit: "reel", free: 0.015, gold: 0.005, extra: "+ $0.005 per minute beyond the first 3 minutes", returns: "A creator's handle in, their recent reels back as text: transcript, first-3-seconds hook, language, segments, plus the reel's short code, caption, plays and likes. Also takes reel links or any Instagram scraper's dataset.", template: "instagram-reel-transcripts.workflow.json" },
+  "instagram-profile-posts": { name: "Instagram profile posts", unit: "post", free: 0.0024, gold: 0.0006, returns: "Every post and reel from a public profile, newest by date (pinned posts flagged, not promoted), no login and no cookies. Your result limit is exact.", template: "instagram-profile-posts.workflow.json" },
+};
+
+
+const ROW = {
+  "facebook-ads-transcript-scraper": "One ad creative: transcript, first-3s hook, CTA and segments for video; headline, body and CTA for image ads",
+  "tiktok-ads-transcript-scraper": "One Top Ad: transcript, hook, brand, CTR, cost, likes",
+  "linkedin-ads-transcript-scraper": "One ad: transcript and hook (video) or on-image copy (image), advertiser, paying entity",
+  "google-ads-video-transcript-scraper": "One video ad: transcript, hook, creative ID, language",
+  "google-ads-creative-text-scraper": "One creative: headline, body, CTA, display URL, raw text read from the rendered ad",
+  "google-trends-scraper": "One keyword × one surface: interest over time, compare, related queries or topics, region, trending now",
+  "google-trends-now-scraper": "One trending search: rank, traffic floor, start time, news behind it",
+  "breakout-keywords-scraper": "One rising or Breakout query with its real growth percentage",
+  "keyword-search-volume-scraper": "One keyword: monthly searches, competition, bid range, 12-month series, CPC where Google publishes it",
+  "google-keyword-suggest-scraper": "One autocomplete suggestion from Google, YouTube, Amazon, Bing or the App Store",
+  "social-trends-scraper": "One trending item on X, TikTok, Pinterest, YouTube Charts or Google: rank, metric, link",
+  "indeed-jobs-scraper": "One listing card; the full description is an optional second event at $0.0008",
+  "glassdoor-jobs-scraper": "One listing with the employer's star rating on the same row",
+  "google-jobs-scraper": "One job card from the full panel, with apply links",
+  "company-jobs-by-domain": "One live opening from a company's own ATS board; $0.002 per domain checked",
+  "multi-job-board-scraper": "One de-duplicated listing across Indeed and company boards",
+  "amazon-product-scraper": "One product: price, buy box, stock, rating, review count, variants, ranks, images, full specs table",
+  "amazon-search-scraper": "One search result as a full product row, with rank, page and sponsored flag",
+  "amazon-bestsellers-scraper": "One ranked bestseller as a full product row",
+  "amazon-seller-scraper": "One seller profile, or one of its listings as a full product row",
+  "youtube-transcript-scraper": "One video: captions as JSON, text, SRT or VTT; speech to text at $0.008 per minute when there are none",
+  "youtube-channel-transcripts": "One video from a whole channel, same fields, no per-channel fee",
+  "media-transcriber": "One audio minute transcribed: text, SRT, VTT, segments",
+  "instagram-reel-transcript-scraper": "One reel: transcript, hook, language, segments, short code, caption, plays, likes",
+  "instagram-profile-posts": "One post or reel: caption, like and comment counts, media, date, pinned flag",
+};
+const TRANSCRIPT_COL = { "google-ads-creative-text-scraper": "Image text (OCR)", "instagram-profile-posts": "—", "media-transcriber": "Speech to text", "youtube-transcript-scraper": "Captions + speech to text", "youtube-channel-transcripts": "Captions + speech to text", "instagram-reel-transcript-scraper": "Speech to text" };
+
+// ---------- COMPETITORS (live Sep-1; free = FREE-plan tier, gold = GOLD tier, start = per-run fee) ----------
+const C = {
+  // ads
+  "apify/facebook-ads-scraper": { free: 0.0058, gold: 0.0034, start: 0, users: 5515, returns: "Ad Library metadata rows (advertiser, text, dates, media URLs); optional e-commerce enrichment", transcripts: "No" },
+  "curious_coder/facebook-ads-library-scraper": { free: 0.00075, gold: 0.00075, start: 0.00005, users: 5455, returns: "Ad Library metadata rows with media URLs", transcripts: "No" },
+  "igolaizola/facebook-ad-library-scraper": { free: 0.00075, gold: 0.0003, start: 0.0075, users: 790, returns: "Ad Library rows; optional detail fetch at the same price again", transcripts: "No" },
+  "brilliant_gum/facebook-ads-library-scraper": { free: 0.015, gold: 0.015, start: 0.001, users: 263, returns: "Meta and Instagram ads from the Ad Library", transcripts: "No" },
+  "automation-lab/facebook-ads-transcript-scraper": { free: 0.00045, gold: 0.00024, start: 0.005, users: 5, returns: "Priced per item; 11 users since its August 25 launch", transcripts: "Yes (per its title)" },
+  "lexis-solutions/tiktok-ads-scraper": { free: 0.00049, gold: 0.00049, start: 0.00001, users: 164, returns: "Creative Center ad metadata rows", transcripts: "No" },
+  "khadinakbar/tiktok-ads-scraper": { free: 0.003, gold: 0.003, start: 0.00005, users: 53, returns: "Creative Center Top Ads metadata", transcripts: "No" },
+  "brilliant_gum/tiktok-ads-library-scraper": { free: 0.015, gold: 0.015, start: 0.001, users: 75, returns: "EU Ad Library and Creative Center rows", transcripts: "No" },
+  "s-r/linkedin-ads-library": { free: 0.005, gold: 0.005, start: 0, users: 40, returns: "LinkedIn Ad Library rows", transcripts: "No" },
+  "data_xplorer/linkedin-ad-library-scraper": { free: 0.0015, gold: 0.0005, start: 0, users: 15, returns: "LinkedIn Ad Library rows", transcripts: "No" },
+  "azzouzana/linkedin-ads-library-scraper": { free: 0.0005, gold: 0.0005, start: 0.005, users: 32, returns: "LinkedIn Ad Library rows; ad details at the same price again", transcripts: "No" },
+  "solidcode/ads-transparency-scraper": { free: 0.0015, gold: 0.0008, start: 0.001, users: 508, returns: "Google Ads Transparency metadata rows (IDs, dates, formats, screenshot URLs)", transcripts: "No" },
+  "scrapesage/google-ads-transparency-scraper": { free: 0.002, gold: 0.002, start: 0, users: 418, returns: "Transparency Center ads; details and advertiser lookups at $0.003 each", transcripts: "No" },
+  "clockworks/tiktok-transcript-extractor": { free: 0.0037, gold: 0.0017, start: 0, users: 126, returns: "Organic TikTok videos, not ads; transcription billed per minute at $0.048 (free plan) / $0.027 (Business)", transcripts: "Yes, organic videos" },
+  "sian.agency/best-tiktok-ai-transcript-extractor": { free: 0.025, gold: 0.01, start: 0.005, users: 161, returns: "Organic TikTok content processed with AI transcripts", transcripts: "Yes, organic videos" },
+  "scrape-creators/best-tiktok-transcripts-scraper": { free: 0.001, gold: 0.001, start: 0, users: 228, returns: "Organic TikTok captions/transcripts", transcripts: "Yes, organic videos" },
+  // trends + keywords
+  "apify/google-trends-scraper": { free: 0.003, gold: 0.0003, start: 0, users: 1199, returns: "Interest over time and related data as rows; the official Apify actor", transcripts: null },
+  "data_xplorer/google-trends-fast-scraper": { free: 0.002, gold: 0.0005, start: 0.02, users: 366, returns: "Trends rows with a $0.02 fee on every run", transcripts: null },
+  "khadinakbar/google-trends-scraper": { free: 0.005, gold: 0.005, start: 0.00005, users: 72, returns: "Interest, regions and related queries", transcripts: null },
+  "automation-lab/google-trends-scraper": { free: 0.138, gold: 0.072, start: 0.005, users: 58, returns: "Charged per keyword analysed ($0.138 free plan / $0.072 Business) plus $0.00115 per trend row", transcripts: null },
+  "vnx0/google-trends-scraper": { free: 0.0012, gold: 0.0012, start: 0, users: 118, returns: "Daily trending keywords", transcripts: null },
+  "data_xplorer/google-trends-trending-now": { free: 0.001, gold: 0.00025, start: 0.02, users: 43, returns: "Trending Now rows with a $0.02 fee on every run", transcripts: null },
+  "iskander/google-keyword-search-volume-api": { free: 1.99, gold: 0.4, start: 0.00005, users: 131, returns: "Volume and CPC, billed per batch of up to 1,000 keywords ($1.99 free plan / $0.40 Business per batch, even for 10 keywords)", transcripts: null, batch: true },
+  "aitorsm/keyword-volume": { free: 0.012, gold: 0.008, start: 0.00005, users: 369, returns: "Bulk Google metrics with CPC and trend; an 'AI volume' event at the same price", transcripts: null },
+  "crawlerbros/google-keywords-suggest-scraper-pro": { free: 0.002, gold: 0.001, start: 0.005, users: 20, returns: "Google autocomplete suggestions", transcripts: null },
+  "memo23/google-suggest-scraper": { free: 0.0005, gold: 0.0005, start: 0.005, users: 43, returns: "Google autocomplete suggestions", transcripts: null },
+  // jobs
+  "valig/indeed-jobs-scraper": { free: 0.0001, gold: 0.00007, start: 0.001, users: 3673, returns: "Indeed listings; the category's most-used actor", transcripts: null },
+  "borderline/indeed-scraper": { free: 0.005, gold: 0.005, start: 0, users: 2536, returns: "Indeed listings, pay per result", transcripts: null },
+  "kaix/indeed-scraper": { free: 0.00005, gold: 0.00004, start: 0.00001, users: 1397, returns: "Indeed listings", transcripts: null },
+  "cheap_scraper/indeed-job-scraper": { free: 0.001, gold: 0.0007, start: 0.00005, users: 328, returns: "Indeed listings with duplicate removal", transcripts: null },
+  "valig/glassdoor-jobs-scraper": { free: 0.0004, gold: 0.00028, start: 0.001, users: 1409, returns: "Glassdoor listings", transcripts: null },
+  "orgupdate/glassdoor-jobs-scraper": { free: 0.004, gold: 0.004, start: 0.002, users: 162, returns: "Glassdoor listings", transcripts: null },
+  "memo23/glassdoor-scraper-ppr": { free: 0.00475, gold: 0.00475, start: 0.005, users: 192, returns: "Glassdoor reviews and jobs, with paid AI employer-intel add-ons", transcripts: null },
+  "gio21/google-jobs-scraper": { free: 0.003, gold: 0.003, start: 0, users: 242, returns: "Google Jobs listings", transcripts: null },
+  "johnvc/Google-Jobs-Scraper": { free: 0.15, gold: 0.1, start: 0.00005, users: 322, returns: "Charged per page processed ($0.15 free plan / $0.10 Business), not per job", transcripts: null, page: true },
+  "orgupdate/google-jobs-scraper": { free: 0.2, gold: 0.15, start: 0.2, users: 214, returns: "Charged $0.20 per dataset item plus a $0.20 run fee as priced on the store", transcripts: null, page: true },
+  "openclawai/job-board-scraper": { free: 0.005, gold: 0.005, start: 0.00005, users: 388, returns: "LinkedIn, Indeed, Glassdoor and more in one run", transcripts: null },
+  "doggo/uk-jobs-board-scraper": { free: 0.005, gold: 0.004, start: 0.1, users: 41, returns: "Indeed, Reed, Adzuna, RemoteOK and more, with a $0.10 fee per run", transcripts: null },
+  // amazon
+  "junglee/Amazon-crawler": { free: 0.005, gold: 0.003, start: 0, users: 1860, returns: "Product rows; offers and sellers are separate events at $0.0025 / $0.0015 each, delivery-location pricing at $0.06 / $0.035", transcripts: null },
+  "junglee/amazon-bestsellers": { free: 0.0059, gold: 0.0032, start: 0, users: 331, returns: "Bestseller rows", transcripts: null },
+  "junglee/amazon-seller-scraper": { free: 0.005, gold: 0.003, start: 0, users: 64, returns: "Seller rows", transcripts: null },
+  "automly/amazon-products-scraper---fast-efficient-with-sales-data": { free: 0.00555, gold: 0.00555, start: 0.05, users: 246, returns: "Product rows with sales data, $0.05 per run", transcripts: null },
+  "igview-owner/amazon-search-scraper": { free: 0.02, gold: 0.005, start: 0.02, users: 67, returns: "Search result rows", transcripts: null },
+  "amazon-scraper/amazon-bestsellers-scraper": { free: 0.002, gold: 0.00029, start: 0.00005, users: 139, returns: "Bestseller rows", transcripts: null },
+  "khadinakbar/amazon-bestsellers-scraper": { free: 0.005, gold: 0.005, start: 0.00005, users: 48, returns: "Bestseller rows", transcripts: null },
+  "khadinakbar/amazon-search-scraper": { free: 0.002, gold: 0.002, start: 0.00005, users: 39, returns: "Search result rows", transcripts: null },
+  "pratikdani/amazon-seller-extractor": { free: 0.02, gold: 0.01, start: 0.002, users: 11, returns: "Seller data rows", transcripts: null },
+  // youtube + media
+  "pintostudio/youtube-transcript-scraper": { free: 0.01, gold: 0.007, start: 0, users: 2547, returns: "Caption transcripts; the category's most-used actor", transcripts: "Captions" },
+  "starvibe/youtube-video-transcript": { free: 0.005, gold: 0.005, start: 0, users: 2072, returns: "Caption transcripts", transcripts: "Captions" },
+  "karamelo/youtube-transcripts": { free: 0.007, gold: 0.005, start: 0, users: 843, returns: "Caption transcripts", transcripts: "Captions" },
+  "supreme_coder/youtube-transcript-scraper": { free: 0.001, gold: 0.0007, start: 0.00005, users: 621, returns: "Caption transcripts", transcripts: "Captions" },
+  "codepoetry/youtube-transcript-ai-scraper": { free: 0.001, gold: 0.0007, start: 0.0025, users: 407, returns: "Captions, with an AI fallback at $0.012 / $0.009 per minute", transcripts: "Captions + AI fallback" },
+  "scrape-creators/best-youtube-transcripts-scraper": { free: 0.001, gold: 0.001, start: 0, users: 241, returns: "Caption transcripts", transcripts: "Captions" },
+  "kaz_kakyo/audio-transcriber": { free: 0.01, gold: 0.01, start: 0.00005, users: 86, returns: "Speech to text with SRT and diarization, per audio minute; $0.004 per minute with your own key", transcripts: "Speech to text", minute: true },
+  "sauliusautomatesit/media-transcriber": { free: 0.04, gold: 0.034, start: 0.00005, users: 28, returns: "Whisper speech to text, per audio minute", transcripts: "Speech to text", minute: true },
+  "makework36/instagram-reels-transcript-scraper": { free: 0.015, gold: 0.015, start: 0.005, users: 77, returns: "$0.003 to scrape each reel plus $0.012 to transcribe it", transcripts: "Speech to text" },
+  "linen_snack/instagram-reel-transcript-ai-extractor": { free: 0.02, gold: 0.02, start: 0, users: 65, returns: "AI transcript per reel", transcripts: "Speech to text" },
+  "afanasenko/instagram-reel-script-extractor": { free: 0.075, gold: 0.066, start: 0, users: 167, returns: "Transcript, on-screen text and hooks per reel", transcripts: "Speech to text + on-screen text" },
+  "scraping_solutions/instagram-reels-transcript-scraper-audio-to-text": { free: 0.0028, gold: 0.0025, start: 0, users: 98, returns: "Per reel plus $0.0065 / $0.0049 per audio minute", transcripts: "Speech to text" },
+  "instagram-scraper/fast-instagram-post-scraper": { free: 0.001, gold: 0.0003, start: 0.0005, users: 927, returns: "Profile posts; filtered rows and restricted profiles are charged separately", transcripts: null },
+  "instagram-scraper/instagram-profile-posts-scraper": { free: 0.001, gold: 0.00045, start: 0.0005, users: 613, returns: "Profile posts; filtered-out rows and restricted profiles charged separately", transcripts: null },
+  "data-slayer/instagram-posts": { free: 0.0025, gold: 0.0015, start: 0.002, users: 225, returns: "Profile posts and reels, no login", transcripts: null },
+};
+
+const VENDORS = {
+  foreplay: { name: "Foreplay (subscription)", url: "https://www.foreplay.co/pricing", price: "$59 / $175 / $459 per month (Basic / Workflow / Agency; $49 / $149 / $389 on annual billing). Transcripts included; API access 10,000 credits per month.", returns: "A saved-ads workspace with automated transcription and boards; priced per seat, not per ad", transcripts: "Yes" },
+  scrapecreators: { name: "ScrapeCreators API", url: "https://scrapecreators.com/", price: "$47 for 25,000 credits ($1.88 per 1,000 requests); $497 for 500,000 ($0.99 per 1,000). Credits never expire.", returns: "37+ REST endpoints; TikTok video transcript endpoint listed; Facebook Ad Library endpoints listed without a transcript endpoint on the pricing page", transcripts: "TikTok organic; not listed for Ad Library" },
+  serpapi: { name: "SerpApi (Google Trends API)", url: "https://serpapi.com/pricing", price: "$25 per month for 1,000 searches ($25 per 1,000) down to $2,750 for 500,000 ($5.50 per 1,000).", returns: "Interest over time, interest by region, related topics and related queries, one search per call" },
+  glimpse: { name: "Glimpse", url: "https://meetglimpse.com/", price: "No public price list; sign-up and demo.", returns: "Trends dashboard and Chrome extension" },
+  supadata: { name: "Supadata API", url: "https://supadata.ai/pricing", price: "$5 for 300 credits ($16.67 per 1,000) down to $897 for 1,000,000 ($0.90 per 1,000). A caption transcript is 1 credit; a generated (speech-to-text) transcript is 2 credits per minute.", returns: "Transcript API for YouTube, TikTok, Instagram and X", transcripts: "Yes" },
+  rainforest: { name: "Rainforest API (Traject Data)", url: "https://trajectdata.com/pricing/rainforest-api", price: "$23 per month for 500 requests ($46 per 1,000) down to $9,000 for 20,000,000 ($0.45 per 1,000), annual billing.", returns: "Amazon product, search, bestsellers, sellers, reviews and more, one request per page" },
+};
+
+// ---------- FAMILY PAGES ----------
+const FAMILIES = [
+  {
+    dir: "ad-transcripts",
+    title: "Bulk ad transcripts: Facebook, TikTok, LinkedIn and Google Ads scrapers compared",
+    desc: "Which tools turn competitor ads into transcripts and hooks in bulk, what each one returns, and what a thousand ads cost on Apify, Foreplay and ScrapeCreators. Prices checked " + CHECKED + ".",
+    h1: "Bulk ad transcripts, compared honestly",
+    intro: [
+      "Ad libraries hand you metadata: advertiser, dates, a media URL. The creative itself, what the ad actually says in its first three seconds, is the part a media buyer, a creative strategist or an ad-intelligence pipeline needs, and almost no scraper delivers it.",
+      "This page compares every Apify actor that comes up for those searches, plus the two subscription tools people ask about, on what they return and what a thousand ads cost. Our five actors are on it, priced the same way, so you can judge them against the field.",
+    ],
+    ours: ["facebook-ads-transcript-scraper", "tiktok-ads-transcript-scraper", "linkedin-ads-transcript-scraper", "google-ads-video-transcript-scraper", "google-ads-creative-text-scraper"],
+    groups: [
+      { label: "Facebook / Meta Ad Library", ids: ["apify/facebook-ads-scraper", "curious_coder/facebook-ads-library-scraper", "igolaizola/facebook-ad-library-scraper", "brilliant_gum/facebook-ads-library-scraper", "automation-lab/facebook-ads-transcript-scraper"], ourSlug: "facebook-ads-transcript-scraper" },
+      { label: "TikTok ads and TikTok transcripts", ids: ["lexis-solutions/tiktok-ads-scraper", "khadinakbar/tiktok-ads-scraper", "brilliant_gum/tiktok-ads-library-scraper", "clockworks/tiktok-transcript-extractor", "sian.agency/best-tiktok-ai-transcript-extractor", "scrape-creators/best-tiktok-transcripts-scraper"], ourSlug: "tiktok-ads-transcript-scraper" },
+      { label: "LinkedIn Ad Library", ids: ["s-r/linkedin-ads-library", "data_xplorer/linkedin-ad-library-scraper", "azzouzana/linkedin-ads-library-scraper"], ourSlug: "linkedin-ads-transcript-scraper" },
+      { label: "Google Ads Transparency Center", ids: ["solidcode/ads-transparency-scraper", "scrapesage/google-ads-transparency-scraper"], ourSlug: "google-ads-video-transcript-scraper", ourSlug2: "google-ads-creative-text-scraper" },
+    ],
+    vendors: ["foreplay", "scrapecreators"],
+    reading: [
+      "Metadata scrapers are cheaper per row because they deliver less per row. A thousand Ad Library rows from the most-used scraper cost $0.75; a thousand transcribed video ads from us cost $10 to $20 depending on your Apify plan. If you only need who is running ads, use the metadata scraper. If you need what the ads say, chain it into ours by dataset ID and pay only for the ads that transcribe.",
+      "Foreplay is a workspace, not a pipeline: transcripts are included in a per-seat subscription starting at $59 a month, with API access capped by credits. That is the right shape for a small team browsing ads by hand and the wrong shape for a scheduled feed of thousands of creatives.",
+      "The TikTok transcript actors above work on organic videos, not ads. Ours discovers Creative Center Top Ads for a region and industry on its own, so the first run works with nothing to prepare.",
+    ],
+    not: [
+      "We do not estimate spend, reach or audience; the ad libraries do not publish those and we do not model them.",
+      "We do not store a browsable library or boards. Output is a dataset you keep, export or pipe onward.",
+      "A silent or music-only video is not charged unless you switch on on-screen text reading, in which case a video with readable on-screen text is delivered as a charged row.",
+      "We do not cover Snapchat, Pinterest or Reddit ad libraries.",
+    ],
+  },
+  {
+    dir: "trends-keywords",
+    title: "Google Trends API alternatives and keyword volume scrapers compared",
+    desc: "Google Trends scrapers, SerpApi, Glimpse and keyword search volume actors compared on what they return and what a thousand reports cost. Prices checked " + CHECKED + ".",
+    h1: "Google Trends and keyword data, compared honestly",
+    intro: [
+      "Google Trends has no official API, Keyword Planner numbers sit behind an Ads account, and autocomplete is scattered across five engines. The tools below fill those gaps in different shapes: per-report actors, per-search SERP APIs and dashboards.",
+      "Our six actors in this family are listed with the same columns as everyone else. Where a competitor is cheaper per row, the table says so.",
+    ],
+    ours: ["google-trends-scraper", "google-trends-now-scraper", "breakout-keywords-scraper", "keyword-search-volume-scraper", "google-keyword-suggest-scraper", "social-trends-scraper"],
+    groups: [
+      { label: "Google Trends", ids: ["apify/google-trends-scraper", "data_xplorer/google-trends-fast-scraper", "khadinakbar/google-trends-scraper", "automation-lab/google-trends-scraper"], ourSlug: "google-trends-scraper" },
+      { label: "Trending now", ids: ["vnx0/google-trends-scraper", "data_xplorer/google-trends-trending-now"], ourSlug: "google-trends-now-scraper" },
+      { label: "Keyword search volume and CPC", ids: ["iskander/google-keyword-search-volume-api", "aitorsm/keyword-volume"], ourSlug: "keyword-search-volume-scraper" },
+      { label: "Autocomplete suggestions", ids: ["crawlerbros/google-keywords-suggest-scraper-pro", "memo23/google-suggest-scraper"], ourSlug: "google-keyword-suggest-scraper" },
+    ],
+    vendors: ["serpapi", "glimpse"],
+    reading: [
+      "The official Apify Google Trends actor is the cheapest per row on the Business plan ($0.30 per 1,000) and has the most users by far. Ours costs more per report and returns each keyword as one schema-stable row per surface, with related topics carrying their knowledge-graph IDs and a compare mode that scores up to five keywords on one shared scale. Pick by what your pipeline needs downstream.",
+      "Per-run fees matter on schedules. An actor with a $0.02 start fee costs $14.40 a month before the first row if it runs hourly. Our Trends Now and autocomplete actors have no start fee for that reason.",
+      "On keyword volume, iskander's actor bills per batch of 1,000 keywords and is much cheaper per keyword when your batches are full. Ours charges per keyword with no minimum and never charges a keyword Google returns no data for, which is the better deal for lists of ten and the worse deal for lists of ten thousand.",
+      "SerpApi's Google Trends API returns the same four surfaces one search at a time, from $25 per 1,000 searches on its smallest plan.",
+    ],
+    not: [
+      "We do not invent a keyword-difficulty score or an 'AI search volume'. Every figure is Google's own, and the field says so.",
+      "Trends interest is Google's 0 to 100 index, not an absolute search count. Only the keyword-volume actor returns absolute monthly searches.",
+      "Related topics are metered by Google and can come back empty on a busy moment; that row is not charged.",
+    ],
+  },
+  {
+    dir: "jobs",
+    title: "Indeed, Glassdoor and Google Jobs scrapers compared",
+    desc: "Job board scrapers on Apify compared on price per thousand listings, start fees and what each returns, with career-site and multi-board options. Prices checked " + CHECKED + ".",
+    h1: "Job listing scrapers, compared honestly",
+    intro: [
+      "Job data on Apify is a mature, crowded category with very cheap incumbents. This page lists them next to our five actors with the same columns, because a buyer comparing on price alone should see the numbers before they run anything.",
+      "Our actors cost more per listing than the biggest incumbents. What they add is written in the cards below; whether that is worth the difference is your call.",
+    ],
+    ours: ["indeed-jobs-scraper", "glassdoor-jobs-scraper", "google-jobs-scraper", "company-jobs-by-domain", "multi-job-board-scraper"],
+    groups: [
+      { label: "Indeed", ids: ["valig/indeed-jobs-scraper", "borderline/indeed-scraper", "kaix/indeed-scraper", "cheap_scraper/indeed-job-scraper"], ourSlug: "indeed-jobs-scraper" },
+      { label: "Glassdoor", ids: ["valig/glassdoor-jobs-scraper", "orgupdate/glassdoor-jobs-scraper", "memo23/glassdoor-scraper-ppr"], ourSlug: "glassdoor-jobs-scraper" },
+      { label: "Google Jobs", ids: ["gio21/google-jobs-scraper", "johnvc/Google-Jobs-Scraper", "orgupdate/google-jobs-scraper"], ourSlug: "google-jobs-scraper" },
+      { label: "Multi-board and career sites", ids: ["openclawai/job-board-scraper", "doggo/uk-jobs-board-scraper"], ourSlug: "multi-job-board-scraper", ourSlug2: "company-jobs-by-domain" },
+    ],
+    vendors: [],
+    reading: [
+      "valig's Indeed and Glassdoor actors are the volume leaders and cost a fraction of a cent per listing. If you need raw listings at scale and can de-duplicate and cap on your side, they are hard to beat on price.",
+      "Ours charge more per listing and put the controls inside the run: the row cap and deadline stop the run exactly where you set them, the same role found on two boards is one row and one charge, and Glassdoor's employer rating lands on the job row instead of needing a second run.",
+      "Some Google Jobs actors are priced per page or per run rather than per job; compare on your real query mix, not the headline.",
+    ],
+    not: [
+      "We do not scrape LinkedIn Jobs.",
+      "We do not enrich listings with recruiter emails or phone numbers.",
+      "Indeed full descriptions are a separate, optional event on our Indeed actor ($0.0008 each); the listing price alone returns the card fields.",
+    ],
+  },
+  {
+    dir: "amazon",
+    title: "Amazon product, search, bestseller and seller scrapers compared",
+    desc: "Amazon scrapers on Apify and the Rainforest API compared on what one product row contains and what a thousand products cost, including add-on events. Prices checked " + CHECKED + ".",
+    h1: "Amazon product data, compared honestly",
+    intro: [
+      "Most Amazon scrapers price the product row low and charge separately for offers, sellers or delivery-location pricing. Ours charge one flat fee per product and put everything the product page carries in that one row. Which is cheaper depends on what you actually need.",
+    ],
+    ours: ["amazon-product-scraper", "amazon-search-scraper", "amazon-bestsellers-scraper", "amazon-seller-scraper"],
+    groups: [
+      { label: "Product pages", ids: ["junglee/Amazon-crawler", "automly/amazon-products-scraper---fast-efficient-with-sales-data"], ourSlug: "amazon-product-scraper" },
+      { label: "Search results", ids: ["igview-owner/amazon-search-scraper", "khadinakbar/amazon-search-scraper"], ourSlug: "amazon-search-scraper" },
+      { label: "Bestsellers", ids: ["junglee/amazon-bestsellers", "amazon-scraper/amazon-bestsellers-scraper", "khadinakbar/amazon-bestsellers-scraper"], ourSlug: "amazon-bestsellers-scraper" },
+      { label: "Sellers", ids: ["junglee/amazon-seller-scraper", "pratikdani/amazon-seller-extractor"], ourSlug: "amazon-seller-scraper" },
+    ],
+    vendors: ["rainforest"],
+    reading: [
+      "junglee's Amazon Product Scraper is the category's incumbent with 22,000 users. Its base row is $5 per 1,000 on the free plan; offers, sellers and delivery-location pricing are extra events. Our product row is $6 per 1,000 on the free plan and $1.50 on Business, with buy box, stock, variants, ranks, images and the specifications table included.",
+      "Rainforest API is the dedicated off-Apify option: one request per page, from $46 per 1,000 on the smallest plan down to $0.45 per 1,000 at twenty million requests a month.",
+    ],
+    not: [
+      "We do not scrape reviews text.",
+      "We do not return delivery-location or Prime-specific pricing variants.",
+      "We do not provide seller contact details beyond what the public storefront shows.",
+    ],
+  },
+  {
+    dir: "youtube-media",
+    title: "YouTube transcript, Instagram Reels transcript and speech-to-text scrapers compared",
+    desc: "YouTube caption scrapers, Instagram Reels transcript actors, Whisper-style media transcribers and the Supadata API compared on price per thousand videos or minutes. Prices checked " + CHECKED + ".",
+    h1: "Video and audio to text, compared honestly",
+    intro: [
+      "Two very different jobs hide under the word transcript. Pulling YouTube's existing captions costs a tenth of a cent per video. Turning speech into text costs per minute of audio. The tables below keep them apart.",
+    ],
+    ours: ["youtube-transcript-scraper", "youtube-channel-transcripts", "media-transcriber", "instagram-reel-transcript-scraper", "instagram-profile-posts"],
+    groups: [
+      { label: "YouTube captions", ids: ["pintostudio/youtube-transcript-scraper", "starvibe/youtube-video-transcript", "karamelo/youtube-transcripts", "supreme_coder/youtube-transcript-scraper", "codepoetry/youtube-transcript-ai-scraper", "scrape-creators/best-youtube-transcripts-scraper"], ourSlug: "youtube-transcript-scraper", ourSlug2: "youtube-channel-transcripts" },
+      { label: "Speech to text, per audio minute", ids: ["kaz_kakyo/audio-transcriber", "sauliusautomatesit/media-transcriber"], ourSlug: "media-transcriber", minute: true },
+      { label: "Instagram Reels transcripts", ids: ["makework36/instagram-reels-transcript-scraper", "linen_snack/instagram-reel-transcript-ai-extractor", "afanasenko/instagram-reel-script-extractor", "scraping_solutions/instagram-reels-transcript-scraper-audio-to-text"], ourSlug: "instagram-reel-transcript-scraper" },
+      { label: "Instagram profile posts", ids: ["instagram-scraper/fast-instagram-post-scraper", "instagram-scraper/instagram-profile-posts-scraper", "data-slayer/instagram-posts"], ourSlug: "instagram-profile-posts" },
+    ],
+    vendors: ["supadata"],
+    reading: [
+      "On YouTube captions we are mid-pack on price: $5 per 1,000 videos on the free plan, $1.20 on Business, against $1 for the cheapest caption scrapers and $10 for the most-used one. The difference is the fallback: a video with no captions still comes back with real text, billed per minute at $0.008, and a video we cannot transcribe is not charged.",
+      "On speech to text per minute, our media transcriber is $3 per 1,000 minutes on every plan; the next actor charges $10 and the Whisper transcriber $34 to $40. Supadata's API charges 2 credits per generated minute, from $33 per 1,000 minutes on its smallest plan to $1.80 on its largest.",
+      "For Instagram Reels, the actors that also read on-screen text charge up to $75 per 1,000. Ours is $15 on the free plan and $5 on Business for the spoken transcript with the hook; on-screen text is an opt-in.",
+    ],
+    not: [
+      "We do not do speaker diarization or chapter generation.",
+      "Instagram posts are read from public profiles only; private accounts return an uncharged row saying so.",
+      "The Reels transcript is what is said in the audio, not the caption under the post.",
+    ],
+  },
+];
+
+// ---------- RENDER ----------
+function head(title, desc, path, extraJsonLd) {
+  const url = SITE + path;
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(title)}</title>
+<meta name="description" content="${esc(desc)}">
+<link rel="canonical" href="${url}">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(desc)}">
+<meta property="og:url" content="${url}">
+<meta property="og:type" content="article">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="/style.css">
+${extraJsonLd ? `<script type="application/ld+json">${JSON.stringify(extraJsonLd)}</script>` : ""}
+</head>
+<body>
+<header class="top"><a class="brand" href="/">Steadyfetch</a><nav aria-label="Families">${FAMILIES.map(f => `<a href="/${f.dir}/">${esc(f.h1.replace(", compared honestly", ""))}</a>`).join("")}</nav></header>
+<main>`;
+}
+const foot = (updated) => `</main>
+<footer>
+<p>Prices on this page were read on ${CHECKED} from the public Apify store API (free-plan and Business-plan tiers) and from each vendor's own pricing page, and are quoted per 1,000 units unless stated. Apify actor prices change with notice; the store page is the source of truth at run time. Users are the store's 30-day user count on the same day.</p>
+<p>Steadyfetch actors are unofficial tools that read public pages. They are not affiliated with, endorsed by or sponsored by Meta, TikTok, LinkedIn, Google, Amazon, Indeed, Glassdoor or Instagram. Competitor and vendor names are their owners' trademarks and appear here only to identify the products compared.</p>
+<p>Something on this page wrong? Open an issue on the actor's page on Apify; every one is read. Last updated ${updated}.</p>
+</footer>
+</body>
+</html>
+`;
+
+function ourCard(slug) {
+  const o = OURS[slug];
+  const templates = [o.template, o.template2].filter(Boolean);
+  return `<article class="card" id="${slug}">
+<h3><a href="${store(slug)}">${esc(o.name)}</a></h3>
+<p class="price"><span class="k">Free plan</span> <b>${perK(o.free)}</b> per 1,000 ${esc(o.unit)}s <span class="sep">·</span> <span class="k">Business plan</span> <b>${perK(o.gold)}</b>${o.extra ? ` <span class="extra">${esc(o.extra)}</span>` : ""}</p>
+<p>${esc(o.returns)}</p>
+<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
+<p class="links"><a href="${store(slug)}">Store page</a> <a href="${mcp(slug)}">Pin to Apify MCP</a>${templates.map(t => ` <a href="${tpl(t)}">n8n template</a>`).join("")} <a href="https://apify.com/steadyfetch/${slug}/api">API docs</a></p>
+</article>`;
+}
+
+function compTable(g, family) {
+  const minute = !!g.minute;
+  const rows = [];
+  const oursRow = (slug) => {
+    const o = OURS[slug];
+    const users30 = { "google-trends-scraper": 16, "facebook-ads-transcript-scraper": 13, "keyword-search-volume-scraper": 3, "instagram-reel-transcript-scraper": 2, "instagram-profile-posts": 0, "amazon-product-scraper": 0, "amazon-search-scraper": 0, "amazon-bestsellers-scraper": 0, "amazon-seller-scraper": 0 }[slug] ?? 1;
+    const tcol = (family.dir === "ad-transcripts" || family.dir === "youtube-media") ? `<td>${esc(TRANSCRIPT_COL[slug] ?? "Yes")}</td>` : "";
+    return `<tr class="us"><td><a href="${store(slug)}">steadyfetch/${slug}</a></td><td>${esc(ROW[slug])}</td>${tcol}<td class="num">${perK(o.free)}</td><td class="num">${perK(o.gold)}</td><td class="num">none</td><td class="num">${users30}</td></tr>`;
+  };
+  rows.push(oursRow(g.ourSlug));
+  if (g.ourSlug2) rows.push(oursRow(g.ourSlug2));
+  for (const id of g.ids) {
+    const c = C[id];
+    const unitNote = c.batch ? " per batch of 1,000" : c.page ? " per page/item" : c.minute ? " per 1,000 minutes" : "";
+    const price = (v) => (c.batch || c.page ? usd(v) : perK(v)) + (c.batch || c.page ? unitNote : "");
+    rows.push(`<tr><td><a href="https://apify.com/${id}" rel="nofollow">${esc(id)}</a></td><td>${esc(c.returns)}</td>${family.dir === "ad-transcripts" || family.dir === "youtube-media" ? `<td>${esc(c.transcripts ?? "—")}</td>` : ""}<td class="num">${price(c.free)}</td><td class="num">${price(c.gold)}</td><td class="num">${c.start ? usd(c.start) : "none"}</td><td class="num">${c.users.toLocaleString("en-US")}</td></tr>`);
+  }
+  const transcriptCol = family.dir === "ad-transcripts" || family.dir === "youtube-media" ? "<th>Transcripts</th>" : "";
+  return `<h3>${esc(g.label)}</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Actor</th><th>What a row is</th>${transcriptCol}<th class="num">Free plan, per 1,000${minute ? " min" : ""}</th><th class="num">Business plan, per 1,000${minute ? " min" : ""}</th><th class="num">Fee per run</th><th class="num">Users, 30 days</th></tr></thead>
+<tbody>${rows.join("\n")}</tbody>
+</table></div>`;
+}
+
+function vendorRows(keys) {
+  if (!keys.length) return "";
+  return `<h3>Outside Apify</h3>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Tool</th><th>What you get</th><th>Price as published</th></tr></thead>
+<tbody>${keys.map(k => { const v = VENDORS[k]; return `<tr><td><a href="${v.url}" rel="nofollow">${esc(v.name)}</a></td><td>${esc(v.returns)}</td><td>${esc(v.price)}</td></tr>`; }).join("\n")}</tbody>
+</table></div>`;
+}
+
+function familyPage(f) {
+  const path = `/${f.dir}/`;
+  const jsonld = { "@context": "https://schema.org", "@type": "WebPage", name: f.title, description: f.desc, url: SITE + path, dateModified: ISO, isPartOf: { "@type": "WebSite", name: "Steadyfetch", url: SITE }, about: f.ours.map(s => ({ "@type": "SoftwareApplication", name: OURS[s].name, url: store(s), applicationCategory: "DeveloperApplication", offers: { "@type": "Offer", price: OURS[s].free, priceCurrency: "USD", description: `per ${OURS[s].unit}, free plan` } })) };
+  return head(f.title, f.desc, path, jsonld) + `
+<p class="crumbs"><a href="/">Steadyfetch</a> › ${esc(f.h1)}</p>
+<h1>${esc(f.h1)}</h1>
+<p class="checked">Prices checked ${CHECKED} · per 1,000 units · free plan and Business plan</p>
+${f.intro.map(p => `<p class="lead">${esc(p)}</p>`).join("\n")}
+
+<h2>Our actors in this family</h2>
+<div class="cards">${f.ours.map(ourCard).join("\n")}</div>
+
+<h2>The field, side by side</h2>
+<p>Every actor that appears in Apify store search for these terms, with the price its store page publishes for a free-plan account and for a Business-plan account. Our rows are shaded.</p>
+${f.groups.map(g => compTable(g, f)).join("\n")}
+${vendorRows(f.vendors)}
+
+<h2>How to read it</h2>
+${f.reading.map(p => `<p>${esc(p)}</p>`).join("\n")}
+
+<h2>What we do not do</h2>
+<ul>${f.not.map(n => `<li>${esc(n)}</li>`).join("")}</ul>
+
+<h2>Run it your way</h2>
+<ul class="ways">
+<li><b>Console.</b> Open any store page above, fill the form, press Start. The free Apify plan covers test runs.</li>
+<li><b>API.</b> Every actor has a REST endpoint: <code>POST https://api.apify.com/v2/acts/steadyfetch~&lt;actor&gt;/run-sync-get-dataset-items?token=…</code> with the input as JSON. The API docs link on each card shows the exact body.</li>
+<li><b>MCP.</b> The "Pin to Apify MCP" link registers that one actor as a tool for Claude, Cursor or any MCP client.</li>
+<li><b>n8n.</b> Free, import-validated workflow templates for several actors live at <a href="https://github.com/steadyfetch/n8n-templates">steadyfetch/n8n-templates</a>.</li>
+</ul>
+` + foot(CHECKED);
+}
+
+function indexPage() {
+  const title = "Steadyfetch: honest comparison pages for data actors on Apify";
+  const desc = "Five comparison pages, one per data family, listing every Apify actor and the main vendors next to Steadyfetch's 25 actors with the same price columns. Ad transcripts, Google Trends and keywords, jobs, Amazon, YouTube and media.";
+  const jsonld = { "@context": "https://schema.org", "@type": "WebSite", name: "Steadyfetch", url: SITE, description: desc };
+  return head(title, desc, "/", jsonld) + `
+<h1>Data actors on Apify, compared honestly</h1>
+<p class="lead">Steadyfetch builds 25 pay-per-event actors on the Apify platform. They share one rule: you are charged only when a row lands in your dataset, and a miss tells you why it was free. These pages put each family next to every competing actor and the main outside vendors, with the same price columns, so you can decide with the numbers in front of you.</p>
+<p class="checked">All prices read ${CHECKED} from the public Apify store API and vendor pricing pages.</p>
+<div class="cards hub">
+${FAMILIES.map(f => `<article class="card"><h2><a href="/${f.dir}/">${esc(f.h1.replace(", compared honestly", ""))}</a></h2><p>${esc(f.desc.replace(/ Prices checked.*$/, ""))}</p><p class="links">${f.ours.map(s => `<a href="${store(s)}">${esc(OURS[s].name)}</a>`).join(" ")}</p></article>`).join("\n")}
+</div>
+<h2>What every Steadyfetch actor promises</h2>
+<ul>
+<li><b>Charged on delivery only.</b> Expired links, blocked pages, empty results and unreadable media come back as rows with a status and <code>charged: false</code>.</li>
+<li><b>Your caps are exact.</b> A result limit of 30 returns 30. A run deadline stops the run cleanly and reports what is left.</li>
+<li><b>No start fees, no minimums.</b> Two exceptions are stated on their cards: an optional per-minute surcharge on videos longer than three minutes, and optional second events like Indeed descriptions.</li>
+<li><b>Chainable.</b> Every transcript actor accepts another scraper's dataset ID, so you can keep the scraper you already use.</li>
+<li><b>Agent-ready.</b> Each actor has a one-click MCP pin link and a REST endpoint; the store's agentic-payments allow-list covers all 25.</li>
+</ul>
+<h2>Free n8n templates</h2>
+<p>Import-validated workflows for the ad-transcript, keyword-volume and Instagram actors are at <a href="https://github.com/steadyfetch/n8n-templates">github.com/steadyfetch/n8n-templates</a>. No community nodes, plain HTTP, paste one token.</p>
+` + foot(CHECKED);
+}
+
+mkdirSync(".", { recursive: true });
+writeFileSync("index.html", indexPage());
+for (const f of FAMILIES) { mkdirSync(f.dir, { recursive: true }); writeFileSync(`${f.dir}/index.html`, familyPage(f)); }
+writeFileSync("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n<url><loc>${SITE}/</loc><lastmod>${ISO}</lastmod></url>\n${FAMILIES.map(f => `<url><loc>${SITE}/${f.dir}/</loc><lastmod>${ISO}</lastmod></url>`).join("\n")}\n</urlset>\n`);
+writeFileSync("robots.txt", `User-agent: *\nAllow: /\nSitemap: ${SITE}/sitemap.xml\n`);
+writeFileSync(".nojekyll", "");
+console.log("built", 1 + FAMILIES.length, "pages");
