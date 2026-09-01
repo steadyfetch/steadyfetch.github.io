@@ -1,9 +1,9 @@
-// Static builder for steadyfetch.github.io — run `node build.mjs`, commit the output.
+// Static builder for steadyfetch.com (hosted on GitHub Pages) — run `node build.mjs`, commit the output.
 // Every price below was read on 1 September 2026 from the public Apify store API
 // (currentPricingInfo / pricingInfos, FREE-plan and GOLD-plan tiers) or the vendor's own pricing page.
 import { writeFileSync, mkdirSync } from "node:fs";
 
-const SITE = "https://steadyfetch.github.io";
+const SITE = "https://steadyfetch.com";
 const CHECKED = "1 September 2026";
 const ISO = "2026-09-01";
 const store = (slug) => `https://apify.com/steadyfetch/${slug}`;
