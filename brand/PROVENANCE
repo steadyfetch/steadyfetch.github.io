@@ -1,0 +1,5 @@
+Authored for steadyfetch.com by the Impeccable design lane, 2026-09-01. Drawn with PIL from the measured geometry of the existing steadyfetch mark (the green square-wave pulse on #050911 live as the Apify profile picture); type is Archivo and Azeret Mono (SIL OFL). Counts and the checked date are read at render time from build.mjs. No generative model produced any pixel.
+
+favicon.ico is the same artwork at 16/32/48 (ICO carries no text chunk).
+mark.svg and icon.svg are hand-written paths from the same measured geometry.
+Regenerate everything with: python3 render.py (reads counts from build.mjs).

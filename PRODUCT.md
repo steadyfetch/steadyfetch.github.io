@@ -66,7 +66,7 @@ Each family page carries: our actor cards, the field side by side in grouped tab
   `:root:not([data-theme="light"])`, plus `:root[data-theme="dark"]`. Explicit body background.
 - The comparison tables are the product. They must stay scannable on a phone: their own overflow
   container, a sticky identity column or a card fallback below ~640px, tabular numerals.
-- 65 competitor rows across five pages, in 19 grouped tables, plus 6 outside-vendor rows.
+- 62 competitor rows across five pages, in 19 grouped tables, plus 6 outside-vendor rows.
 
 ## Brand Commitments
 
@@ -82,7 +82,7 @@ Every page carries the "unofficial — not affiliated" disclaimer.
 ## Evidence on Hand
 
 Real and complete: 25 actor names, units, free-plan and Business-plan prices, surcharges, and a
-paragraph of what each returns; 65 competitor actors with prices, per-run fees, 30-day user
+paragraph of what each returns; 62 competitor actors with prices, per-run fees, 30-day user
 counts and a description of what a row is; 6 outside vendors with published pricing; our own
 30-day user counts (mostly 0 or 1 — the portfolio is young, and the site does not hide it);
 the Apify brand mark; free n8n templates on GitHub. Absent and not to be fabricated:

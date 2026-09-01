@@ -301,8 +301,11 @@ const FONTS = "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..12
 const N_OURS = Object.keys(OURS).length;
 const N_COMP = Object.keys(C).length;
 const N_VEND = Object.keys(VENDORS).length;
+const FIG = " "; // figure space: one digit wide, so decimal points line up
 
 // The mark, stretched into a rule: one clean step up and back down.
+// The lead rule is revealed by a clip-path wipe, not a stroke dash: under
+// non-scaling-stroke a dash is measured in screen pixels and stops short.
 const pulse = (mod = "") => `<svg class="pulse${mod}" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>`;
 const chip = `<span class="plate-chip"><svg viewBox="0 0 512 512" width="100%" height="100%" aria-hidden="true" focusable="false"><path d="M64 306H200V177H311V306H447" fill="none" stroke="#26DC62" stroke-width="40"/></svg></span>`;
 const navLabel = (f) => f.h1.replace(", compared honestly", "");
@@ -315,8 +318,9 @@ THESIS: a comparative plate, not a vendor comparison page: every actor in a fami
 specimen at one shared scale, its price bar drawn even where ours is the longest. Refuses the
 tick-and-cross "us vs them" table the category ships.
 OWN-WORLD: the plate ground runs edge to edge (herbarium stock in light, the brand's own #050911
-in dark); one ink, one accent (steadyfetch green), hairline rules, no shadowed cards. Archivo
-condensed for plate titles, Azeret Mono for every measured figure and every actor binomial.
+in dark); one ink, one accent (steadyfetch green), hairline rules, ledger rows rather than cards —
+the only framed objects on a page are the plates. Archivo condensed for titles, Azeret Mono for
+every measured figure and every actor binomial, set at focal scale.
 STORY: the visitor sees the field measured on one scale, finds the row that beats us, reads why,
 and goes to a store page to run an actor.
 FIRST VIEWPORT: plate title, the collection stamp (what was read, from where, when), the lead,
@@ -388,35 +392,36 @@ ${pulse(" pulse--faint")}
 </html>
 `;
 
-// A specimen sheet for one of our actors.
+// One of our actors as a ledger row: prose left, the measurement in the shared right column.
 function ourCard(slug) {
   const o = OURS[slug];
   const templates = [o.template, o.template2].filter(Boolean);
-  return `<article class="sheet" id="${slug}">
+  return `<article class="act" id="${slug}">
+<div class="act-main">
 <h3><a href="${store(slug)}">${esc(o.name)}</a></h3>
-<div class="meter">
-<div><b>${perK(o.free)}</b><span class="label">Free plan / 1,000</span></div>
-<div><b>${perK(o.gold)}</b><span class="label">Business / 1,000</span></div>
-</div>
-<p class="unitline">per 1,000 ${esc(o.unit)}s${o.extra ? ` <span class="ext">${esc(o.extra)}</span>` : ""}</p>
 <p class="returns">${esc(o.returns)}</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="${store(slug)}">Store page</a> <a href="${mcp(slug)}">Pin to Apify MCP</a>${templates.map(t => ` <a href="${tpl(t)}">n8n · ${esc(t.replace(".workflow.json", "").replace(/-/g, " "))}</a>`).join("")} <a href="https://apify.com/steadyfetch/${slug}/api">API docs</a></p>
+</div>
+<div class="meter">
+<div><b>${perK(o.free)}</b><span class="label">Free plan / 1,000</span></div>
+<div><b>${perK(o.gold)}</b><span class="label">Business / 1,000</span></div>
+<p class="unitline">per 1,000 ${esc(o.unit)}s${o.extra ? `<span class="ext">${esc(o.extra)}</span>` : ""}</p>
+</div>
 </article>`;
 }
 
-// One plate: the group's specimens at a single shared scale.
+// One plate: the group's specimens, every figure on one locked column grid.
 function compTable(g, family, idx) {
   const minute = !!g.minute;
   const wide = family.dir === "ad-transcripts" || family.dir === "youtube-media";
-  const users30 = { "google-trends-scraper": 16, "facebook-ads-transcript-scraper": 13, "keyword-search-volume-scraper": 3, "instagram-reel-transcript-scraper": 2, "instagram-profile-posts": 0, "amazon-product-scraper": 0, "amazon-search-scraper": 0, "amazon-bestsellers-scraper": 0, "amazon-seller-scraper": 0 };
-  const items = [];
-  const ourItem = (slug) => {
+  const our = (slug) => {
     const o = OURS[slug];
-    items.push({ id: `steadyfetch/${slug}`, href: store(slug), rel: "", diag: ROW[slug], t: TRANSCRIPT_COL[slug] ?? "Yes", free: o.free, gold: o.gold, freeTxt: perK(o.free), goldTxt: perK(o.gold), note: "", start: 0, users: users30[slug] ?? 1, mine: true });
+    const u = { "google-trends-scraper": 16, "facebook-ads-transcript-scraper": 13, "keyword-search-volume-scraper": 3, "instagram-reel-transcript-scraper": 2, "instagram-profile-posts": 0, "amazon-product-scraper": 0, "amazon-search-scraper": 0, "amazon-bestsellers-scraper": 0, "amazon-seller-scraper": 0 }[slug] ?? 1;
+    return { id: `steadyfetch/${slug}`, href: store(slug), rel: "", diag: ROW[slug], t: TRANSCRIPT_COL[slug] ?? "Yes", free: o.free, gold: o.gold, freeTxt: perK(o.free), goldTxt: perK(o.gold), note: "", start: 0, users: u, mine: true };
   };
-  ourItem(g.ourSlug);
-  if (g.ourSlug2) ourItem(g.ourSlug2);
+  const items = [our(g.ourSlug)];
+  if (g.ourSlug2) items.push(our(g.ourSlug2));
   for (const id of g.ids) {
     const c = C[id];
     const odd = !!(c.batch || c.page);
@@ -425,21 +430,26 @@ function compTable(g, family, idx) {
   }
   const peak = (k) => items.reduce((m, i) => (i[k] != null && i[k] > m ? i[k] : m), 0);
   const mf = peak("free"), mg = peak("gold");
-  const bar = (v, max) => (v == null || max <= 0 ? "" : `<span class="gauge"><span style="--w:${((v / max) * 100).toFixed(1)}%"></span></span>`);
+  const gauge = (v, max) => (v == null || max <= 0 ? "" : `<span class="gauge"><span style="--w:${((v / max) * 100).toFixed(1)}%"></span></span>`);
+  // fees keep every published digit; figure spaces pad the shorter ones so decimal points align
+  const feeTxt = items.map(i => (i.start ? usd(i.start) : null));
+  const maxFrac = feeTxt.reduce((m, t) => (t && t.includes(".") ? Math.max(m, t.split(".")[1].length) : m), 0);
+  const padFee = (t) => (t == null ? '<span class="none">none</span>' : t + FIG.repeat(maxFrac - (t.includes(".") ? t.split(".")[1].length : 0)));
   const per = `per 1,000${minute ? " min" : ""}`;
   const id = `${family.dir}-plate-${idx}`;
-  const rows = items.map(i => `<tr${i.mine ? ' class="us"' : ""}>
-<th scope="row"><a class="bi" href="${i.href}"${i.rel}>${binomial(i.id)}</a><span class="diag">${esc(i.diag)}</span></th>${wide ? `<td>${esc(i.t)}</td>` : ""}
-<td class="num"><span class="v">${i.freeTxt}</span>${i.note ? `<span class="note">${esc(i.note)}</span>` : ""}${bar(i.free, mf)}</td>
-<td class="num"><span class="v">${i.goldTxt}</span>${i.note ? `<span class="note">${esc(i.note)}</span>` : ""}${bar(i.gold, mg)}</td>
-<td class="num">${i.start ? usd(i.start) : '<span class="none">none</span>'}</td>
+  const rows = items.map((i, n) => `<tr${i.mine ? ' class="us"' : ""}>
+<th scope="row"><a class="bi" href="${i.href}"${i.rel}>${binomial(i.id)}</a><span class="diag">${esc(i.diag)}</span></th>${wide ? `<td class="tx">${esc(i.t)}</td>` : ""}
+<td class="num"><span class="v">${i.freeTxt}</span>${i.note ? `<span class="note">${esc(i.note)}</span>` : ""}${gauge(i.free, mf)}</td>
+<td class="num"><span class="v">${i.goldTxt}</span>${i.note ? `<span class="note">${esc(i.note)}</span>` : ""}${gauge(i.gold, mg)}</td>
+<td class="num fee">${padFee(feeTxt[n])}</td>
 <td class="num">${i.users.toLocaleString("en-US")}</td>
 </tr>`).join("\n");
   const unpriced = items.some(i => i.free == null);
   return `<section class="plate">
 <div class="plate-head"><h3 id="${id}">${esc(g.label)}</h3><span class="label">${items.length} actors</span></div>
-<div class="plate-scroll" role="region" tabindex="0" aria-labelledby="${id}">
+<div class="plate-scroll${wide ? " has-tx" : ""}" role="region" tabindex="0" aria-labelledby="${id}">
 <table>
+<colgroup><col class="c-id">${wide ? '<col class="c-tx">' : ""}<col class="c-n"><col class="c-n"><col class="c-fee"><col class="c-u"></colgroup>
 <thead><tr><th scope="col">Actor · what a row is</th>${wide ? "<th scope=\"col\">Transcripts</th>" : ""}<th scope="col" class="num">Free plan, ${per}</th><th scope="col" class="num">Business plan, ${per}</th><th scope="col" class="num">Fee per run</th><th scope="col" class="num">Users, 30 days</th></tr></thead>
 <tbody>${rows}</tbody>
 </table>
@@ -451,12 +461,14 @@ function compTable(g, family, idx) {
 function vendorRows(keys) {
   if (!keys.length) return "";
   return `<h3 class="outside">Outside Apify</h3>
-<div class="sheets">${keys.map(k => {
+<div class="ledger">${keys.map(k => {
     const v = VENDORS[k];
-    return `<article class="sheet vendor">
+    return `<article class="act vendor">
+<div class="act-main">
 <h3><a href="${v.url}" rel="nofollow">${esc(v.name)}</a></h3>
 <p class="returns">${esc(v.returns)}</p>
-<p class="vprice"><span class="label">Price as published</span>${esc(v.price)}</p>
+</div>
+<div class="meter"><p class="unitline"><span class="label">Price as published</span>${esc(v.price)}</p></div>
 </article>`;
   }).join("\n")}</div>`;
 }
@@ -473,7 +485,7 @@ ${f.intro.map((p, i) => `<p${i === 0 ? ' class="lead"' : ""}>${esc(p)}</p>`).joi
 
 <section class="section">${pulse()}
 <h2>Our actors in this family</h2>
-<div class="sheets">${f.ours.map(ourCard).join("\n")}</div>
+<div class="ledger">${f.ours.map(ourCard).join("\n")}</div>
 </section>
 
 <section class="section">${pulse()}
@@ -529,6 +541,8 @@ function indexPage() {
   const title = "Steadyfetch: honest comparison pages for data actors on Apify";
   const desc = "Five comparison pages, one per data family, listing every Apify actor and the main vendors next to Steadyfetch's 25 actors with the same price columns. Ad transcripts, Google Trends and keywords, jobs, Amazon, YouTube and media.";
   const jsonld = { "@context": "https://schema.org", "@type": "WebSite", name: "Steadyfetch", url: SITE, description: desc };
+  const size = (f) => f.ours.length + f.groups.reduce((n, g) => n + g.ids.length, 0) + f.vendors.length;
+  const widest = Math.max(...FAMILIES.map(size));
   return head(title, desc, "/", jsonld) + `
 <h1>Data actors on Apify, compared honestly</h1>
 ${stampBand([`All prices read ${CHECKED}`, "Public Apify store API and vendor pricing pages", `${N_OURS} actors · ${N_COMP} competing actors · ${N_VEND} vendors`])}
@@ -539,12 +553,18 @@ ${proofBlock()}
 </section>
 
 <section class="section">${pulse()}
-<div class="plate-index">
-${FAMILIES.map(f => `<article class="entry">
+<div class="ledger">
+${FAMILIES.map(f => `<article class="fam">
+<div class="act-main">
 <h2><a href="/${f.dir}/">${esc(navLabel(f))}</a></h2>
-<p class="count">${f.ours.length} of ours · ${f.groups.reduce((n, g) => n + g.ids.length, 0)} competing${f.vendors.length ? ` · ${f.vendors.length} outside Apify` : ""}</p>
 <p class="desc">${esc(f.desc.replace(/ Prices checked.*$/, ""))}</p>
 <p class="roster">${f.ours.map(s => `<a href="${store(s)}">${esc(OURS[s].name)}</a>`).join("")}</p>
+</div>
+<div class="meter">
+<div><b>${size(f)}</b><span class="label">Actors on this plate</span></div>
+<span class="gauge"><span style="--w:${((size(f) / widest) * 100).toFixed(1)}%"></span></span>
+<p class="unitline">${f.ours.length} of ours · ${f.groups.reduce((n, g) => n + g.ids.length, 0)} competing${f.vendors.length ? ` · ${f.vendors.length} outside Apify` : ""}</p>
+</div>
 </article>`).join("\n")}
 </div>
 </section>

@@ -34,8 +34,9 @@ THESIS: a comparative plate, not a vendor comparison page: every actor in a fami
 specimen at one shared scale, its price bar drawn even where ours is the longest. Refuses the
 tick-and-cross "us vs them" table the category ships.
 OWN-WORLD: the plate ground runs edge to edge (herbarium stock in light, the brand's own #050911
-in dark); one ink, one accent (steadyfetch green), hairline rules, no shadowed cards. Archivo
-condensed for plate titles, Azeret Mono for every measured figure and every actor binomial.
+in dark); one ink, one accent (steadyfetch green), hairline rules, ledger rows rather than cards —
+the only framed objects on a page are the plates. Archivo condensed for titles, Azeret Mono for
+every measured figure and every actor binomial, set at focal scale.
 STORY: the visitor sees the field measured on one scale, finds the row that beats us, reads why,
 and goes to a store page to run an actor.
 FIRST VIEWPORT: plate title, the collection stamp (what was read, from where, when), the lead,
@@ -61,71 +62,83 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <section class="section"><svg class="pulse" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
 <h2>Our actors in this family</h2>
-<div class="sheets"><article class="sheet" id="google-trends-scraper">
+<div class="ledger"><article class="act" id="google-trends-scraper">
+<div class="act-main">
 <h3><a href="https://apify.com/steadyfetch/google-trends-scraper">Google Trends</a></h3>
-<div class="meter">
-<div><b>$9.00</b><span class="label">Free plan / 1,000</span></div>
-<div><b>$7.50</b><span class="label">Business / 1,000</span></div>
-</div>
-<p class="unitline">per 1,000 reports</p>
 <p class="returns">Interest over time, multi-keyword compare on one shared scale, related queries (top and rising with growth), related topics with knowledge-graph IDs, interest by region and Trending Now. Schema-stable JSON, one row per keyword and surface.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/google-trends-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/google-trends-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/google-trends-scraper/api">API docs</a></p>
-</article>
-<article class="sheet" id="google-trends-now-scraper">
-<h3><a href="https://apify.com/steadyfetch/google-trends-now-scraper">Google Trends Now</a></h3>
-<div class="meter">
-<div><b>$2.00</b><span class="label">Free plan / 1,000</span></div>
-<div><b>$0.50</b><span class="label">Business / 1,000</span></div>
 </div>
-<p class="unitline">per 1,000 trending searchs</p>
+<div class="meter">
+<div><b>$9.00</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$7.50</b><span class="label">Business / 1,000</span></div>
+<p class="unitline">per 1,000 reports</p>
+</div>
+</article>
+<article class="act" id="google-trends-now-scraper">
+<div class="act-main">
+<h3><a href="https://apify.com/steadyfetch/google-trends-now-scraper">Google Trends Now</a></h3>
 <p class="returns">Trending searches for any country with rank, Google's traffic floor, start time and the news behind each trend. No start fee, built for hourly schedules.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/google-trends-now-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/google-trends-now-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/google-trends-now-scraper/api">API docs</a></p>
-</article>
-<article class="sheet" id="breakout-keywords-scraper">
-<h3><a href="https://apify.com/steadyfetch/breakout-keywords-scraper">Breakout keywords</a></h3>
-<div class="meter">
-<div><b>$6.00</b><span class="label">Free plan / 1,000</span></div>
-<div><b>$1.50</b><span class="label">Business / 1,000</span></div>
 </div>
-<p class="unitline">per 1,000 keyword rows</p>
-<p class="returns">Rising and Breakout queries for seed keywords, with the growth percentage Google's UI hides behind the word Breakout.</p>
-<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
-<p class="links"><a href="https://apify.com/steadyfetch/breakout-keywords-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/breakout-keywords-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/breakout-keywords-scraper/api">API docs</a></p>
-</article>
-<article class="sheet" id="keyword-search-volume-scraper">
-<h3><a href="https://apify.com/steadyfetch/keyword-search-volume-scraper">Keyword volume and CPC</a></h3>
-<div class="meter">
-<div><b>$8.00</b><span class="label">Free plan / 1,000</span></div>
-<div><b>$2.00</b><span class="label">Business / 1,000</span></div>
-</div>
-<p class="unitline">per 1,000 keyword results</p>
-<p class="returns">Google Ads Keyword Planner figures through a licensed provider: average monthly searches, competition, top-of-page bid range, 12-month series and trend direction, CPC where Google publishes one. No minimum batch, no charge on keywords with no data.</p>
-<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
-<p class="links"><a href="https://apify.com/steadyfetch/keyword-search-volume-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/keyword-search-volume-scraper">Pin to Apify MCP</a> <a href="https://github.com/steadyfetch/n8n-templates/blob/master/keyword-search-volume.workflow.json">n8n · keyword search volume</a> <a href="https://apify.com/steadyfetch/keyword-search-volume-scraper/api">API docs</a></p>
-</article>
-<article class="sheet" id="google-keyword-suggest-scraper">
-<h3><a href="https://apify.com/steadyfetch/google-keyword-suggest-scraper">Autocomplete keywords, 5 engines</a></h3>
 <div class="meter">
 <div><b>$2.00</b><span class="label">Free plan / 1,000</span></div>
 <div><b>$0.50</b><span class="label">Business / 1,000</span></div>
+<p class="unitline">per 1,000 trending searchs</p>
 </div>
-<p class="unitline">per 1,000 suggestions</p>
+</article>
+<article class="act" id="breakout-keywords-scraper">
+<div class="act-main">
+<h3><a href="https://apify.com/steadyfetch/breakout-keywords-scraper">Breakout keywords</a></h3>
+<p class="returns">Rising and Breakout queries for seed keywords, with the growth percentage Google's UI hides behind the word Breakout.</p>
+<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
+<p class="links"><a href="https://apify.com/steadyfetch/breakout-keywords-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/breakout-keywords-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/breakout-keywords-scraper/api">API docs</a></p>
+</div>
+<div class="meter">
+<div><b>$6.00</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$1.50</b><span class="label">Business / 1,000</span></div>
+<p class="unitline">per 1,000 keyword rows</p>
+</div>
+</article>
+<article class="act" id="keyword-search-volume-scraper">
+<div class="act-main">
+<h3><a href="https://apify.com/steadyfetch/keyword-search-volume-scraper">Keyword volume and CPC</a></h3>
+<p class="returns">Google Ads Keyword Planner figures through a licensed provider: average monthly searches, competition, top-of-page bid range, 12-month series and trend direction, CPC where Google publishes one. No minimum batch, no charge on keywords with no data.</p>
+<p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
+<p class="links"><a href="https://apify.com/steadyfetch/keyword-search-volume-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/keyword-search-volume-scraper">Pin to Apify MCP</a> <a href="https://github.com/steadyfetch/n8n-templates/blob/master/keyword-search-volume.workflow.json">n8n · keyword search volume</a> <a href="https://apify.com/steadyfetch/keyword-search-volume-scraper/api">API docs</a></p>
+</div>
+<div class="meter">
+<div><b>$8.00</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$2.00</b><span class="label">Business / 1,000</span></div>
+<p class="unitline">per 1,000 keyword results</p>
+</div>
+</article>
+<article class="act" id="google-keyword-suggest-scraper">
+<div class="act-main">
+<h3><a href="https://apify.com/steadyfetch/google-keyword-suggest-scraper">Autocomplete keywords, 5 engines</a></h3>
 <p class="returns">Google, YouTube, Amazon, Bing and App Store autocomplete for one seed in one run. No API key, no login, no start fee.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/google-keyword-suggest-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/google-keyword-suggest-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/google-keyword-suggest-scraper/api">API docs</a></p>
-</article>
-<article class="sheet" id="social-trends-scraper">
-<h3><a href="https://apify.com/steadyfetch/social-trends-scraper">Social trends, 5 platforms</a></h3>
-<div class="meter">
-<div><b>$4.00</b><span class="label">Free plan / 1,000</span></div>
-<div><b>$1.00</b><span class="label">Business / 1,000</span></div>
 </div>
-<p class="unitline">per 1,000 trends</p>
+<div class="meter">
+<div><b>$2.00</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$0.50</b><span class="label">Business / 1,000</span></div>
+<p class="unitline">per 1,000 suggestions</p>
+</div>
+</article>
+<article class="act" id="social-trends-scraper">
+<div class="act-main">
+<h3><a href="https://apify.com/steadyfetch/social-trends-scraper">Social trends, 5 platforms</a></h3>
 <p class="returns">What is trending on X, TikTok, Pinterest, YouTube Charts and Google, normalised to one row shape with rank, metric and link.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/social-trends-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/social-trends-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/social-trends-scraper/api">API docs</a></p>
+</div>
+<div class="meter">
+<div><b>$4.00</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$1.00</b><span class="label">Business / 1,000</span></div>
+<p class="unitline">per 1,000 trends</p>
+</div>
 </article></div>
 </section>
 
@@ -136,40 +149,41 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <div class="plate-head"><h3 id="trends-keywords-plate-0">Google Trends</h3><span class="label">5 actors</span></div>
 <div class="plate-scroll" role="region" tabindex="0" aria-labelledby="trends-keywords-plate-0">
 <table>
+<colgroup><col class="c-id"><col class="c-n"><col class="c-n"><col class="c-fee"><col class="c-u"></colgroup>
 <thead><tr><th scope="col">Actor · what a row is</th><th scope="col" class="num">Free plan, per 1,000</th><th scope="col" class="num">Business plan, per 1,000</th><th scope="col" class="num">Fee per run</th><th scope="col" class="num">Users, 30 days</th></tr></thead>
 <tbody><tr class="us">
 <th scope="row"><a class="bi" href="https://apify.com/steadyfetch/google-trends-scraper"><span class="acct">steadyfetch</span><span class="slash">/</span><wbr><span class="slug">google-trends-scraper</span></a><span class="diag">One keyword × one surface: interest over time, compare, related queries or topics, region, trending now</span></th>
 <td class="num"><span class="v">$9.00</span><span class="gauge"><span style="--w:6.5%"></span></span></td>
 <td class="num"><span class="v">$7.50</span><span class="gauge"><span style="--w:10.4%"></span></span></td>
-<td class="num"><span class="none">none</span></td>
+<td class="num fee"><span class="none">none</span></td>
 <td class="num">16</td>
 </tr>
 <tr>
 <th scope="row"><a class="bi" href="https://apify.com/apify/google-trends-scraper" rel="nofollow"><span class="acct">apify</span><span class="slash">/</span><wbr><span class="slug">google-trends-scraper</span></a><span class="diag">Interest over time and related data as rows; the official Apify actor</span></th>
 <td class="num"><span class="v">$3.00</span><span class="gauge"><span style="--w:2.2%"></span></span></td>
 <td class="num"><span class="v">$0.30</span><span class="gauge"><span style="--w:0.4%"></span></span></td>
-<td class="num"><span class="none">none</span></td>
+<td class="num fee"><span class="none">none</span></td>
 <td class="num">1,199</td>
 </tr>
 <tr>
 <th scope="row"><a class="bi" href="https://apify.com/data_xplorer/google-trends-fast-scraper" rel="nofollow"><span class="acct">data_xplorer</span><span class="slash">/</span><wbr><span class="slug">google-trends-fast-scraper</span></a><span class="diag">Trends rows with a $0.02 fee on every run</span></th>
 <td class="num"><span class="v">$2.00</span><span class="gauge"><span style="--w:1.4%"></span></span></td>
 <td class="num"><span class="v">$0.50</span><span class="gauge"><span style="--w:0.7%"></span></span></td>
-<td class="num">$0.02</td>
+<td class="num fee">$0.02   </td>
 <td class="num">366</td>
 </tr>
 <tr>
 <th scope="row"><a class="bi" href="https://apify.com/khadinakbar/google-trends-scraper" rel="nofollow"><span class="acct">khadinakbar</span><span class="slash">/</span><wbr><span class="slug">google-trends-scraper</span></a><span class="diag">Interest, regions and related queries</span></th>
 <td class="num"><span class="v">$5.00</span><span class="gauge"><span style="--w:3.6%"></span></span></td>
 <td class="num"><span class="v">$5.00</span><span class="gauge"><span style="--w:6.9%"></span></span></td>
-<td class="num">$0.00005</td>
+<td class="num fee">$0.00005</td>
 <td class="num">72</td>
 </tr>
 <tr>
 <th scope="row"><a class="bi" href="https://apify.com/automation-lab/google-trends-scraper" rel="nofollow"><span class="acct">automation-lab</span><span class="slash">/</span><wbr><span class="slug">google-trends-scraper</span></a><span class="diag">Charged per keyword analysed ($0.138 free plan / $0.072 Business) plus $0.00115 per trend row</span></th>
 <td class="num"><span class="v">$138.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
 <td class="num"><span class="v">$72.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
-<td class="num">$0.005</td>
+<td class="num fee">$0.005  </td>
 <td class="num">58</td>
 </tr></tbody>
 </table>
@@ -180,26 +194,27 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <div class="plate-head"><h3 id="trends-keywords-plate-1">Trending now</h3><span class="label">3 actors</span></div>
 <div class="plate-scroll" role="region" tabindex="0" aria-labelledby="trends-keywords-plate-1">
 <table>
+<colgroup><col class="c-id"><col class="c-n"><col class="c-n"><col class="c-fee"><col class="c-u"></colgroup>
 <thead><tr><th scope="col">Actor · what a row is</th><th scope="col" class="num">Free plan, per 1,000</th><th scope="col" class="num">Business plan, per 1,000</th><th scope="col" class="num">Fee per run</th><th scope="col" class="num">Users, 30 days</th></tr></thead>
 <tbody><tr class="us">
 <th scope="row"><a class="bi" href="https://apify.com/steadyfetch/google-trends-now-scraper"><span class="acct">steadyfetch</span><span class="slash">/</span><wbr><span class="slug">google-trends-now-scraper</span></a><span class="diag">One trending search: rank, traffic floor, start time, news behind it</span></th>
 <td class="num"><span class="v">$2.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
 <td class="num"><span class="v">$0.50</span><span class="gauge"><span style="--w:41.7%"></span></span></td>
-<td class="num"><span class="none">none</span></td>
+<td class="num fee"><span class="none">none</span></td>
 <td class="num">1</td>
 </tr>
 <tr>
 <th scope="row"><a class="bi" href="https://apify.com/vnx0/google-trends-scraper" rel="nofollow"><span class="acct">vnx0</span><span class="slash">/</span><wbr><span class="slug">google-trends-scraper</span></a><span class="diag">Daily trending keywords</span></th>
 <td class="num"><span class="v">$1.20</span><span class="gauge"><span style="--w:60.0%"></span></span></td>
 <td class="num"><span class="v">$1.20</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
-<td class="num"><span class="none">none</span></td>
+<td class="num fee"><span class="none">none</span></td>
 <td class="num">118</td>
 </tr>
 <tr>
 <th scope="row"><a class="bi" href="https://apify.com/data_xplorer/google-trends-trending-now" rel="nofollow"><span class="acct">data_xplorer</span><span class="slash">/</span><wbr><span class="slug">google-trends-trending-now</span></a><span class="diag">Trending Now rows with a $0.02 fee on every run</span></th>
 <td class="num"><span class="v">$1.00</span><span class="gauge"><span style="--w:50.0%"></span></span></td>
 <td class="num"><span class="v">$0.25</span><span class="gauge"><span style="--w:20.8%"></span></span></td>
-<td class="num">$0.02</td>
+<td class="num fee">$0.02</td>
 <td class="num">43</td>
 </tr></tbody>
 </table>
@@ -210,26 +225,27 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <div class="plate-head"><h3 id="trends-keywords-plate-2">Keyword search volume and CPC</h3><span class="label">3 actors</span></div>
 <div class="plate-scroll" role="region" tabindex="0" aria-labelledby="trends-keywords-plate-2">
 <table>
+<colgroup><col class="c-id"><col class="c-n"><col class="c-n"><col class="c-fee"><col class="c-u"></colgroup>
 <thead><tr><th scope="col">Actor · what a row is</th><th scope="col" class="num">Free plan, per 1,000</th><th scope="col" class="num">Business plan, per 1,000</th><th scope="col" class="num">Fee per run</th><th scope="col" class="num">Users, 30 days</th></tr></thead>
 <tbody><tr class="us">
 <th scope="row"><a class="bi" href="https://apify.com/steadyfetch/keyword-search-volume-scraper"><span class="acct">steadyfetch</span><span class="slash">/</span><wbr><span class="slug">keyword-search-volume-scraper</span></a><span class="diag">One keyword: monthly searches, competition, bid range, 12-month series, CPC where Google publishes it</span></th>
 <td class="num"><span class="v">$8.00</span><span class="gauge"><span style="--w:66.7%"></span></span></td>
 <td class="num"><span class="v">$2.00</span><span class="gauge"><span style="--w:25.0%"></span></span></td>
-<td class="num"><span class="none">none</span></td>
+<td class="num fee"><span class="none">none</span></td>
 <td class="num">3</td>
 </tr>
 <tr>
 <th scope="row"><a class="bi" href="https://apify.com/iskander/google-keyword-search-volume-api" rel="nofollow"><span class="acct">iskander</span><span class="slash">/</span><wbr><span class="slug">google-keyword-search-volume-api</span></a><span class="diag">Volume and CPC, billed per batch of up to 1,000 keywords ($1.99 free plan / $0.40 Business per batch, even for 10 keywords)</span></th>
 <td class="num"><span class="v">$1.99</span><span class="note">per batch of 1,000</span></td>
 <td class="num"><span class="v">$0.4</span><span class="note">per batch of 1,000</span></td>
-<td class="num">$0.00005</td>
+<td class="num fee">$0.00005</td>
 <td class="num">131</td>
 </tr>
 <tr>
 <th scope="row"><a class="bi" href="https://apify.com/aitorsm/keyword-volume" rel="nofollow"><span class="acct">aitorsm</span><span class="slash">/</span><wbr><span class="slug">keyword-volume</span></a><span class="diag">Bulk Google metrics with CPC and trend; an 'AI volume' event at the same price</span></th>
 <td class="num"><span class="v">$12.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
 <td class="num"><span class="v">$8.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
-<td class="num">$0.00005</td>
+<td class="num fee">$0.00005</td>
 <td class="num">369</td>
 </tr></tbody>
 </table>
@@ -240,26 +256,27 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <div class="plate-head"><h3 id="trends-keywords-plate-3">Autocomplete suggestions</h3><span class="label">3 actors</span></div>
 <div class="plate-scroll" role="region" tabindex="0" aria-labelledby="trends-keywords-plate-3">
 <table>
+<colgroup><col class="c-id"><col class="c-n"><col class="c-n"><col class="c-fee"><col class="c-u"></colgroup>
 <thead><tr><th scope="col">Actor · what a row is</th><th scope="col" class="num">Free plan, per 1,000</th><th scope="col" class="num">Business plan, per 1,000</th><th scope="col" class="num">Fee per run</th><th scope="col" class="num">Users, 30 days</th></tr></thead>
 <tbody><tr class="us">
 <th scope="row"><a class="bi" href="https://apify.com/steadyfetch/google-keyword-suggest-scraper"><span class="acct">steadyfetch</span><span class="slash">/</span><wbr><span class="slug">google-keyword-suggest-scraper</span></a><span class="diag">One autocomplete suggestion from Google, YouTube, Amazon, Bing or the App Store</span></th>
 <td class="num"><span class="v">$2.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
 <td class="num"><span class="v">$0.50</span><span class="gauge"><span style="--w:50.0%"></span></span></td>
-<td class="num"><span class="none">none</span></td>
+<td class="num fee"><span class="none">none</span></td>
 <td class="num">1</td>
 </tr>
 <tr>
 <th scope="row"><a class="bi" href="https://apify.com/crawlerbros/google-keywords-suggest-scraper-pro" rel="nofollow"><span class="acct">crawlerbros</span><span class="slash">/</span><wbr><span class="slug">google-keywords-suggest-scraper-pro</span></a><span class="diag">Google autocomplete suggestions</span></th>
 <td class="num"><span class="v">$2.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
 <td class="num"><span class="v">$1.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
-<td class="num">$0.005</td>
+<td class="num fee">$0.005</td>
 <td class="num">20</td>
 </tr>
 <tr>
 <th scope="row"><a class="bi" href="https://apify.com/memo23/google-suggest-scraper" rel="nofollow"><span class="acct">memo23</span><span class="slash">/</span><wbr><span class="slug">google-suggest-scraper</span></a><span class="diag">Google autocomplete suggestions</span></th>
 <td class="num"><span class="v">$0.50</span><span class="gauge"><span style="--w:25.0%"></span></span></td>
 <td class="num"><span class="v">$0.50</span><span class="gauge"><span style="--w:50.0%"></span></span></td>
-<td class="num">$0.005</td>
+<td class="num fee">$0.005</td>
 <td class="num">43</td>
 </tr></tbody>
 </table>
@@ -267,15 +284,19 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <p class="scale-note"><span class="swatch"></span>Bars are drawn per column against the dearest row on this plate.</p>
 </section>
 <h3 class="outside">Outside Apify</h3>
-<div class="sheets"><article class="sheet vendor">
+<div class="ledger"><article class="act vendor">
+<div class="act-main">
 <h3><a href="https://serpapi.com/pricing" rel="nofollow">SerpApi (Google Trends API)</a></h3>
 <p class="returns">Interest over time, interest by region, related topics and related queries, one search per call</p>
-<p class="vprice"><span class="label">Price as published</span>$25 per month for 1,000 searches ($25 per 1,000) down to $2,750 for 500,000 ($5.50 per 1,000).</p>
+</div>
+<div class="meter"><p class="unitline"><span class="label">Price as published</span>$25 per month for 1,000 searches ($25 per 1,000) down to $2,750 for 500,000 ($5.50 per 1,000).</p></div>
 </article>
-<article class="sheet vendor">
+<article class="act vendor">
+<div class="act-main">
 <h3><a href="https://meetglimpse.com/" rel="nofollow">Glimpse</a></h3>
 <p class="returns">Trends dashboard and Chrome extension</p>
-<p class="vprice"><span class="label">Price as published</span>No public price list; sign-up and demo.</p>
+</div>
+<div class="meter"><p class="unitline"><span class="label">Price as published</span>No public price list; sign-up and demo.</p></div>
 </article></div>
 </section>
 
