@@ -34,14 +34,14 @@ colors:
   track-us-dark: "#123424"
 typography:
   display:
-    fontFamily: "Archivo, 'Archivo Cond Fallback', 'Arial Narrow', Arial, sans-serif"
+    fontFamily: "Archivo, 'Archivo Cond Fallback', Arial, sans-serif"
     fontSize: "clamp(2.15rem, 5.1vw, 3.85rem)"
     fontWeight: 700
     lineHeight: 1.02
     letterSpacing: "-0.012em"
     fontVariation: "'wdth' 66"
   headline:
-    fontFamily: "Archivo, 'Archivo Cond2 Fallback', 'Arial Narrow', Arial, sans-serif"
+    fontFamily: "Archivo, 'Archivo Cond2 Fallback', Arial, sans-serif"
     fontSize: "clamp(1.5rem, 3vw, 2.3rem)"
     fontWeight: 650
     lineHeight: 1.1
@@ -224,9 +224,9 @@ One ink and one green on a cool grey-green ground, with every value a custom pro
 
 ## Typography
 
-**Display Font:** Archivo variable, width axis 62–125, weight 400–700 (with `Archivo Cond Fallback` / `Archivo Cond2 Fallback`, metric-matched on Arial Narrow Bold)
-**Body Font:** Archivo (with `Archivo Fallback`, metric-matched on Arial / Liberation Sans)
-**Label/Mono Font:** Azeret Mono 400 and 600 (with `Azeret Fallback`, metric-matched on DejaVu Sans Mono)
+**Display Font:** Archivo variable, width axis 62–125, weight 400–700, self-hosted as a subsetted woff2 at `/brand/fonts/archivo-var.woff2` (with `Archivo Cond Fallback` at 70.5% for the h1 stack and `Archivo Cond2 Fallback` at 77.7% for h2, metric-matched on Liberation Sans Bold / Arial Bold)
+**Body Font:** Archivo, the same self-hosted file (with `Archivo Fallback` at 98.7%, metric-matched on Arial / Liberation Sans). Nav and small caps labels take `--ui`, backed by `Archivo Nav Fallback` at 86.3% — they are set at `font-stretch: 86%`, which no fallback can condense, and they were what visibly wrapped without it.
+**Label/Mono Font:** Azeret Mono 400–600, self-hosted at `/brand/fonts/azeret-var.woff2` (with `Azeret Fallback` at 108%, metric-matched on DejaVu Sans Mono)
 
 **Character:** A grotesk that gets narrower as it gets larger, paired with a wide, slightly technical mono that carries every number. The plate title is compressed and tight; the figures are mono, tabular and tracked negative at focal size; the labels are small uppercase Archivo with open tracking.
 
@@ -248,7 +248,7 @@ One ink and one green on a cool grey-green ground, with every value a custom pro
 
 **The Figure Face Rule.** Every measured figure and every actor binomial is Azeret Mono with `font-variant-numeric: tabular-nums`; prose is never mono, and no figure is ever set in Archivo.
 
-**The Metric Fallback Rule.** Archivo loads with `display=optional` and Azeret with `display=swap`; four `@font-face` fallbacks carry `size-adjust`, `ascent-override`, `descent-override` and `line-gap-override: 0%` measured from the shipped variable fonts. Measured CLS is 0.0000. Headings take `max-width` in `rem`, never `ch`: `ch` is font-dependent and resized the box on swap.
+**The Metric Fallback Rule.** Both faces are self-hosted, subsetted variable woff2 under `/brand/fonts/` (SIL OFL), preloaded with `crossorigin` and served same-origin, so the page makes no external subresource request at all and Archivo is present at first paint on a cold load. Both use `font-display: swap`, never `optional` — `optional` was tried and reverted, because it left a cold search visitor in the fallback face for the entire visit. Five `@font-face` fallbacks carry `size-adjust`, `ascent-override`, `descent-override` and `line-gap-override: 0%`, every ratio measured from the shipped variable fonts against faces that actually exist (Liberation Sans, Arial, Roboto, DejaVu Sans Mono) — never Arial Narrow, which is absent on Linux and Android. Each override is the font's own metric divided by that fallback's `size-adjust`, so the adjust changes advance width without moving the line box. Measured CLS is 0.0000 with zero shift entries, on the hub and on ad-transcripts, at 1440×900 and 390×844. Headings take `max-width` in `rem`, never `ch`: `ch` is font-dependent and resized the box on swap.
 
 **The Aligned Decimal Rule.** Per-1,000 prices render with `minimumFractionDigits: 2`; per-run fees keep every published digit and are padded with U+2007 figure spaces to the longest fraction on that plate, so decimal points align down every column. Missing values are an em dash or the word `none` in `--ink-2`, never blank.
 
@@ -362,6 +362,6 @@ The plate ground with a `--rule` top and the faint pulse; a 24px chip plus wordm
 - **Don't** hard-code a colour anywhere except the mark's chip (`#050911` ground, `#26DC62` stroke).
 - **Don't** put the fill-register green (`--mark-2`) on text, or `--ink-3` on text; both are bar pigments.
 - **Don't** reveal the pulse with a stroke-dash animation; under `non-scaling-stroke` it stops short of the edge. Use the clip-path wipe, and only under `prefers-reduced-motion: no-preference`.
-- **Don't** use a `ch` unit on a heading's `max-width`, or load Archivo with anything other than `display=optional`.
+- **Don't** use a `ch` unit on a heading's `max-width`, load either face with `display: optional`, move the fonts back to a third-party host, or name a fallback face (`Arial Narrow`) that is not installed on Linux or Android — each of those was a real, shipped bug.
 - **Don't** collapse the plate to stacked cards on a phone; it stays a table with a sticky identity column inside its own scroll region.
 - **Don't** change a word or a number in the content data above the render line; the render layer restructures, it never rewrites.
