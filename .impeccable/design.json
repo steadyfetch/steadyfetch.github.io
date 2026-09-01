@@ -1,0 +1,831 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-01T21:56:32.598Z",
+  "title": "Design System: steadyfetch.com",
+  "extensions": {
+    "colorMeta": {
+      "plate": {
+        "role": "neutral",
+        "displayName": "Herbarium Stock",
+        "canonical": "oklch(93.3% 0.010 125.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.006 125.7)",
+          "oklch(27.0% 0.009 125.7)",
+          "oklch(39.0% 0.010 125.7)",
+          "oklch(51.0% 0.010 125.7)",
+          "oklch(63.0% 0.010 125.7)",
+          "oklch(75.0% 0.008 125.7)",
+          "oklch(87.0% 0.005 125.7)",
+          "oklch(95.0% 0.002 125.7)"
+        ]
+      },
+      "sheet": {
+        "role": "neutral",
+        "displayName": "Sheet",
+        "canonical": "oklch(97.0% 0.007 124.4)",
+        "tonalRamp": [
+          "oklch(15.0% 0.004 124.4)",
+          "oklch(27.0% 0.006 124.4)",
+          "oklch(39.0% 0.007 124.4)",
+          "oklch(51.0% 0.007 124.4)",
+          "oklch(63.0% 0.007 124.4)",
+          "oklch(75.0% 0.006 124.4)",
+          "oklch(87.0% 0.003 124.4)",
+          "oklch(95.0% 0.001 124.4)"
+        ]
+      },
+      "band": {
+        "role": "neutral",
+        "displayName": "Band",
+        "canonical": "oklch(90.6% 0.014 128.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.008 128.6)",
+          "oklch(27.0% 0.013 128.6)",
+          "oklch(39.0% 0.014 128.6)",
+          "oklch(51.0% 0.014 128.6)",
+          "oklch(63.0% 0.014 128.6)",
+          "oklch(75.0% 0.012 128.6)",
+          "oklch(87.0% 0.007 128.6)",
+          "oklch(95.0% 0.003 128.6)"
+        ]
+      },
+      "row-hi": {
+        "role": "neutral",
+        "displayName": "Row Highlight",
+        "canonical": "oklch(92.4% 0.016 126.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.009 126.8)",
+          "oklch(27.0% 0.014 126.8)",
+          "oklch(39.0% 0.016 126.8)",
+          "oklch(51.0% 0.016 126.8)",
+          "oklch(63.0% 0.016 126.8)",
+          "oklch(75.0% 0.013 126.8)",
+          "oklch(87.0% 0.008 126.8)",
+          "oklch(95.0% 0.003 126.8)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(17.4% 0.012 155.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.007 155.7)",
+          "oklch(27.0% 0.011 155.7)",
+          "oklch(39.0% 0.012 155.7)",
+          "oklch(51.0% 0.012 155.7)",
+          "oklch(63.0% 0.012 155.7)",
+          "oklch(75.0% 0.010 155.7)",
+          "oklch(87.0% 0.006 155.7)",
+          "oklch(95.0% 0.003 155.7)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink 2",
+        "canonical": "oklch(43.4% 0.023 157.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.013 157.1)",
+          "oklch(27.0% 0.020 157.1)",
+          "oklch(39.0% 0.023 157.1)",
+          "oklch(51.0% 0.023 157.1)",
+          "oklch(63.0% 0.023 157.1)",
+          "oklch(75.0% 0.019 157.1)",
+          "oklch(87.0% 0.011 157.1)",
+          "oklch(95.0% 0.005 157.1)"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Bar Grey",
+        "canonical": "oklch(66.4% 0.018 162.5)",
+        "tonalRamp": [
+          "oklch(15.0% 0.010 162.5)",
+          "oklch(27.0% 0.016 162.5)",
+          "oklch(39.0% 0.018 162.5)",
+          "oklch(51.0% 0.018 162.5)",
+          "oklch(63.0% 0.018 162.5)",
+          "oklch(75.0% 0.015 162.5)",
+          "oklch(87.0% 0.009 162.5)",
+          "oklch(95.0% 0.004 162.5)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "oklch(84.2% 0.020 133.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.011 133.1)",
+          "oklch(27.0% 0.017 133.1)",
+          "oklch(39.0% 0.020 133.1)",
+          "oklch(51.0% 0.020 133.1)",
+          "oklch(63.0% 0.020 133.1)",
+          "oklch(75.0% 0.016 133.1)",
+          "oklch(87.0% 0.010 133.1)",
+          "oklch(95.0% 0.004 133.1)"
+        ]
+      },
+      "rule-2": {
+        "role": "neutral",
+        "displayName": "Firm Hairline",
+        "canonical": "oklch(75.7% 0.026 135.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.014 135.7)",
+          "oklch(27.0% 0.022 135.7)",
+          "oklch(39.0% 0.026 135.7)",
+          "oklch(51.0% 0.026 135.7)",
+          "oklch(63.0% 0.026 135.7)",
+          "oklch(75.0% 0.021 135.7)",
+          "oklch(87.0% 0.013 135.7)",
+          "oklch(95.0% 0.005 135.7)"
+        ]
+      },
+      "mark": {
+        "role": "primary",
+        "displayName": "Steadyfetch Green, text register",
+        "canonical": "oklch(46.2% 0.127 148.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.071 148.9)",
+          "oklch(27.0% 0.110 148.9)",
+          "oklch(39.0% 0.127 148.9)",
+          "oklch(51.0% 0.127 148.9)",
+          "oklch(63.0% 0.127 148.9)",
+          "oklch(75.0% 0.104 148.9)",
+          "oklch(87.0% 0.063 148.9)",
+          "oklch(95.0% 0.026 148.9)"
+        ]
+      },
+      "mark-2": {
+        "role": "primary",
+        "displayName": "Steadyfetch Green, fill register",
+        "canonical": "oklch(61.9% 0.166 149.5)",
+        "tonalRamp": [
+          "oklch(15.0% 0.093 149.5)",
+          "oklch(27.0% 0.144 149.5)",
+          "oklch(39.0% 0.166 149.5)",
+          "oklch(51.0% 0.166 149.5)",
+          "oklch(63.0% 0.166 149.5)",
+          "oklch(75.0% 0.137 149.5)",
+          "oklch(87.0% 0.083 149.5)",
+          "oklch(95.0% 0.035 149.5)"
+        ]
+      },
+      "us": {
+        "role": "neutral",
+        "displayName": "Us Tint",
+        "canonical": "oklch(92.8% 0.024 151.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.014 151.2)",
+          "oklch(27.0% 0.021 151.2)",
+          "oklch(39.0% 0.024 151.2)",
+          "oklch(51.0% 0.024 151.2)",
+          "oklch(63.0% 0.024 151.2)",
+          "oklch(75.0% 0.020 151.2)",
+          "oklch(87.0% 0.012 151.2)",
+          "oklch(95.0% 0.005 151.2)"
+        ]
+      },
+      "us-rule": {
+        "role": "neutral",
+        "displayName": "Us Rule",
+        "canonical": "oklch(81.1% 0.057 149.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.032 149.8)",
+          "oklch(27.0% 0.049 149.8)",
+          "oklch(39.0% 0.057 149.8)",
+          "oklch(51.0% 0.057 149.8)",
+          "oklch(63.0% 0.057 149.8)",
+          "oklch(75.0% 0.047 149.8)",
+          "oklch(87.0% 0.028 149.8)",
+          "oklch(95.0% 0.012 149.8)"
+        ]
+      },
+      "track": {
+        "role": "neutral",
+        "displayName": "Track",
+        "canonical": "oklch(86.5% 0.021 134.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.012 134.1)",
+          "oklch(27.0% 0.019 134.1)",
+          "oklch(39.0% 0.021 134.1)",
+          "oklch(51.0% 0.021 134.1)",
+          "oklch(63.0% 0.021 134.1)",
+          "oklch(75.0% 0.018 134.1)",
+          "oklch(87.0% 0.011 134.1)",
+          "oklch(95.0% 0.004 134.1)"
+        ]
+      },
+      "track-us": {
+        "role": "neutral",
+        "displayName": "Track, us",
+        "canonical": "oklch(84.6% 0.038 150.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.021 150.2)",
+          "oklch(27.0% 0.033 150.2)",
+          "oklch(39.0% 0.038 150.2)",
+          "oklch(51.0% 0.038 150.2)",
+          "oklch(63.0% 0.038 150.2)",
+          "oklch(75.0% 0.031 150.2)",
+          "oklch(87.0% 0.019 150.2)",
+          "oklch(95.0% 0.008 150.2)"
+        ]
+      },
+      "plate-dark": {
+        "role": "neutral",
+        "displayName": "Brand Near-Black",
+        "canonical": "oklch(13.9% 0.020 259.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.011 259.7)",
+          "oklch(27.0% 0.017 259.7)",
+          "oklch(39.0% 0.020 259.7)",
+          "oklch(51.0% 0.020 259.7)",
+          "oklch(63.0% 0.020 259.7)",
+          "oklch(75.0% 0.016 259.7)",
+          "oklch(87.0% 0.010 259.7)",
+          "oklch(95.0% 0.004 259.7)"
+        ]
+      },
+      "sheet-dark": {
+        "role": "neutral",
+        "displayName": "Sheet (dark)",
+        "canonical": "oklch(17.2% 0.021 258.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.012 258.3)",
+          "oklch(27.0% 0.018 258.3)",
+          "oklch(39.0% 0.021 258.3)",
+          "oklch(51.0% 0.021 258.3)",
+          "oklch(63.0% 0.021 258.3)",
+          "oklch(75.0% 0.017 258.3)",
+          "oklch(87.0% 0.011 258.3)",
+          "oklch(95.0% 0.004 258.3)"
+        ]
+      },
+      "band-dark": {
+        "role": "neutral",
+        "displayName": "Band (dark)",
+        "canonical": "oklch(20.8% 0.029 259.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.016 259.9)",
+          "oklch(27.0% 0.025 259.9)",
+          "oklch(39.0% 0.029 259.9)",
+          "oklch(51.0% 0.029 259.9)",
+          "oklch(63.0% 0.029 259.9)",
+          "oklch(75.0% 0.024 259.9)",
+          "oklch(87.0% 0.014 259.9)",
+          "oklch(95.0% 0.006 259.9)"
+        ]
+      },
+      "row-hi-dark": {
+        "role": "neutral",
+        "displayName": "Row Highlight (dark)",
+        "canonical": "oklch(22.4% 0.029 255.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.017 255.3)",
+          "oklch(27.0% 0.026 255.3)",
+          "oklch(39.0% 0.029 255.3)",
+          "oklch(51.0% 0.029 255.3)",
+          "oklch(63.0% 0.029 255.3)",
+          "oklch(75.0% 0.024 255.3)",
+          "oklch(87.0% 0.015 255.3)",
+          "oklch(95.0% 0.006 255.3)"
+        ]
+      },
+      "ink-dark": {
+        "role": "neutral",
+        "displayName": "Ink (dark)",
+        "canonical": "oklch(93.3% 0.011 149.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.006 149.9)",
+          "oklch(27.0% 0.009 149.9)",
+          "oklch(39.0% 0.011 149.9)",
+          "oklch(51.0% 0.011 149.9)",
+          "oklch(63.0% 0.011 149.9)",
+          "oklch(75.0% 0.009 149.9)",
+          "oklch(87.0% 0.005 149.9)",
+          "oklch(95.0% 0.002 149.9)"
+        ]
+      },
+      "ink-2-dark": {
+        "role": "neutral",
+        "displayName": "Ink 2 (dark)",
+        "canonical": "oklch(70.2% 0.020 166.1)",
+        "tonalRamp": [
+          "oklch(15.0% 0.011 166.1)",
+          "oklch(27.0% 0.017 166.1)",
+          "oklch(39.0% 0.020 166.1)",
+          "oklch(51.0% 0.020 166.1)",
+          "oklch(63.0% 0.020 166.1)",
+          "oklch(75.0% 0.016 166.1)",
+          "oklch(87.0% 0.010 166.1)",
+          "oklch(95.0% 0.004 166.1)"
+        ]
+      },
+      "ink-3-dark": {
+        "role": "neutral",
+        "displayName": "Bar Grey (dark)",
+        "canonical": "oklch(51.7% 0.020 219.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.011 219.9)",
+          "oklch(27.0% 0.017 219.9)",
+          "oklch(39.0% 0.020 219.9)",
+          "oklch(51.0% 0.020 219.9)",
+          "oklch(63.0% 0.020 219.9)",
+          "oklch(75.0% 0.016 219.9)",
+          "oklch(87.0% 0.010 219.9)",
+          "oklch(95.0% 0.004 219.9)"
+        ]
+      },
+      "rule-dark": {
+        "role": "neutral",
+        "displayName": "Hairline (dark)",
+        "canonical": "oklch(26.1% 0.026 255.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.015 255.8)",
+          "oklch(27.0% 0.023 255.8)",
+          "oklch(39.0% 0.026 255.8)",
+          "oklch(51.0% 0.026 255.8)",
+          "oklch(63.0% 0.026 255.8)",
+          "oklch(75.0% 0.021 255.8)",
+          "oklch(87.0% 0.013 255.8)",
+          "oklch(95.0% 0.005 255.8)"
+        ]
+      },
+      "rule-2-dark": {
+        "role": "neutral",
+        "displayName": "Firm Hairline (dark)",
+        "canonical": "oklch(33.9% 0.030 250.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.017 250.6)",
+          "oklch(27.0% 0.026 250.6)",
+          "oklch(39.0% 0.030 250.6)",
+          "oklch(51.0% 0.030 250.6)",
+          "oklch(63.0% 0.030 250.6)",
+          "oklch(75.0% 0.025 250.6)",
+          "oklch(87.0% 0.015 250.6)",
+          "oklch(95.0% 0.006 250.6)"
+        ]
+      },
+      "mark-dark": {
+        "role": "primary",
+        "displayName": "Steadyfetch Green, mark pigment (dark, text register)",
+        "canonical": "oklch(78.4% 0.215 148.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.121 148.3)",
+          "oklch(27.0% 0.187 148.3)",
+          "oklch(39.0% 0.215 148.3)",
+          "oklch(51.0% 0.215 148.3)",
+          "oklch(63.0% 0.215 148.3)",
+          "oklch(75.0% 0.178 148.3)",
+          "oklch(87.0% 0.107 148.3)",
+          "oklch(95.0% 0.045 148.3)"
+        ]
+      },
+      "mark-2-dark": {
+        "role": "primary",
+        "displayName": "Steadyfetch Green, mark pigment (dark, fill register)",
+        "canonical": "oklch(78.4% 0.215 148.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.121 148.3)",
+          "oklch(27.0% 0.187 148.3)",
+          "oklch(39.0% 0.215 148.3)",
+          "oklch(51.0% 0.215 148.3)",
+          "oklch(63.0% 0.215 148.3)",
+          "oklch(75.0% 0.178 148.3)",
+          "oklch(87.0% 0.107 148.3)",
+          "oklch(95.0% 0.045 148.3)"
+        ]
+      },
+      "us-dark": {
+        "role": "neutral",
+        "displayName": "Us Tint (dark)",
+        "canonical": "oklch(20.8% 0.029 163.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.016 163.3)",
+          "oklch(27.0% 0.025 163.3)",
+          "oklch(39.0% 0.029 163.3)",
+          "oklch(51.0% 0.029 163.3)",
+          "oklch(63.0% 0.029 163.3)",
+          "oklch(75.0% 0.024 163.3)",
+          "oklch(87.0% 0.014 163.3)",
+          "oklch(95.0% 0.006 163.3)"
+        ]
+      },
+      "us-rule-dark": {
+        "role": "neutral",
+        "displayName": "Us Rule (dark)",
+        "canonical": "oklch(39.4% 0.075 157.5)",
+        "tonalRamp": [
+          "oklch(15.0% 0.042 157.5)",
+          "oklch(27.0% 0.065 157.5)",
+          "oklch(39.0% 0.075 157.5)",
+          "oklch(51.0% 0.075 157.5)",
+          "oklch(63.0% 0.075 157.5)",
+          "oklch(75.0% 0.062 157.5)",
+          "oklch(87.0% 0.037 157.5)",
+          "oklch(95.0% 0.016 157.5)"
+        ]
+      },
+      "track-dark": {
+        "role": "neutral",
+        "displayName": "Track (dark)",
+        "canonical": "oklch(26.0% 0.025 251.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.014 251.2)",
+          "oklch(27.0% 0.022 251.2)",
+          "oklch(39.0% 0.025 251.2)",
+          "oklch(51.0% 0.025 251.2)",
+          "oklch(63.0% 0.025 251.2)",
+          "oklch(75.0% 0.021 251.2)",
+          "oklch(87.0% 0.013 251.2)",
+          "oklch(95.0% 0.005 251.2)"
+        ]
+      },
+      "track-us-dark": {
+        "role": "neutral",
+        "displayName": "Track, us (dark)",
+        "canonical": "oklch(29.4% 0.050 160.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.028 160.6)",
+          "oklch(27.0% 0.043 160.6)",
+          "oklch(39.0% 0.050 160.6)",
+          "oklch(51.0% 0.050 160.6)",
+          "oklch(63.0% 0.050 160.6)",
+          "oklch(75.0% 0.041 160.6)",
+          "oklch(87.0% 0.025 160.6)",
+          "oklch(95.0% 0.010 160.6)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The page h1, condensed to wdth 66; one per page, max-width 27rem."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section h2 at wdth 76; also the family name in a hub ledger row."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "The actor name in a ledger row, wdth 84."
+      },
+      "title-plate": {
+        "displayName": "Plate title",
+        "purpose": "The uppercase plate h3 and the Outside Apify divider."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "The first intro paragraph, 66ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Paragraphs at 70ch; row prose at .965rem."
+      },
+      "nav": {
+        "displayName": "Nav",
+        "purpose": "Header nav links in --ui, Archivo with its own metric-matched fallback at wdth 86; the only --ui consumer."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Unit labels under figures, plate counts, ways headings; nav, crumbs, action links and table headers are the same voice at neighbouring sizes."
+      },
+      "figure": {
+        "displayName": "Figure, focal",
+        "purpose": "The meter's two prices; 1.85rem in the proof, 1.34rem below 760px."
+      },
+      "figure-cell": {
+        "displayName": "Figure, cell",
+        "purpose": "Every numeric table cell, right-aligned, tabular, nowrap."
+      },
+      "binomial": {
+        "displayName": "Binomial",
+        "purpose": "account/slug in the identity column; account quiet, slug loud."
+      },
+      "stamp": {
+        "displayName": "Stamp",
+        "purpose": "The collection stamp; the scale note and unit lines share the voice without uppercase."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sticky-scrim",
+        "value": "10px 0 10px -10px rgba(12, 18, 14, .28)",
+        "purpose": "The only drop shadow: the sticky identity column's right edge inside a horizontally scrolled plate. Dark value: 10px 0 10px -10px rgba(0, 0, 0, .55). Token: --sticky-shadow."
+      },
+      {
+        "name": "row-accent-hairlines",
+        "value": "inset 0 1px 0 var(--mark), inset 0 -1px 0 var(--mark)",
+        "purpose": "Hovered or focus-within table row: two inset accent hairlines, not depth."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "The single easing token (--ease)."
+      },
+      {
+        "name": "pulse-wipe",
+        "value": "clip-path inset(0 100% 0 0) → inset(0); .9s var(--ease) .05s forwards",
+        "purpose": "The lead pulse rule's one-time reveal under the header; only under prefers-reduced-motion: no-preference. Never a stroke-dash."
+      },
+      {
+        "name": "skip-reveal",
+        "value": "top .15s var(--ease)",
+        "purpose": "The skip link sliding in on focus."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation-duration: .01ms; transition-duration: .01ms",
+        "purpose": "Global kill under prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "ledger-stack",
+        "value": "900px",
+        "purpose": "max-width: ledger rows stack name / meter / main."
+      },
+      {
+        "name": "header-wrap",
+        "value": "860px",
+        "purpose": "max-width: nav becomes a masked horizontal scroll strip; theme toggle to the right edge."
+      },
+      {
+        "name": "phone-plate",
+        "value": "760px",
+        "purpose": "max-width: 18px gutters, 52px sections, type steps down, plates run full-bleed, columns 112/112/88/72 (68)."
+      },
+      {
+        "name": "narrow-plate",
+        "value": "480px",
+        "purpose": "max-width: columns 94/94/78/64 (52); 132 + 52 + 94 + 94 = 372 clears a 15px scrollbar at 390."
+      }
+    ],
+    "tokens": {
+      "page": "1160px",
+      "step": "1.5px",
+      "sans": "Archivo, \"Archivo Fallback\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "mono": "\"Azeret Mono\", \"Azeret Fallback\", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+      "display": "Archivo, \"Archivo Cond Fallback\", Arial, sans-serif",
+      "display-2": "Archivo, \"Archivo Cond2 Fallback\", Arial, sans-serif",
+      "ui": "Archivo, \"Archivo Nav Fallback\", \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+    },
+    "fonts": [
+      {
+        "family": "Archivo",
+        "src": "/brand/fonts/archivo-var.woff2",
+        "axes": "wght 400–700, wdth 62%–125%",
+        "display": "swap",
+        "preload": true,
+        "fallbacks": [
+          "Archivo Fallback (body, 98.7%)",
+          "Archivo Cond Fallback (h1, 70.5%)",
+          "Archivo Cond2 Fallback (h2, 77.7%)",
+          "Archivo Nav Fallback (nav, 86.3%)"
+        ]
+      },
+      {
+        "family": "Azeret Mono",
+        "src": "/brand/fonts/azeret-var.woff2",
+        "axes": "wght 400–600",
+        "display": "swap",
+        "preload": true,
+        "fallbacks": [
+          "Azeret Fallback (108%)"
+        ]
+      }
+    ],
+    "themeContract": {
+      "light": ":root",
+      "darkSystem": "@media (prefers-color-scheme: dark) { :root:not([data-theme=\"light\"]) }",
+      "darkToggle": ":root[data-theme=\"dark\"]",
+      "storageKey": "sf-theme",
+      "note": "Every colour token is declared in all three scopes; the -dark frontmatter keys are the shared value of the two dark scopes."
+    },
+    "plateGrid": {
+      "colgroup": [
+        "c-id (auto)",
+        "c-tx (transcript families only)",
+        "c-n",
+        "c-n",
+        "c-fee",
+        "c-u"
+      ],
+      "widths": {
+        "480": {
+          "tx": 52,
+          "n": 94,
+          "fee": 78,
+          "u": 64,
+          "tableMin": 462,
+          "tableMinTx": 514
+        },
+        "760": {
+          "tx": 68,
+          "n": 112,
+          "fee": 88,
+          "u": 72,
+          "tableMin": 624,
+          "tableMinTx": 628
+        },
+        "desktop": {
+          "tx": 104,
+          "n": 146,
+          "fee": 104,
+          "u": 96,
+          "tableMin": 726,
+          "tableMinTx": 830
+        }
+      },
+      "rule": "table min-width = identity column intended width + sum of fixed columns; below that sum the identity column collapses."
+    }
+  },
+  "components": [
+    {
+      "name": "Action Link",
+      "kind": "button",
+      "refersTo": "link-action",
+      "description": "The site's only call to action: an uppercase hairline-underlined text link. There are no filled buttons.",
+      "html": "<a class=\"ds-link-action\" href=\"#\">Store page</a>",
+      "css": ".ds-link-action{font-family:var(--sans, Archivo, \"Helvetica Neue\", Helvetica, Arial, sans-serif);font-size:.715rem;font-weight:600;font-stretch:90%;letter-spacing:.075em;text-transform:uppercase;text-decoration:none;color:var(--ink-2, #47554c);border-bottom:1px solid var(--rule-2, #a9b4a4);padding-bottom:2px}.ds-link-action:hover{color:var(--mark, #0a6b2d);border-bottom-color:var(--mark, #0a6b2d)}.ds-link-action:focus-visible{outline:2px solid var(--mark, #0a6b2d);outline-offset:2px;border-radius:2px}"
+    },
+    {
+      "name": "Theme Toggle",
+      "kind": "button",
+      "refersTo": "theme-toggle",
+      "description": "The 32px bordered square that flips data-theme on <html>; the only bordered control on the page.",
+      "html": "<button class=\"ds-theme\" type=\"button\" aria-label=\"Switch to the dark plate\"><svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" focusable=\"false\"><rect x=\"1.5\" y=\"1.5\" width=\"13\" height=\"13\" rx=\"2.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\"/><path d=\"M8 1.5H4A2.5 2.5 0 0 0 1.5 4v8A2.5 2.5 0 0 0 4 14.5h4z\" fill=\"currentColor\"/></svg></button>",
+      "css": ".ds-theme{width:32px;height:32px;padding:0;background:transparent;border:1px solid var(--rule-2, #a9b4a4);border-radius:3px;color:var(--ink-2, #47554c);cursor:pointer;display:inline-flex;align-items:center;justify-content:center}.ds-theme:hover{background:var(--ink, #0c120e);color:var(--plate, #e7eae3);border-color:var(--ink, #0c120e)}.ds-theme:focus-visible{outline:2px solid var(--mark, #0a6b2d);outline-offset:2px}.ds-theme svg{width:16px;height:16px;display:block}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "link-action",
+      "description": "Header nav: label-voice links with a transparent bottom border that turns accent on hover and on the current page.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Comparison pages\"><a href=\"#\" aria-current=\"page\">Bulk ad transcripts</a><a href=\"#\">Google Trends and keyword data</a><a href=\"#\">Job listing scrapers</a><a href=\"#\">Amazon product data</a></nav>",
+      "css": ".ds-nav{display:flex;flex-wrap:wrap;gap:4px 17px;background:var(--plate, #e7eae3);padding:8px 0}.ds-nav a{font-family:var(--ui, Archivo, \"Helvetica Neue\", Helvetica, Arial, sans-serif);font-size:.715rem;font-weight:600;font-stretch:86%;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2, #47554c);text-decoration:none;padding:4px 0;border-bottom:1px solid transparent}.ds-nav a:hover,.ds-nav a[aria-current=\"page\"]{color:var(--ink, #0c120e);border-bottom-color:var(--mark, #0a6b2d)}.ds-nav a:focus-visible{outline:2px solid var(--mark, #0a6b2d);outline-offset:3px}"
+    },
+    {
+      "name": "Pulse Rule",
+      "kind": "custom",
+      "description": "The brand mark stretched into a section rule; the lead instance wipes in with clip-path under reduced-motion: no-preference.",
+      "html": "<svg class=\"ds-pulse\" viewBox=\"0 0 1200 14\" preserveAspectRatio=\"none\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M0 11H196V4H286V11H1200\"/></svg>",
+      "css": ".ds-pulse{display:block;width:100%;height:14px;color:var(--mark, #0a6b2d);overflow:hidden;background:var(--plate, #e7eae3)}.ds-pulse path{vector-effect:non-scaling-stroke;stroke:currentColor;stroke-width:1.5px;fill:none}@media (prefers-reduced-motion:no-preference){.ds-pulse{clip-path:inset(0 100% 0 0);animation:ds-wipe .9s cubic-bezier(.16,1,.3,1) .05s forwards}}@keyframes ds-wipe{to{clip-path:inset(0 0 0 0)}}"
+    },
+    {
+      "name": "Collection Stamp",
+      "kind": "custom",
+      "description": "What was read, from where, when, how many: mono uppercase spans on a hairline, between the h1 and the lead.",
+      "html": "<p class=\"ds-stamp\"><span>Prices checked 1 September 2026</span><span>Per 1,000 units</span><span>Free plan and Business plan</span><span>21 actors compared</span></p>",
+      "css": ".ds-stamp{display:flex;flex-wrap:wrap;gap:6px 0;margin:0;padding:11px 0 0;border-top:1px solid var(--rule, #c6cec1);font-family:var(--mono, \"Azeret Mono\", \"DejaVu Sans Mono\", Menlo, Consolas, monospace);font-size:.705rem;letter-spacing:.045em;text-transform:uppercase;color:var(--ink-2, #47554c);background:var(--plate, #e7eae3)}.ds-stamp span{padding-right:18px;margin-right:18px;border-right:1px solid var(--rule, #c6cec1)}.ds-stamp span:last-child{border-right:0;margin-right:0;padding-right:0}"
+    },
+    {
+      "name": "Ledger Row with Meter",
+      "kind": "card",
+      "description": "One of our actors as a ruled row, never a card: name, the measurement in the 264px right column, then the detail. DOM order name → meter → main.",
+      "html": "<article class=\"ds-act\"><h3><a href=\"#\">Facebook Ad Library transcripts</a></h3><div class=\"ds-meter\"><div><b>$20.00</b><span class=\"ds-label\">Free plan / 1,000</span></div><div><b>$10.00</b><span class=\"ds-label\">Business / 1,000</span></div><p class=\"ds-unitline\">per 1,000 ad creatives<span class=\"ds-ext\">+ $0.005 per minute beyond the first 3 minutes of a video</span></p></div><div class=\"ds-act-main\"><p class=\"ds-returns\">Search the Ad Library by keyword or advertiser, or chain any Ad Library scraper's dataset. Video ads come back as a full transcript, the first-3-seconds hook, CTA and timestamped segments; image ads as headline, body and CTA read off the creative.</p><p class=\"ds-law\">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p><p class=\"ds-links\"><a href=\"#\">Store page</a> <a href=\"#\">Pin to Apify MCP</a> <a href=\"#\">API docs</a></p></div></article>",
+      "css": ".ds-act{display:grid;grid-template-columns:minmax(0,1fr) 264px;grid-template-areas:\"name meter\" \"main meter\";gap:10px 36px;align-items:start;padding:24px 0;border-top:1px solid var(--rule, #c6cec1);border-bottom:1px solid var(--rule, #c6cec1);font-family:var(--sans, Archivo, \"Helvetica Neue\", Helvetica, Arial, sans-serif);font-size:1rem;line-height:1.6;color:var(--ink, #0c120e);background:var(--plate, #e7eae3)}.ds-act>h3{grid-area:name;margin:0;font-size:1.24rem;font-weight:650;font-stretch:84%;letter-spacing:-.006em;line-height:1.2}.ds-act>h3 a{color:var(--ink, #0c120e);text-decoration:none;border-bottom:1px solid var(--us-rule, #a8ccae)}.ds-act>h3 a:hover{color:var(--mark, #0a6b2d);border-bottom-color:var(--mark, #0a6b2d)}.ds-act>h3 a:focus-visible{outline:2px solid var(--mark, #0a6b2d);outline-offset:2px}.ds-act-main{grid-area:main}.ds-meter{grid-area:meter;display:grid;grid-template-columns:1fr 1fr;gap:0 18px;border-top:1px solid var(--rule-2, #a9b4a4);padding-top:12px}.ds-meter>div{min-width:0}.ds-meter b{display:block;font-family:var(--mono, \"Azeret Mono\", \"DejaVu Sans Mono\", Menlo, Consolas, monospace);font-size:1.52rem;font-weight:600;letter-spacing:-.035em;font-variant-numeric:tabular-nums;line-height:1.15;color:var(--ink, #0c120e)}.ds-label{display:block;font-size:.64rem;font-weight:600;font-stretch:88%;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2, #47554c);margin-top:3px}.ds-unitline{grid-column:1/-1;margin:12px 0 0;font-family:var(--mono, \"Azeret Mono\", \"DejaVu Sans Mono\", Menlo, Consolas, monospace);font-size:.755rem;line-height:1.5;letter-spacing:.005em;color:var(--ink-2, #47554c)}.ds-ext{display:block}.ds-returns{font-size:.965rem;line-height:1.55;margin:0 0 12px;max-width:62ch}.ds-law{font-size:.82rem;color:var(--ink-2, #47554c);margin:0 0 14px;max-width:62ch;padding-left:13px;border-left:1px solid var(--us-rule, #a8ccae)}.ds-law code{font-family:var(--mono, \"Azeret Mono\", \"DejaVu Sans Mono\", Menlo, Consolas, monospace);font-size:.84em;background:var(--band, #dde2d8);color:var(--ink, #0c120e);padding:1px 5px;border-radius:2px}.ds-links{margin:0;display:flex;flex-wrap:wrap;gap:6px 16px}.ds-links a{font-size:.715rem;font-weight:600;font-stretch:90%;letter-spacing:.075em;text-transform:uppercase;text-decoration:none;color:var(--ink-2, #47554c);border-bottom:1px solid var(--rule-2, #a9b4a4);padding-bottom:2px}.ds-links a:hover{color:var(--mark, #0a6b2d);border-bottom-color:var(--mark, #0a6b2d)}.ds-links a:focus-visible{outline:2px solid var(--mark, #0a6b2d);outline-offset:2px}@media (max-width:900px){.ds-act{grid-template-columns:1fr;grid-template-areas:\"name\" \"meter\" \"main\";gap:14px}.ds-meter{border-top:0;padding-top:0;max-width:420px}}"
+    },
+    {
+      "name": "Plate",
+      "kind": "custom",
+      "refersTo": "plate-frame",
+      "description": "The signature: specimens on one locked column grid with a sticky identity column, gauges on visible tracks, and our rows tinted, never hidden.",
+      "html": "<section class=\"ds-plate\"><div class=\"ds-plate-head\"><h3 id=\"ds-plate-0\">Facebook / Meta Ad Library</h3><span class=\"ds-plate-count\">3 actors</span></div><div class=\"ds-plate-scroll\" role=\"region\" tabindex=\"0\" aria-labelledby=\"ds-plate-0\"><table><colgroup><col class=\"ds-c-id\"><col class=\"ds-c-n\"><col class=\"ds-c-n\"><col class=\"ds-c-fee\"><col class=\"ds-c-u\"></colgroup><thead><tr><th scope=\"col\">Actor · what a row is</th><th scope=\"col\" class=\"ds-num\">Free plan, per 1,000</th><th scope=\"col\" class=\"ds-num\">Business plan, per 1,000</th><th scope=\"col\" class=\"ds-num\">Fee per run</th><th scope=\"col\" class=\"ds-num\">Users, 30 days</th></tr></thead><tbody><tr class=\"ds-us\"><th scope=\"row\"><a class=\"ds-bi\" href=\"#\"><span class=\"ds-acct\">steadyfetch</span><span class=\"ds-slash\">/</span><wbr><span class=\"ds-slug\">facebook-ads-transcript-scraper</span></a><span class=\"ds-diag\">One ad creative: transcript, first-3s hook, CTA and segments for video; headline, body and CTA for image ads</span></th><td class=\"ds-num\"><span class=\"ds-v\">$20.00</span><span class=\"ds-gauge\"><span style=\"--w:100.0%\"></span></span></td><td class=\"ds-num\"><span class=\"ds-v\">$10.00</span><span class=\"ds-gauge\"><span style=\"--w:66.7%\"></span></span></td><td class=\"ds-num ds-fee\"><span class=\"ds-none\">none</span></td><td class=\"ds-num\">13</td></tr><tr><th scope=\"row\"><a class=\"ds-bi\" href=\"#\"><span class=\"ds-acct\">apify</span><span class=\"ds-slash\">/</span><wbr><span class=\"ds-slug\">facebook-ads-scraper</span></a><span class=\"ds-diag\">Ad Library metadata rows (advertiser, text, dates, media URLs); optional e-commerce enrichment</span></th><td class=\"ds-num\"><span class=\"ds-v\">$5.80</span><span class=\"ds-gauge\"><span style=\"--w:29.0%\"></span></span></td><td class=\"ds-num\"><span class=\"ds-v\">$3.40</span><span class=\"ds-gauge\"><span style=\"--w:22.7%\"></span></span></td><td class=\"ds-num ds-fee\"><span class=\"ds-none\">none</span></td><td class=\"ds-num\">5,515</td></tr><tr><th scope=\"row\"><a class=\"ds-bi\" href=\"#\"><span class=\"ds-acct\">brilliant_gum</span><span class=\"ds-slash\">/</span><wbr><span class=\"ds-slug\">facebook-ads-library-scraper</span></a><span class=\"ds-diag\">Meta and Instagram ads from the Ad Library</span></th><td class=\"ds-num\"><span class=\"ds-v\">$15.00</span><span class=\"ds-gauge\"><span style=\"--w:75.0%\"></span></span></td><td class=\"ds-num\"><span class=\"ds-v\">$15.00</span><span class=\"ds-gauge\"><span style=\"--w:100.0%\"></span></span></td><td class=\"ds-num ds-fee\">$0.001</td><td class=\"ds-num\">263</td></tr></tbody></table></div><p class=\"ds-scale-note\"><span class=\"ds-swatch\"></span>Bars are drawn per column against the dearest row on this plate.</p></section>",
+      "css": ".ds-plate{margin:0;font-family:var(--sans, Archivo, \"Helvetica Neue\", Helvetica, Arial, sans-serif);color:var(--ink, #0c120e);background:var(--plate, #e7eae3)}.ds-plate-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 20px;margin:0 0 10px}.ds-plate h3{margin:0;font-size:.875rem;font-weight:650;font-stretch:88%;letter-spacing:.085em;text-transform:uppercase;color:var(--ink, #0c120e)}.ds-plate-count{font-size:.705rem;font-weight:600;font-stretch:88%;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2, #47554c)}.ds-plate-scroll{overflow-x:auto;border:1px solid var(--rule, #c6cec1);border-radius:2px;background:var(--sheet, #f4f6f1);overscroll-behavior-x:contain}.ds-plate-scroll:focus-visible{outline:2px solid var(--mark, #0a6b2d);outline-offset:2px}.ds-plate table{table-layout:fixed;border-collapse:separate;border-spacing:0;width:100%;min-width:726px}.ds-c-id{width:auto}.ds-c-n{width:146px}.ds-c-fee{width:104px}.ds-c-u{width:96px}.ds-plate thead th{background:var(--band, #dde2d8);color:var(--ink-2, #47554c);text-align:left;vertical-align:bottom;font-size:.655rem;font-weight:600;font-stretch:88%;letter-spacing:.09em;text-transform:uppercase;padding:9px 12px;border-bottom:1px solid var(--rule-2, #a9b4a4)}.ds-plate thead th.ds-num{text-align:right}.ds-plate thead th:first-child{position:sticky;left:0;z-index:4}.ds-plate tbody th,.ds-plate tbody td{padding:11px 12px;border-bottom:1px solid var(--rule, #c6cec1);vertical-align:top;background:var(--sheet, #f4f6f1)}.ds-plate tbody tr:last-child th,.ds-plate tbody tr:last-child td{border-bottom:0}.ds-plate tbody th[scope=\"row\"]{position:sticky;left:0;z-index:2;text-align:left;font-weight:400;border-right:1px solid var(--rule, #c6cec1);box-shadow:var(--sticky-shadow, 10px 0 10px -10px rgba(12,18,14,.28))}.ds-bi{font-family:var(--mono, \"Azeret Mono\", \"DejaVu Sans Mono\", Menlo, Consolas, monospace);font-size:.775rem;line-height:1.4;text-decoration:none;display:block;overflow-wrap:break-word}.ds-acct,.ds-slash{color:var(--ink-2, #47554c)}.ds-slug{color:var(--ink, #0c120e);font-weight:600}.ds-bi:hover .ds-slug{color:var(--mark, #0a6b2d);text-decoration:underline;text-underline-offset:.2em}.ds-bi:focus-visible{outline:2px solid var(--mark, #0a6b2d);outline-offset:2px}.ds-us .ds-slug{color:var(--mark, #0a6b2d)}.ds-diag{display:block;margin-top:5px;font-size:.82rem;line-height:1.45;color:var(--ink-2, #47554c)}td.ds-num{text-align:right;white-space:nowrap;font-family:var(--mono, \"Azeret Mono\", \"DejaVu Sans Mono\", Menlo, Consolas, monospace);font-size:.845rem;font-variant-numeric:tabular-nums;letter-spacing:-.025em}.ds-v{display:block}.ds-none{color:var(--ink-2, #47554c)}td.ds-fee{font-size:.775rem}.ds-gauge{display:block;width:118px;height:6px;margin:7px 0 0 auto;background:var(--track, #cdd6c8);overflow:hidden}.ds-gauge span{display:block;height:100%;width:var(--w);background:var(--ink-3, #8a9790);min-width:1px}.ds-us .ds-gauge{background:var(--track-us, #bcd4c0)}.ds-us .ds-gauge span{background:var(--mark-2, #17a04a)}.ds-us th,.ds-us td{background:var(--us, #dcecdf)}.ds-us th[scope=\"row\"]{border-right-color:var(--us-rule, #a8ccae)}.ds-plate tbody tr:hover th,.ds-plate tbody tr:hover td,.ds-plate tbody tr:focus-within th,.ds-plate tbody tr:focus-within td{background:var(--row-hi, #e3e8dd);box-shadow:inset 0 1px 0 var(--mark, #0a6b2d),inset 0 -1px 0 var(--mark, #0a6b2d)}.ds-plate tbody tr.ds-us:hover th,.ds-plate tbody tr.ds-us:hover td{background:var(--us, #dcecdf)}.ds-plate tbody tr:hover th[scope=\"row\"]{box-shadow:var(--sticky-shadow, 10px 0 10px -10px rgba(12,18,14,.28)),inset 0 1px 0 var(--mark, #0a6b2d),inset 0 -1px 0 var(--mark, #0a6b2d)}@media (hover:hover){.ds-plate tbody:hover tr:not(:hover) th,.ds-plate tbody:hover tr:not(:hover) td,.ds-plate tbody:hover tr:not(:hover) .ds-slug,.ds-plate tbody:hover tr:not(:hover) .ds-diag{color:var(--ink-2, #47554c)}.ds-plate tbody:hover tr:not(:hover) .ds-gauge span{background:var(--track, #cdd6c8)}}.ds-scale-note{margin:8px 0 0;font-size:.715rem;color:var(--ink-2, #47554c);font-family:var(--mono, \"Azeret Mono\", \"DejaVu Sans Mono\", Menlo, Consolas, monospace);letter-spacing:.01em}.ds-swatch{display:inline-block;width:15px;height:4px;background:var(--mark-2, #17a04a);vertical-align:middle;margin:0 5px 2px 0}"
+    },
+    {
+      "name": "Gauge",
+      "kind": "custom",
+      "refersTo": "gauge",
+      "description": "A fill on a visible track: competitor rows fill in bar grey on the plain track, our rows in the fill-register green on the us track.",
+      "html": "<div class=\"ds-gauge-demo\"><span class=\"ds-gauge\"><span style=\"--w:29.0%\"></span></span><span class=\"ds-gauge ds-gauge-us\"><span style=\"--w:100.0%\"></span></span></div>",
+      "css": ".ds-gauge-demo{display:grid;gap:10px;padding:12px;background:var(--sheet, #f4f6f1);width:max-content}.ds-gauge{display:block;width:118px;height:6px;background:var(--track, #cdd6c8);overflow:hidden}.ds-gauge span{display:block;height:100%;width:var(--w);background:var(--ink-3, #8a9790);min-width:1px}.ds-gauge-us{background:var(--track-us, #bcd4c0)}.ds-gauge-us span{background:var(--mark-2, #17a04a)}"
+    },
+    {
+      "name": "Proof",
+      "kind": "custom",
+      "refersTo": "proof-panel",
+      "description": "The plate that opens the hub: two specimens on one 14px rail at identical scale, the competitor drawn first and winning.",
+      "html": "<div class=\"ds-proof\"><h2>Where a competitor is cheaper, the table says so.</h2><p class=\"ds-sub\">Indeed listings, free plan, per 1,000 — read from the store on 1 September 2026.</p><div class=\"ds-specimens\"><div class=\"ds-spec\">\n<p class=\"ds-who\"><span class=\"ds-acct\">valig</span><span class=\"ds-slash\">/</span><wbr><span class=\"ds-slug\">indeed-jobs-scraper</span></p>\n<div class=\"ds-track\"><span class=\"ds-rail\"><span class=\"ds-fill\" style=\"--w:1.7%\"></span></span><span class=\"ds-amt\">$0.10</span></div>\n</div><div class=\"ds-spec ds-mine\">\n<p class=\"ds-who\"><span class=\"ds-acct\">steadyfetch</span><span class=\"ds-slash\">/</span><wbr><span class=\"ds-slug\">indeed-jobs-scraper</span></p>\n<div class=\"ds-track\"><span class=\"ds-rail\"><span class=\"ds-fill\" style=\"--w:100.0%\"></span></span><span class=\"ds-amt\">$6.00</span></div>\n</div></div><p class=\"ds-more\"><a href=\"#\">See the whole jobs plate</a></p></div>",
+      "css": ".ds-proof{background:var(--sheet, #f4f6f1);border:1px solid var(--rule, #c6cec1);border-radius:2px;padding:28px;font-family:var(--sans, Archivo, \"Helvetica Neue\", Helvetica, Arial, sans-serif);color:var(--ink, #0c120e)}.ds-proof h2{font-family:var(--display-2, Archivo, \"Arial Narrow\", Arial, sans-serif);font-size:clamp(1.5rem,3vw,2.3rem);font-weight:650;font-stretch:76%;letter-spacing:-.012em;line-height:1.1;margin:0 0 8px;max-width:30ch}.ds-sub{font-size:.93rem;color:var(--ink-2, #47554c);margin:0 0 26px;max-width:60ch}.ds-specimens{display:grid;gap:18px;margin:0 0 24px}.ds-spec{display:grid;gap:6px}.ds-who{font-family:var(--mono, \"Azeret Mono\", \"DejaVu Sans Mono\", Menlo, Consolas, monospace);font-size:.8rem;overflow-wrap:break-word;margin:0}.ds-who .ds-acct,.ds-who .ds-slash{color:var(--ink-2, #47554c)}.ds-who .ds-slug{color:var(--ink, #0c120e);font-weight:600}.ds-mine .ds-who .ds-slug{color:var(--mark, #0a6b2d)}.ds-track{display:flex;align-items:center;gap:16px}.ds-rail{flex:1 1 auto;height:14px;background:var(--track, #cdd6c8);overflow:hidden}.ds-mine .ds-rail{background:var(--track-us, #bcd4c0)}.ds-fill{display:block;height:100%;width:var(--w);background:var(--ink-3, #8a9790);min-width:2px}.ds-mine .ds-fill{background:var(--mark-2, #17a04a)}.ds-amt{flex:none;width:5.6ch;text-align:right;font-family:var(--mono, \"Azeret Mono\", \"DejaVu Sans Mono\", Menlo, Consolas, monospace);font-size:1.85rem;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.045em}.ds-mine .ds-amt{color:var(--mark, #0a6b2d)}.ds-more{margin:0}.ds-more a{font-size:.715rem;font-weight:600;font-stretch:90%;letter-spacing:.075em;text-transform:uppercase;text-decoration:none;color:var(--ink, #0c120e);border-bottom:1px solid var(--mark, #0a6b2d);padding-bottom:3px}.ds-more a:hover{color:var(--mark, #0a6b2d)}.ds-more a:focus-visible{outline:2px solid var(--mark, #0a6b2d);outline-offset:2px}"
+    },
+    {
+      "name": "Inline Code",
+      "kind": "chip",
+      "refersTo": "code-inline",
+      "description": "Mono on the band tint with a 2px radius; the only tinted inline element.",
+      "html": "<p class=\"ds-code-p\">Misses carry a status and <code class=\"ds-code\">charged: false</code>.</p>",
+      "css": ".ds-code-p{font-family:var(--sans, Archivo, \"Helvetica Neue\", Helvetica, Arial, sans-serif);color:var(--ink, #0c120e);margin:0;line-height:1.6}.ds-code{font-family:var(--mono, \"Azeret Mono\", \"DejaVu Sans Mono\", Menlo, Consolas, monospace);font-size:.84em;background:var(--band, #dde2d8);color:var(--ink, #0c120e);padding:1px 5px;border-radius:2px;word-break:break-word}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Comparative Plate",
+    "overview": "A field-guide plate, not a vendor comparison page. Every actor in a family is laid out as a specimen at one shared scale: its binomial (`account/slug`) in the identity column, its diagnostic under the name, its price drawn as a bar on a visible track against the dearest row on that plate, and the bar is drawn for our own rows too, even where ours is the longest. The plate ground runs edge to edge: herbarium stock in light, the brand's own near-black in dark. One ink, one accent hue, hairline rules, and ledger rows instead of cards; the only framed objects on a page are the plates themselves (the comparison tables, and the proof panel that opens the hub, which the stylesheet names \"the plate that opens the site\").\n\nHierarchy comes from scale, from Archivo's width axis and from rule weight, never from colour blocks or shadows. Titles are condensed Archivo; every measured figure and every actor binomial is Azeret Mono set at focal size with tabular numerals. Density is high and even: 11px cell padding, 24px ledger rows, 68px between sections. The page is quiet enough that the one moving thing, the lead pulse rule wiping in under the header, reads as the brand's signature rather than as decoration.\n\nThe site is generated by `build.mjs` and styled by one stylesheet; the \"components\" are its render functions (`head`, `stampBand`, `foot`, `ourCard`, `compTable`, `vendorRows`, `proofBlock`, `familyPage`, `indexPage`) and the class contracts they emit. Rendering may be restructured; the verified content above the `// ---------- RENDER ----------` line may not.",
+    "keyCharacteristics": [
+      "Plate ground edge to edge; framed objects are plates only",
+      "One ink, one accent hue (two lightness registers in light, one pigment in dark)",
+      "Ledger rows on hairline rules, never cards or boxes",
+      "Condensed Archivo for titles; Azeret Mono for every figure and binomial",
+      "A locked four-column numeric grid identical on every plate on every page",
+      "Gauges on visible tracks, scaled per column, drawn for our rows too",
+      "Zero layout shift: self-hosted, preloaded variable woff2 with metric-matched fallbacks for both faces",
+      "Three-scope theme token contract; every colour is a token in all three"
+    ],
+    "rules": [
+      {
+        "name": "The Three-Scope Rule",
+        "body": "Light is the bare `:root`. Dark is `@media (prefers-color-scheme: dark) { :root:not([data-theme=\"light\"]) }` for the system preference and `:root[data-theme=\"dark\"]` for the toggle. Every colour token is declared in all three blocks with identical dark values; no colour exists only inside a media block, and no rule below the token blocks names a hex. `color-scheme` is set in each scope.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Register Accent Rule",
+        "body": "The single accent hue has a text register (`--mark`) and a fill register (`--mark-2`). Text, links, focus and strokes use the text register; bars, swatches and ticks use the fill register. Never put the fill register on text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mark Keeps Its Pigments Rule",
+        "body": "The lockup chip and footer chip are the one theme-invariant object: a `#050911` square with the pulse stroked in `#26DC62`, in both themes, because they reproduce the pre-existing Apify mark exactly. Nothing else may hard-code a colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The Visible Track Rule",
+        "body": "A bar is always a fill on a visible track. On our own rows the track is `--track-us`, chosen so the unfilled remainder still reads against the `--us` tint.",
+        "section": "colors"
+      },
+      {
+        "name": "The Width Axis Rule",
+        "body": "Hierarchy climbs by condensing, not by colouring: display at `wdth` 66, headline 76, row titles 84, labels 86–92, body at 100. Weight moves the same way (700, 650, 600, 400). `font-synthesis-weight: none` so a fallback never fakes a weight.",
+        "section": "typography"
+      },
+      {
+        "name": "The Figure Face Rule",
+        "body": "Every measured figure and every actor binomial is Azeret Mono with `font-variant-numeric: tabular-nums`; prose is never mono, and no figure is ever set in Archivo.",
+        "section": "typography"
+      },
+      {
+        "name": "The Metric Fallback Rule",
+        "body": "Both faces are self-hosted, subsetted variable woff2 under `/brand/fonts/` (SIL OFL), preloaded with `crossorigin` and served same-origin, so the page makes no external subresource request at all and Archivo is present at first paint on a cold load. Both use `font-display: swap`, never `optional` — `optional` was tried and reverted, because it left a cold search visitor in the fallback face for the entire visit. Five `@font-face` fallbacks carry `size-adjust`, `ascent-override`, `descent-override` and `line-gap-override: 0%`, every ratio measured from the shipped variable fonts against faces that actually exist (Liberation Sans, Arial, Roboto, DejaVu Sans Mono) — never Arial Narrow, which is absent on Linux and Android. Each override is the font's own metric divided by that fallback's `size-adjust`, so the adjust changes advance width without moving the line box. Measured CLS is 0.0000 with zero shift entries, on the hub and on ad-transcripts, at 1440×900 and 390×844. Headings take `max-width` in `rem`, never `ch`: `ch` is font-dependent and resized the box on swap.",
+        "section": "typography"
+      },
+      {
+        "name": "The Aligned Decimal Rule",
+        "body": "Per-1,000 prices render with `minimumFractionDigits: 2`; per-run fees keep every published digit and are padded with U+2007 figure spaces to the longest fraction on that plate, so decimal points align down every column. Missing values are an em dash or the word `none` in `--ink-2`, never blank.",
+        "section": "typography"
+      },
+      {
+        "name": "The Locked Grid Rule",
+        "body": "Every plate emits `<colgroup><col class=\"c-id\"><col class=\"c-n\"><col class=\"c-n\"><col class=\"c-fee\"><col class=\"c-u\"></colgroup>` (plus `col.c-tx` after the identity column on the two transcript families, whose scroll region is flagged `has-tx`) with `table-layout: fixed`. The numeric columns are 146 / 146 / 104 / 96px (transcripts 104px) at desktop, 112 / 112 / 88 / 72 (68) below 760px, 94 / 94 / 78 / 64 (52) below 480px: identical on every plate on every page. Only `col.c-id { width: auto }` flexes. The table's `min-width` floor must equal the identity column's intended width plus the fixed columns: 726px = 234 + 492 (830 with transcripts); 624 / 628 at 760px; 462 / 514 at 480px. A floor below that sum collapses the identity column.",
+        "section": "layout"
+      },
+      {
+        "name": "The Full-Bleed Plate Rule",
+        "body": "Below 760px the scroll region takes `margin: 0 -18px`, drops its left and right borders and its radius, and runs to the screen edge: gutters would cost the reader a whole column.",
+        "section": "layout"
+      },
+      {
+        "name": "The 390 Rule",
+        "body": "Below 480px the identity column plus the two price columns must be readable before the first horizontal swipe: 132 + 52 + 94 + 94 = 372px, which clears a 15px classic scrollbar on a 390px screen. Any retune of the narrow widths redoes this sum.",
+        "section": "layout"
+      },
+      {
+        "name": "The Name-First Rule",
+        "body": "Ledger rows keep DOM order name, measurement, detail and place them with `grid-template-areas`; never reorder with `order` or by moving markup.",
+        "section": "layout"
+      },
+      {
+        "name": "The Hairline Rule",
+        "body": "Structure is drawn with 1px rules, never with shadows, borders thicker than 1px, or filled panels. A new surface that needs separation gets a hairline or a half-step of ground, in that order.",
+        "section": "elevation"
+      },
+      {
+        "name": "The One Row at a Time Rule",
+        "body": "With a pointer present, hovering any row keeps that row in full ink between two accent hairlines on `--row-hi` while every other row's text and gauge fill drop to `--ink-2` and `--track`. Our rows keep their `--us` tint under hover. Focus-within gives keyboard users the same highlight without dimming the rest.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** declare every new colour in all three theme scopes (bare `:root`, the guarded dark media block, `:root[data-theme=\"dark\"]`) and reference it only as `var(--token)` below the token blocks.",
+      "**Do** set every measured figure and every actor binomial in `var(--mono)` with `font-variant-numeric: tabular-nums`, prices with two decimals and fees padded with U+2007 to the plate's longest fraction.",
+      "**Do** emit a `<colgroup>` with `col.c-id` plus the fixed numeric columns on every plate, keep `table-layout: fixed`, and set the table `min-width` to the identity width plus the sum of the fixed columns at every breakpoint.",
+      "**Do** draw a gauge on both price columns for every row with a per-1,000 price, our own rows included, scaled to the dearest row on that plate; put it on `--track-us` when the row is ours.",
+      "**Do** keep ledger rows in DOM order name, meter, main and place them with `grid-template-areas`.",
+      "**Do** give every interactive element a `2px solid var(--mark)` focus ring with an offset, and every row a focus-within treatment equal to hover.",
+      "**Do** size heading `max-width` in `rem` and prose in `ch`; keep any new `@font-face` fallback metric-matched with `size-adjust` and ascent/descent overrides measured from the shipped font.",
+      "**Do** run the plate full-bleed below 760px and re-check the 390px sum whenever a narrow column width changes.",
+      "**Do** regenerate every raster with `brand/render.py`, which reads its counts and date out of `build.mjs`, and keep the mark's geometry as measured (`M64 306H200V177H311V306H447`)."
+    ],
+    "donts": [
+      "**Don't** card anything: no boxed actor cards, no filled panels, no borders thicker than 1px. Frames belong to plates (the comparison tables and the proof) only.",
+      "**Don't** add a shadow. The sticky scrim is the only one, and hover depth is two inset hairlines, not a lift.",
+      "**Don't** ship a tick-and-cross \"us vs them\" table, hide a competitor's bar, or cap our own bar short of its true length.",
+      "**Don't** draw a gauge on a row priced per batch or per page, or on the fee or users columns; a bar means one shared unit.",
+      "**Don't** hard-code a colour anywhere except the mark's chip (`#050911` ground, `#26DC62` stroke).",
+      "**Don't** put the fill-register green (`--mark-2`) on text, or `--ink-3` on text; both are bar pigments.",
+      "**Don't** reveal the pulse with a stroke-dash animation; under `non-scaling-stroke` it stops short of the edge. Use the clip-path wipe, and only under `prefers-reduced-motion: no-preference`.",
+      "**Don't** use a `ch` unit on a heading's `max-width`, load either face with `display: optional`, move the fonts back to a third-party host, or name a fallback face (`Arial Narrow`) that is not installed on Linux or Android — each of those was a real, shipped bug.",
+      "**Don't** collapse the plate to stacked cards on a phone; it stays a table with a sticky identity column inside its own scroll region.",
+      "**Don't** change a word or a number in the content data above the render line; the render layer restructures, it never rewrites."
+    ]
+  }
+}

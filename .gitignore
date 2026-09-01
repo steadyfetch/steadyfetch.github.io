@@ -1,2 +1,6 @@
-.impeccable/
+# Review screenshots are working evidence, not a deliverable — but the design
+# sidecar is part of the recorded system, so it must be negated back in.
+# (A trailing-slash ignore cannot be negated into; the glob form can.)
+.impeccable/*
+!.impeccable/design.json
 darkpreview/
