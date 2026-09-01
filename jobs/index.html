@@ -10,113 +10,306 @@
 <meta property="og:description" content="Job board scrapers on Apify compared on price per thousand listings, start fees and what each returns, with career-site and multi-board options. Prices checked 1 September 2026.">
 <meta property="og:url" content="https://steadyfetch.com/jobs/">
 <meta property="og:type" content="article">
+<meta property="og:image" content="https://steadyfetch.com/brand/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Steadyfetch">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow">
+<meta name="theme-color" content="#e7eae3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#050911" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/brand/favicon.ico" sizes="32x32">
+<link rel="icon" href="/brand/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
+<script>try{var t=localStorage.getItem("sf-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=Azeret+Mono:wght@400;600&display=swap">
 <link rel="stylesheet" href="/style.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Indeed, Glassdoor and Google Jobs scrapers compared","description":"Job board scrapers on Apify compared on price per thousand listings, start fees and what each returns, with career-site and multi-board options. Prices checked 1 September 2026.","url":"https://steadyfetch.com/jobs/","dateModified":"2026-09-01","isPartOf":{"@type":"WebSite","name":"Steadyfetch","url":"https://steadyfetch.com"},"about":[{"@type":"SoftwareApplication","name":"Indeed jobs","url":"https://apify.com/steadyfetch/indeed-jobs-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.006,"priceCurrency":"USD","description":"per listing, free plan"}},{"@type":"SoftwareApplication","name":"Glassdoor jobs with employer rating","url":"https://apify.com/steadyfetch/glassdoor-jobs-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.0048,"priceCurrency":"USD","description":"per listing, free plan"}},{"@type":"SoftwareApplication","name":"Google Jobs","url":"https://apify.com/steadyfetch/google-jobs-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.004,"priceCurrency":"USD","description":"per listing, free plan"}},{"@type":"SoftwareApplication","name":"Career-site jobs by domain","url":"https://apify.com/steadyfetch/company-jobs-by-domain","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.0032,"priceCurrency":"USD","description":"per job, free plan"}},{"@type":"SoftwareApplication","name":"Multi-board jobs, de-duplicated","url":"https://apify.com/steadyfetch/multi-job-board-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.0072,"priceCurrency":"USD","description":"per listing, free plan"}}]}</script>
 </head>
 <body>
-<header class="top"><a class="brand" href="/">Steadyfetch</a><nav aria-label="Families"><a href="/ad-transcripts/">Bulk ad transcripts</a><a href="/trends-keywords/">Google Trends and keyword data</a><a href="/jobs/">Job listing scrapers</a><a href="/amazon/">Amazon product data</a><a href="/youtube-media/">Video and audio to text</a></nav></header>
-<main>
-<p class="crumbs"><a href="/">Steadyfetch</a> › Job listing scrapers, compared honestly</p>
+<!--
+THESIS: a comparative plate, not a vendor comparison page: every actor in a family laid out as a
+specimen at one shared scale, its price bar drawn even where ours is the longest. Refuses the
+tick-and-cross "us vs them" table the category ships.
+OWN-WORLD: the plate ground runs edge to edge (herbarium stock in light, the brand's own #050911
+in dark); one ink, one accent (steadyfetch green), hairline rules, no shadowed cards. Archivo
+condensed for plate titles, Azeret Mono for every measured figure and every actor binomial.
+STORY: the visitor sees the field measured on one scale, finds the row that beats us, reads why,
+and goes to a store page to run an actor.
+FIRST VIEWPORT: plate title, the collection stamp (what was read, from where, when), the lead,
+then the proof — two Indeed specimens at identical scale where the competitor wins 60 to 1.
+FORM: candidate 4 of the grounded list (comparative field-guide plate); seed key 0838385b.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+-->
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+<div class="top-in">
+<a class="lockup" href="/"><span class="plate-chip"><svg viewBox="0 0 512 512" width="100%" height="100%" aria-hidden="true" focusable="false"><path d="M64 306H200V177H311V306H447" fill="none" stroke="#26DC62" stroke-width="40"/></svg></span><span class="name">steadyfetch</span></a>
+<nav aria-label="Comparison pages"><a href="/ad-transcripts/">Bulk ad transcripts</a><a href="/trends-keywords/">Google Trends and keyword data</a><a href="/jobs/" aria-current="page">Job listing scrapers</a><a href="/amazon/">Amazon product data</a><a href="/youtube-media/">Video and audio to text</a></nav>
+<button class="theme" type="button" id="theme" aria-label="Switch colour theme"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="13" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.5H4A2.5 2.5 0 0 0 1.5 4v8A2.5 2.5 0 0 0 4 14.5h4z" fill="currentColor"/></svg></button>
+</div>
+<svg class="pulse pulse--lead" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
+</header>
+<main id="main">
+<p class="crumbs"><a href="/">Steadyfetch</a><span class="sep">/</span>Job listing scrapers</p>
 <h1>Job listing scrapers, compared honestly</h1>
-<p class="checked">Prices checked 1 September 2026 · per 1,000 units · free plan and Business plan</p>
+<p class="stamp"><span>Prices checked 1 September 2026</span><span>Per 1,000 units</span><span>Free plan and Business plan</span><span>17 actors compared</span></p>
 <p class="lead">Job data on Apify is a mature, crowded category with very cheap incumbents. This page lists them next to our five actors with the same columns, because a buyer comparing on price alone should see the numbers before they run anything.</p>
-<p class="lead">Our actors cost more per listing than the biggest incumbents. What they add is written in the cards below; whether that is worth the difference is your call.</p>
+<p>Our actors cost more per listing than the biggest incumbents. What they add is written in the cards below; whether that is worth the difference is your call.</p>
 
+<section class="section"><svg class="pulse" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
 <h2>Our actors in this family</h2>
-<div class="cards"><article class="card" id="indeed-jobs-scraper">
+<div class="sheets"><article class="sheet" id="indeed-jobs-scraper">
 <h3><a href="https://apify.com/steadyfetch/indeed-jobs-scraper">Indeed jobs</a></h3>
-<p class="price"><span class="k">Free plan</span> <b>$6</b> per 1,000 listings <span class="sep">·</span> <span class="k">Business plan</span> <b>$1.5</b> <span class="extra">+ $0.0008 per full job description (optional)</span></p>
-<p>Exact-country search that stops exactly at your row cap and deadline. Optional full descriptions as a second event.</p>
+<div class="meter">
+<div><b>$6.00</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$1.50</b><span class="label">Business / 1,000</span></div>
+</div>
+<p class="unitline">per 1,000 listings <span class="ext">+ $0.0008 per full job description (optional)</span></p>
+<p class="returns">Exact-country search that stops exactly at your row cap and deadline. Optional full descriptions as a second event.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/indeed-jobs-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/indeed-jobs-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/indeed-jobs-scraper/api">API docs</a></p>
 </article>
-<article class="card" id="glassdoor-jobs-scraper">
+<article class="sheet" id="glassdoor-jobs-scraper">
 <h3><a href="https://apify.com/steadyfetch/glassdoor-jobs-scraper">Glassdoor jobs with employer rating</a></h3>
-<p class="price"><span class="k">Free plan</span> <b>$4.8</b> per 1,000 listings <span class="sep">·</span> <span class="k">Business plan</span> <b>$1.2</b></p>
-<p>Job listings with the employer's star rating on the same row (about four in five rows carry one), so there is no second run for the rating.</p>
+<div class="meter">
+<div><b>$4.80</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$1.20</b><span class="label">Business / 1,000</span></div>
+</div>
+<p class="unitline">per 1,000 listings</p>
+<p class="returns">Job listings with the employer's star rating on the same row (about four in five rows carry one), so there is no second run for the rating.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/glassdoor-jobs-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/glassdoor-jobs-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/glassdoor-jobs-scraper/api">API docs</a></p>
 </article>
-<article class="card" id="google-jobs-scraper">
+<article class="sheet" id="google-jobs-scraper">
 <h3><a href="https://apify.com/steadyfetch/google-jobs-scraper">Google Jobs</a></h3>
-<p class="price"><span class="k">Free plan</span> <b>$4</b> per 1,000 listings <span class="sep">·</span> <span class="k">Business plan</span> <b>$1</b></p>
-<p>The full Google Jobs panel, about 90 to 130 cards per search where Google has them, with apply links. Stops at your cap.</p>
+<div class="meter">
+<div><b>$4.00</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$1.00</b><span class="label">Business / 1,000</span></div>
+</div>
+<p class="unitline">per 1,000 listings</p>
+<p class="returns">The full Google Jobs panel, about 90 to 130 cards per search where Google has them, with apply links. Stops at your cap.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/google-jobs-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/google-jobs-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/google-jobs-scraper/api">API docs</a></p>
 </article>
-<article class="card" id="company-jobs-by-domain">
+<article class="sheet" id="company-jobs-by-domain">
 <h3><a href="https://apify.com/steadyfetch/company-jobs-by-domain">Career-site jobs by domain</a></h3>
-<p class="price"><span class="k">Free plan</span> <b>$3.2</b> per 1,000 jobs <span class="sep">·</span> <span class="k">Business plan</span> <b>$0.8</b> <span class="extra">+ $0.002 per company domain checked</span></p>
-<p>Paste a company domain; it finds the Greenhouse, Lever, Ashby or Workday board (nine ATS platforms) and returns every live opening.</p>
+<div class="meter">
+<div><b>$3.20</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$0.80</b><span class="label">Business / 1,000</span></div>
+</div>
+<p class="unitline">per 1,000 jobs <span class="ext">+ $0.002 per company domain checked</span></p>
+<p class="returns">Paste a company domain; it finds the Greenhouse, Lever, Ashby or Workday board (nine ATS platforms) and returns every live opening.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/company-jobs-by-domain">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/company-jobs-by-domain">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/company-jobs-by-domain/api">API docs</a></p>
 </article>
-<article class="card" id="multi-job-board-scraper">
+<article class="sheet" id="multi-job-board-scraper">
 <h3><a href="https://apify.com/steadyfetch/multi-job-board-scraper">Multi-board jobs, de-duplicated</a></h3>
-<p class="price"><span class="k">Free plan</span> <b>$7.2</b> per 1,000 listings <span class="sep">·</span> <span class="k">Business plan</span> <b>$1.8</b></p>
-<p>One keyword across Indeed and company hiring boards, merged into one feed. The same role on two boards is one row and one charge.</p>
+<div class="meter">
+<div><b>$7.20</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$1.80</b><span class="label">Business / 1,000</span></div>
+</div>
+<p class="unitline">per 1,000 listings</p>
+<p class="returns">One keyword across Indeed and company hiring boards, merged into one feed. The same role on two boards is one row and one charge.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/multi-job-board-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/multi-job-board-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/multi-job-board-scraper/api">API docs</a></p>
 </article></div>
+</section>
 
+<section class="section"><svg class="pulse" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
 <h2>The field, side by side</h2>
 <p>Every actor that appears in Apify store search for these terms, with the price its store page publishes for a free-plan account and for a Business-plan account. Our rows are shaded.</p>
-<h3>Indeed</h3>
-<div class="tbl-wrap"><table>
-<thead><tr><th>Actor</th><th>What a row is</th><th class="num">Free plan, per 1,000</th><th class="num">Business plan, per 1,000</th><th class="num">Fee per run</th><th class="num">Users, 30 days</th></tr></thead>
-<tbody><tr class="us"><td><a href="https://apify.com/steadyfetch/indeed-jobs-scraper">steadyfetch/indeed-jobs-scraper</a></td><td>One listing card; the full description is an optional second event at $0.0008</td><td class="num">$6</td><td class="num">$1.5</td><td class="num">none</td><td class="num">1</td></tr>
-<tr><td><a href="https://apify.com/valig/indeed-jobs-scraper" rel="nofollow">valig/indeed-jobs-scraper</a></td><td>Indeed listings; the category's most-used actor</td><td class="num">$0.1</td><td class="num">$0.07</td><td class="num">$0.001</td><td class="num">3,673</td></tr>
-<tr><td><a href="https://apify.com/borderline/indeed-scraper" rel="nofollow">borderline/indeed-scraper</a></td><td>Indeed listings, pay per result</td><td class="num">$5</td><td class="num">$5</td><td class="num">none</td><td class="num">2,536</td></tr>
-<tr><td><a href="https://apify.com/kaix/indeed-scraper" rel="nofollow">kaix/indeed-scraper</a></td><td>Indeed listings</td><td class="num">$0.05</td><td class="num">$0.04</td><td class="num">$0.00001</td><td class="num">1,397</td></tr>
-<tr><td><a href="https://apify.com/cheap_scraper/indeed-job-scraper" rel="nofollow">cheap_scraper/indeed-job-scraper</a></td><td>Indeed listings with duplicate removal</td><td class="num">$1</td><td class="num">$0.7</td><td class="num">$0.00005</td><td class="num">328</td></tr></tbody>
-</table></div>
-<h3>Glassdoor</h3>
-<div class="tbl-wrap"><table>
-<thead><tr><th>Actor</th><th>What a row is</th><th class="num">Free plan, per 1,000</th><th class="num">Business plan, per 1,000</th><th class="num">Fee per run</th><th class="num">Users, 30 days</th></tr></thead>
-<tbody><tr class="us"><td><a href="https://apify.com/steadyfetch/glassdoor-jobs-scraper">steadyfetch/glassdoor-jobs-scraper</a></td><td>One listing with the employer's star rating on the same row</td><td class="num">$4.8</td><td class="num">$1.2</td><td class="num">none</td><td class="num">1</td></tr>
-<tr><td><a href="https://apify.com/valig/glassdoor-jobs-scraper" rel="nofollow">valig/glassdoor-jobs-scraper</a></td><td>Glassdoor listings</td><td class="num">$0.4</td><td class="num">$0.28</td><td class="num">$0.001</td><td class="num">1,409</td></tr>
-<tr><td><a href="https://apify.com/orgupdate/glassdoor-jobs-scraper" rel="nofollow">orgupdate/glassdoor-jobs-scraper</a></td><td>Glassdoor listings</td><td class="num">$4</td><td class="num">$4</td><td class="num">$0.002</td><td class="num">162</td></tr>
-<tr><td><a href="https://apify.com/memo23/glassdoor-scraper-ppr" rel="nofollow">memo23/glassdoor-scraper-ppr</a></td><td>Glassdoor reviews and jobs, with paid AI employer-intel add-ons</td><td class="num">$4.75</td><td class="num">$4.75</td><td class="num">$0.005</td><td class="num">192</td></tr></tbody>
-</table></div>
-<h3>Google Jobs</h3>
-<div class="tbl-wrap"><table>
-<thead><tr><th>Actor</th><th>What a row is</th><th class="num">Free plan, per 1,000</th><th class="num">Business plan, per 1,000</th><th class="num">Fee per run</th><th class="num">Users, 30 days</th></tr></thead>
-<tbody><tr class="us"><td><a href="https://apify.com/steadyfetch/google-jobs-scraper">steadyfetch/google-jobs-scraper</a></td><td>One job card from the full panel, with apply links</td><td class="num">$4</td><td class="num">$1</td><td class="num">none</td><td class="num">1</td></tr>
-<tr><td><a href="https://apify.com/gio21/google-jobs-scraper" rel="nofollow">gio21/google-jobs-scraper</a></td><td>Google Jobs listings</td><td class="num">$3</td><td class="num">$3</td><td class="num">none</td><td class="num">242</td></tr>
-<tr><td><a href="https://apify.com/johnvc/Google-Jobs-Scraper" rel="nofollow">johnvc/Google-Jobs-Scraper</a></td><td>Charged per page processed ($0.15 free plan / $0.10 Business), not per job</td><td class="num">$0.15 per page/item</td><td class="num">$0.1 per page/item</td><td class="num">$0.00005</td><td class="num">322</td></tr>
-<tr><td><a href="https://apify.com/orgupdate/google-jobs-scraper" rel="nofollow">orgupdate/google-jobs-scraper</a></td><td>Charged $0.20 per dataset item plus a $0.20 run fee as priced on the store</td><td class="num">$0.2 per page/item</td><td class="num">$0.15 per page/item</td><td class="num">$0.2</td><td class="num">214</td></tr></tbody>
-</table></div>
-<h3>Multi-board and career sites</h3>
-<div class="tbl-wrap"><table>
-<thead><tr><th>Actor</th><th>What a row is</th><th class="num">Free plan, per 1,000</th><th class="num">Business plan, per 1,000</th><th class="num">Fee per run</th><th class="num">Users, 30 days</th></tr></thead>
-<tbody><tr class="us"><td><a href="https://apify.com/steadyfetch/multi-job-board-scraper">steadyfetch/multi-job-board-scraper</a></td><td>One de-duplicated listing across Indeed and company boards</td><td class="num">$7.2</td><td class="num">$1.8</td><td class="num">none</td><td class="num">1</td></tr>
-<tr class="us"><td><a href="https://apify.com/steadyfetch/company-jobs-by-domain">steadyfetch/company-jobs-by-domain</a></td><td>One live opening from a company's own ATS board; $0.002 per domain checked</td><td class="num">$3.2</td><td class="num">$0.8</td><td class="num">none</td><td class="num">1</td></tr>
-<tr><td><a href="https://apify.com/openclawai/job-board-scraper" rel="nofollow">openclawai/job-board-scraper</a></td><td>LinkedIn, Indeed, Glassdoor and more in one run</td><td class="num">$5</td><td class="num">$5</td><td class="num">$0.00005</td><td class="num">388</td></tr>
-<tr><td><a href="https://apify.com/doggo/uk-jobs-board-scraper" rel="nofollow">doggo/uk-jobs-board-scraper</a></td><td>Indeed, Reed, Adzuna, RemoteOK and more, with a $0.10 fee per run</td><td class="num">$5</td><td class="num">$4</td><td class="num">$0.1</td><td class="num">41</td></tr></tbody>
-</table></div>
+<section class="plate">
+<div class="plate-head"><h3 id="jobs-plate-0">Indeed</h3><span class="label">5 actors</span></div>
+<div class="plate-scroll" role="region" tabindex="0" aria-labelledby="jobs-plate-0">
+<table>
+<thead><tr><th scope="col">Actor · what a row is</th><th scope="col" class="num">Free plan, per 1,000</th><th scope="col" class="num">Business plan, per 1,000</th><th scope="col" class="num">Fee per run</th><th scope="col" class="num">Users, 30 days</th></tr></thead>
+<tbody><tr class="us">
+<th scope="row"><a class="bi" href="https://apify.com/steadyfetch/indeed-jobs-scraper"><span class="acct">steadyfetch</span><span class="slash">/</span><wbr><span class="slug">indeed-jobs-scraper</span></a><span class="diag">One listing card; the full description is an optional second event at $0.0008</span></th>
+<td class="num"><span class="v">$6.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num"><span class="v">$1.50</span><span class="gauge"><span style="--w:30.0%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">1</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/valig/indeed-jobs-scraper" rel="nofollow"><span class="acct">valig</span><span class="slash">/</span><wbr><span class="slug">indeed-jobs-scraper</span></a><span class="diag">Indeed listings; the category's most-used actor</span></th>
+<td class="num"><span class="v">$0.10</span><span class="gauge"><span style="--w:1.7%"></span></span></td>
+<td class="num"><span class="v">$0.07</span><span class="gauge"><span style="--w:1.4%"></span></span></td>
+<td class="num">$0.001</td>
+<td class="num">3,673</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/borderline/indeed-scraper" rel="nofollow"><span class="acct">borderline</span><span class="slash">/</span><wbr><span class="slug">indeed-scraper</span></a><span class="diag">Indeed listings, pay per result</span></th>
+<td class="num"><span class="v">$5.00</span><span class="gauge"><span style="--w:83.3%"></span></span></td>
+<td class="num"><span class="v">$5.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">2,536</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/kaix/indeed-scraper" rel="nofollow"><span class="acct">kaix</span><span class="slash">/</span><wbr><span class="slug">indeed-scraper</span></a><span class="diag">Indeed listings</span></th>
+<td class="num"><span class="v">$0.05</span><span class="gauge"><span style="--w:0.8%"></span></span></td>
+<td class="num"><span class="v">$0.04</span><span class="gauge"><span style="--w:0.8%"></span></span></td>
+<td class="num">$0.00001</td>
+<td class="num">1,397</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/cheap_scraper/indeed-job-scraper" rel="nofollow"><span class="acct">cheap_scraper</span><span class="slash">/</span><wbr><span class="slug">indeed-job-scraper</span></a><span class="diag">Indeed listings with duplicate removal</span></th>
+<td class="num"><span class="v">$1.00</span><span class="gauge"><span style="--w:16.7%"></span></span></td>
+<td class="num"><span class="v">$0.70</span><span class="gauge"><span style="--w:14.0%"></span></span></td>
+<td class="num">$0.00005</td>
+<td class="num">328</td>
+</tr></tbody>
+</table>
+</div>
+<p class="scale-note"><span class="swatch"></span>Bars are drawn per column against the dearest row on this plate.</p>
+</section>
+<section class="plate">
+<div class="plate-head"><h3 id="jobs-plate-1">Glassdoor</h3><span class="label">4 actors</span></div>
+<div class="plate-scroll" role="region" tabindex="0" aria-labelledby="jobs-plate-1">
+<table>
+<thead><tr><th scope="col">Actor · what a row is</th><th scope="col" class="num">Free plan, per 1,000</th><th scope="col" class="num">Business plan, per 1,000</th><th scope="col" class="num">Fee per run</th><th scope="col" class="num">Users, 30 days</th></tr></thead>
+<tbody><tr class="us">
+<th scope="row"><a class="bi" href="https://apify.com/steadyfetch/glassdoor-jobs-scraper"><span class="acct">steadyfetch</span><span class="slash">/</span><wbr><span class="slug">glassdoor-jobs-scraper</span></a><span class="diag">One listing with the employer's star rating on the same row</span></th>
+<td class="num"><span class="v">$4.80</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num"><span class="v">$1.20</span><span class="gauge"><span style="--w:25.3%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">1</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/valig/glassdoor-jobs-scraper" rel="nofollow"><span class="acct">valig</span><span class="slash">/</span><wbr><span class="slug">glassdoor-jobs-scraper</span></a><span class="diag">Glassdoor listings</span></th>
+<td class="num"><span class="v">$0.40</span><span class="gauge"><span style="--w:8.3%"></span></span></td>
+<td class="num"><span class="v">$0.28</span><span class="gauge"><span style="--w:5.9%"></span></span></td>
+<td class="num">$0.001</td>
+<td class="num">1,409</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/orgupdate/glassdoor-jobs-scraper" rel="nofollow"><span class="acct">orgupdate</span><span class="slash">/</span><wbr><span class="slug">glassdoor-jobs-scraper</span></a><span class="diag">Glassdoor listings</span></th>
+<td class="num"><span class="v">$4.00</span><span class="gauge"><span style="--w:83.3%"></span></span></td>
+<td class="num"><span class="v">$4.00</span><span class="gauge"><span style="--w:84.2%"></span></span></td>
+<td class="num">$0.002</td>
+<td class="num">162</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/memo23/glassdoor-scraper-ppr" rel="nofollow"><span class="acct">memo23</span><span class="slash">/</span><wbr><span class="slug">glassdoor-scraper-ppr</span></a><span class="diag">Glassdoor reviews and jobs, with paid AI employer-intel add-ons</span></th>
+<td class="num"><span class="v">$4.75</span><span class="gauge"><span style="--w:99.0%"></span></span></td>
+<td class="num"><span class="v">$4.75</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num">$0.005</td>
+<td class="num">192</td>
+</tr></tbody>
+</table>
+</div>
+<p class="scale-note"><span class="swatch"></span>Bars are drawn per column against the dearest row on this plate.</p>
+</section>
+<section class="plate">
+<div class="plate-head"><h3 id="jobs-plate-2">Google Jobs</h3><span class="label">4 actors</span></div>
+<div class="plate-scroll" role="region" tabindex="0" aria-labelledby="jobs-plate-2">
+<table>
+<thead><tr><th scope="col">Actor · what a row is</th><th scope="col" class="num">Free plan, per 1,000</th><th scope="col" class="num">Business plan, per 1,000</th><th scope="col" class="num">Fee per run</th><th scope="col" class="num">Users, 30 days</th></tr></thead>
+<tbody><tr class="us">
+<th scope="row"><a class="bi" href="https://apify.com/steadyfetch/google-jobs-scraper"><span class="acct">steadyfetch</span><span class="slash">/</span><wbr><span class="slug">google-jobs-scraper</span></a><span class="diag">One job card from the full panel, with apply links</span></th>
+<td class="num"><span class="v">$4.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num"><span class="v">$1.00</span><span class="gauge"><span style="--w:33.3%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">1</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/gio21/google-jobs-scraper" rel="nofollow"><span class="acct">gio21</span><span class="slash">/</span><wbr><span class="slug">google-jobs-scraper</span></a><span class="diag">Google Jobs listings</span></th>
+<td class="num"><span class="v">$3.00</span><span class="gauge"><span style="--w:75.0%"></span></span></td>
+<td class="num"><span class="v">$3.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">242</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/johnvc/Google-Jobs-Scraper" rel="nofollow"><span class="acct">johnvc</span><span class="slash">/</span><wbr><span class="slug">Google-Jobs-Scraper</span></a><span class="diag">Charged per page processed ($0.15 free plan / $0.10 Business), not per job</span></th>
+<td class="num"><span class="v">$0.15</span><span class="note">per page/item</span></td>
+<td class="num"><span class="v">$0.1</span><span class="note">per page/item</span></td>
+<td class="num">$0.00005</td>
+<td class="num">322</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/orgupdate/google-jobs-scraper" rel="nofollow"><span class="acct">orgupdate</span><span class="slash">/</span><wbr><span class="slug">google-jobs-scraper</span></a><span class="diag">Charged $0.20 per dataset item plus a $0.20 run fee as priced on the store</span></th>
+<td class="num"><span class="v">$0.2</span><span class="note">per page/item</span></td>
+<td class="num"><span class="v">$0.15</span><span class="note">per page/item</span></td>
+<td class="num">$0.2</td>
+<td class="num">214</td>
+</tr></tbody>
+</table>
+</div>
+<p class="scale-note"><span class="swatch"></span>Bars are drawn per column against the dearest row on this plate; rows priced by batch or by page carry no bar, because the unit is not the same.</p>
+</section>
+<section class="plate">
+<div class="plate-head"><h3 id="jobs-plate-3">Multi-board and career sites</h3><span class="label">4 actors</span></div>
+<div class="plate-scroll" role="region" tabindex="0" aria-labelledby="jobs-plate-3">
+<table>
+<thead><tr><th scope="col">Actor · what a row is</th><th scope="col" class="num">Free plan, per 1,000</th><th scope="col" class="num">Business plan, per 1,000</th><th scope="col" class="num">Fee per run</th><th scope="col" class="num">Users, 30 days</th></tr></thead>
+<tbody><tr class="us">
+<th scope="row"><a class="bi" href="https://apify.com/steadyfetch/multi-job-board-scraper"><span class="acct">steadyfetch</span><span class="slash">/</span><wbr><span class="slug">multi-job-board-scraper</span></a><span class="diag">One de-duplicated listing across Indeed and company boards</span></th>
+<td class="num"><span class="v">$7.20</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num"><span class="v">$1.80</span><span class="gauge"><span style="--w:36.0%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">1</td>
+</tr>
+<tr class="us">
+<th scope="row"><a class="bi" href="https://apify.com/steadyfetch/company-jobs-by-domain"><span class="acct">steadyfetch</span><span class="slash">/</span><wbr><span class="slug">company-jobs-by-domain</span></a><span class="diag">One live opening from a company's own ATS board; $0.002 per domain checked</span></th>
+<td class="num"><span class="v">$3.20</span><span class="gauge"><span style="--w:44.4%"></span></span></td>
+<td class="num"><span class="v">$0.80</span><span class="gauge"><span style="--w:16.0%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">1</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/openclawai/job-board-scraper" rel="nofollow"><span class="acct">openclawai</span><span class="slash">/</span><wbr><span class="slug">job-board-scraper</span></a><span class="diag">LinkedIn, Indeed, Glassdoor and more in one run</span></th>
+<td class="num"><span class="v">$5.00</span><span class="gauge"><span style="--w:69.4%"></span></span></td>
+<td class="num"><span class="v">$5.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num">$0.00005</td>
+<td class="num">388</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/doggo/uk-jobs-board-scraper" rel="nofollow"><span class="acct">doggo</span><span class="slash">/</span><wbr><span class="slug">uk-jobs-board-scraper</span></a><span class="diag">Indeed, Reed, Adzuna, RemoteOK and more, with a $0.10 fee per run</span></th>
+<td class="num"><span class="v">$5.00</span><span class="gauge"><span style="--w:69.4%"></span></span></td>
+<td class="num"><span class="v">$4.00</span><span class="gauge"><span style="--w:80.0%"></span></span></td>
+<td class="num">$0.1</td>
+<td class="num">41</td>
+</tr></tbody>
+</table>
+</div>
+<p class="scale-note"><span class="swatch"></span>Bars are drawn per column against the dearest row on this plate.</p>
+</section>
 
+</section>
 
+<section class="section"><svg class="pulse" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
 <h2>How to read it</h2>
-<p>valig's Indeed and Glassdoor actors are the volume leaders and cost a fraction of a cent per listing. If you need raw listings at scale and can de-duplicate and cap on your side, they are hard to beat on price.</p>
+<div class="key"><p>valig's Indeed and Glassdoor actors are the volume leaders and cost a fraction of a cent per listing. If you need raw listings at scale and can de-duplicate and cap on your side, they are hard to beat on price.</p>
 <p>Ours charge more per listing and put the controls inside the run: the row cap and deadline stop the run exactly where you set them, the same role found on two boards is one row and one charge, and Glassdoor's employer rating lands on the job row instead of needing a second run.</p>
-<p>Some Google Jobs actors are priced per page or per run rather than per job; compare on your real query mix, not the headline.</p>
+<p>Some Google Jobs actors are priced per page or per run rather than per job; compare on your real query mix, not the headline.</p></div>
+</section>
 
+<section class="section"><svg class="pulse" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
 <h2>What we do not do</h2>
-<ul><li>We do not scrape LinkedIn Jobs.</li><li>We do not enrich listings with recruiter emails or phone numbers.</li><li>Indeed full descriptions are a separate, optional event on our Indeed actor ($0.0008 each); the listing price alone returns the card fields.</li></ul>
+<ul class="list"><li>We do not scrape LinkedIn Jobs.</li><li>We do not enrich listings with recruiter emails or phone numbers.</li><li>Indeed full descriptions are a separate, optional event on our Indeed actor ($0.0008 each); the listing price alone returns the card fields.</li></ul>
+</section>
 
+<section class="section"><svg class="pulse" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
 <h2>Run it your way</h2>
-<ul class="ways">
-<li><b>Console.</b> Open any store page above, fill the form, press Start. The free Apify plan covers test runs.</li>
-<li><b>API.</b> Every actor has a REST endpoint: <code>POST https://api.apify.com/v2/acts/steadyfetch~&lt;actor&gt;/run-sync-get-dataset-items?token=…</code> with the input as JSON. The API docs link on each card shows the exact body.</li>
-<li><b>MCP.</b> The "Pin to Apify MCP" link registers that one actor as a tool for Claude, Cursor or any MCP client.</li>
-<li><b>n8n.</b> Free, import-validated workflow templates for several actors live at <a href="https://github.com/steadyfetch/n8n-templates">steadyfetch/n8n-templates</a>.</li>
+<ul class="list ways">
+<li><b>Console</b>Open any store page above, fill the form, press Start. The free Apify plan covers test runs.</li>
+<li><b>API</b>Every actor has a REST endpoint: <code>POST https://api.apify.com/v2/acts/steadyfetch~&lt;actor&gt;/run-sync-get-dataset-items?token=…</code> with the input as JSON. The API docs link on each card shows the exact body.</li>
+<li><b>MCP</b>The "Pin to Apify MCP" link registers that one actor as a tool for Claude, Cursor or any MCP client.</li>
+<li><b>n8n</b>Free, import-validated workflow templates for several actors live at <a href="https://github.com/steadyfetch/n8n-templates">steadyfetch/n8n-templates</a>.</li>
 </ul>
+</section>
 </main>
 <footer>
+<svg class="pulse pulse--faint" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
+<div class="foot-in">
+<p class="foot-mark"><span class="plate-chip"><svg viewBox="0 0 512 512" width="100%" height="100%" aria-hidden="true" focusable="false"><path d="M64 306H200V177H311V306H447" fill="none" stroke="#26DC62" stroke-width="40"/></svg></span><span class="name">steadyfetch</span></p>
 <p>Prices on this page were read on 1 September 2026 from the public Apify store API (free-plan and Business-plan tiers) and from each vendor's own pricing page, and are quoted per 1,000 units unless stated. Apify actor prices change with notice; the store page is the source of truth at run time. Users are the store's 30-day user count on the same day.</p>
 <p>Steadyfetch actors are unofficial tools that read public pages. They are not affiliated with, endorsed by or sponsored by Meta, TikTok, LinkedIn, Google, Amazon, Indeed, Glassdoor or Instagram. Competitor and vendor names are their owners' trademarks and appear here only to identify the products compared.</p>
 <p>Something on this page wrong? Open an issue on the actor's page on Apify; every one is read. Last updated 1 September 2026.</p>
+</div>
 </footer>
+<script>(function(){var b=document.getElementById("theme");if(!b)return;var r=document.documentElement;function lab(){var d=(r.getAttribute("data-theme")||(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))==="dark";b.setAttribute("aria-label",d?"Switch to the light plate":"Switch to the dark plate")}lab();b.addEventListener("click",function(){var cur=r.getAttribute("data-theme")||(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");var next=cur==="dark"?"light":"dark";r.setAttribute("data-theme",next);try{localStorage.setItem("sf-theme",next)}catch(e){}lab()})})();</script>
 </body>
 </html>

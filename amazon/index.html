@@ -10,104 +10,270 @@
 <meta property="og:description" content="Amazon scrapers on Apify and the Rainforest API compared on what one product row contains and what a thousand products cost, including add-on events. Prices checked 1 September 2026.">
 <meta property="og:url" content="https://steadyfetch.com/amazon/">
 <meta property="og:type" content="article">
+<meta property="og:image" content="https://steadyfetch.com/brand/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Steadyfetch">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow">
+<meta name="theme-color" content="#e7eae3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#050911" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/brand/favicon.ico" sizes="32x32">
+<link rel="icon" href="/brand/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
+<script>try{var t=localStorage.getItem("sf-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=Azeret+Mono:wght@400;600&display=swap">
 <link rel="stylesheet" href="/style.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Amazon product, search, bestseller and seller scrapers compared","description":"Amazon scrapers on Apify and the Rainforest API compared on what one product row contains and what a thousand products cost, including add-on events. Prices checked 1 September 2026.","url":"https://steadyfetch.com/amazon/","dateModified":"2026-09-01","isPartOf":{"@type":"WebSite","name":"Steadyfetch","url":"https://steadyfetch.com"},"about":[{"@type":"SoftwareApplication","name":"Amazon product","url":"https://apify.com/steadyfetch/amazon-product-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.006,"priceCurrency":"USD","description":"per product, free plan"}},{"@type":"SoftwareApplication","name":"Amazon search results","url":"https://apify.com/steadyfetch/amazon-search-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.006,"priceCurrency":"USD","description":"per product, free plan"}},{"@type":"SoftwareApplication","name":"Amazon bestsellers","url":"https://apify.com/steadyfetch/amazon-bestsellers-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.006,"priceCurrency":"USD","description":"per bestseller, free plan"}},{"@type":"SoftwareApplication","name":"Amazon seller","url":"https://apify.com/steadyfetch/amazon-seller-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.006,"priceCurrency":"USD","description":"per record, free plan"}}]}</script>
 </head>
 <body>
-<header class="top"><a class="brand" href="/">Steadyfetch</a><nav aria-label="Families"><a href="/ad-transcripts/">Bulk ad transcripts</a><a href="/trends-keywords/">Google Trends and keyword data</a><a href="/jobs/">Job listing scrapers</a><a href="/amazon/">Amazon product data</a><a href="/youtube-media/">Video and audio to text</a></nav></header>
-<main>
-<p class="crumbs"><a href="/">Steadyfetch</a> › Amazon product data, compared honestly</p>
+<!--
+THESIS: a comparative plate, not a vendor comparison page: every actor in a family laid out as a
+specimen at one shared scale, its price bar drawn even where ours is the longest. Refuses the
+tick-and-cross "us vs them" table the category ships.
+OWN-WORLD: the plate ground runs edge to edge (herbarium stock in light, the brand's own #050911
+in dark); one ink, one accent (steadyfetch green), hairline rules, no shadowed cards. Archivo
+condensed for plate titles, Azeret Mono for every measured figure and every actor binomial.
+STORY: the visitor sees the field measured on one scale, finds the row that beats us, reads why,
+and goes to a store page to run an actor.
+FIRST VIEWPORT: plate title, the collection stamp (what was read, from where, when), the lead,
+then the proof — two Indeed specimens at identical scale where the competitor wins 60 to 1.
+FORM: candidate 4 of the grounded list (comparative field-guide plate); seed key 0838385b.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+-->
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+<div class="top-in">
+<a class="lockup" href="/"><span class="plate-chip"><svg viewBox="0 0 512 512" width="100%" height="100%" aria-hidden="true" focusable="false"><path d="M64 306H200V177H311V306H447" fill="none" stroke="#26DC62" stroke-width="40"/></svg></span><span class="name">steadyfetch</span></a>
+<nav aria-label="Comparison pages"><a href="/ad-transcripts/">Bulk ad transcripts</a><a href="/trends-keywords/">Google Trends and keyword data</a><a href="/jobs/">Job listing scrapers</a><a href="/amazon/" aria-current="page">Amazon product data</a><a href="/youtube-media/">Video and audio to text</a></nav>
+<button class="theme" type="button" id="theme" aria-label="Switch colour theme"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="13" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.5H4A2.5 2.5 0 0 0 1.5 4v8A2.5 2.5 0 0 0 4 14.5h4z" fill="currentColor"/></svg></button>
+</div>
+<svg class="pulse pulse--lead" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
+</header>
+<main id="main">
+<p class="crumbs"><a href="/">Steadyfetch</a><span class="sep">/</span>Amazon product data</p>
 <h1>Amazon product data, compared honestly</h1>
-<p class="checked">Prices checked 1 September 2026 · per 1,000 units · free plan and Business plan</p>
+<p class="stamp"><span>Prices checked 1 September 2026</span><span>Per 1,000 units</span><span>Free plan and Business plan</span><span>13 actors compared</span></p>
 <p class="lead">Most Amazon scrapers price the product row low and charge separately for offers, sellers or delivery-location pricing. Ours charge one flat fee per product and put everything the product page carries in that one row. Which is cheaper depends on what you actually need.</p>
 
+<section class="section"><svg class="pulse" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
 <h2>Our actors in this family</h2>
-<div class="cards"><article class="card" id="amazon-product-scraper">
+<div class="sheets"><article class="sheet" id="amazon-product-scraper">
 <h3><a href="https://apify.com/steadyfetch/amazon-product-scraper">Amazon product</a></h3>
-<p class="price"><span class="k">Free plan</span> <b>$6</b> per 1,000 products <span class="sep">·</span> <span class="k">Business plan</span> <b>$1.5</b></p>
-<p>ASIN or product URL in; price, buy box, stock, rating, review count, variants, bestseller ranks, images and the full specifications table in one row, one flat fee. Blocked or missing ASINs are not charged.</p>
+<div class="meter">
+<div><b>$6.00</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$1.50</b><span class="label">Business / 1,000</span></div>
+</div>
+<p class="unitline">per 1,000 products</p>
+<p class="returns">ASIN or product URL in; price, buy box, stock, rating, review count, variants, bestseller ranks, images and the full specifications table in one row, one flat fee. Blocked or missing ASINs are not charged.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/amazon-product-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/amazon-product-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/amazon-product-scraper/api">API docs</a></p>
 </article>
-<article class="card" id="amazon-search-scraper">
+<article class="sheet" id="amazon-search-scraper">
 <h3><a href="https://apify.com/steadyfetch/amazon-search-scraper">Amazon search results</a></h3>
-<p class="price"><span class="k">Free plan</span> <b>$6</b> per 1,000 products <span class="sep">·</span> <span class="k">Business plan</span> <b>$1.5</b></p>
-<p>A search keyword in; the full product row for every result, with search rank, page and sponsored flag.</p>
+<div class="meter">
+<div><b>$6.00</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$1.50</b><span class="label">Business / 1,000</span></div>
+</div>
+<p class="unitline">per 1,000 products</p>
+<p class="returns">A search keyword in; the full product row for every result, with search rank, page and sponsored flag.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/amazon-search-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/amazon-search-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/amazon-search-scraper/api">API docs</a></p>
 </article>
-<article class="card" id="amazon-bestsellers-scraper">
+<article class="sheet" id="amazon-bestsellers-scraper">
 <h3><a href="https://apify.com/steadyfetch/amazon-bestsellers-scraper">Amazon bestsellers</a></h3>
-<p class="price"><span class="k">Free plan</span> <b>$6</b> per 1,000 bestsellers <span class="sep">·</span> <span class="k">Business plan</span> <b>$1.5</b></p>
-<p>A category name or Best Sellers link in; the full product row for every rank, in rank order.</p>
+<div class="meter">
+<div><b>$6.00</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$1.50</b><span class="label">Business / 1,000</span></div>
+</div>
+<p class="unitline">per 1,000 bestsellers</p>
+<p class="returns">A category name or Best Sellers link in; the full product row for every rank, in rank order.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/amazon-bestsellers-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/amazon-bestsellers-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/amazon-bestsellers-scraper/api">API docs</a></p>
 </article>
-<article class="card" id="amazon-seller-scraper">
+<article class="sheet" id="amazon-seller-scraper">
 <h3><a href="https://apify.com/steadyfetch/amazon-seller-scraper">Amazon seller</a></h3>
-<p class="price"><span class="k">Free plan</span> <b>$6</b> per 1,000 records <span class="sep">·</span> <span class="k">Business plan</span> <b>$1.5</b></p>
-<p>Seller ID or storefront link in; the seller profile (feedback history, registered business details) plus a full product row for every listing.</p>
+<div class="meter">
+<div><b>$6.00</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$1.50</b><span class="label">Business / 1,000</span></div>
+</div>
+<p class="unitline">per 1,000 records</p>
+<p class="returns">Seller ID or storefront link in; the seller profile (feedback history, registered business details) plus a full product row for every listing.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/amazon-seller-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/amazon-seller-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/amazon-seller-scraper/api">API docs</a></p>
 </article></div>
+</section>
 
+<section class="section"><svg class="pulse" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
 <h2>The field, side by side</h2>
 <p>Every actor that appears in Apify store search for these terms, with the price its store page publishes for a free-plan account and for a Business-plan account. Our rows are shaded.</p>
-<h3>Product pages</h3>
-<div class="tbl-wrap"><table>
-<thead><tr><th>Actor</th><th>What a row is</th><th class="num">Free plan, per 1,000</th><th class="num">Business plan, per 1,000</th><th class="num">Fee per run</th><th class="num">Users, 30 days</th></tr></thead>
-<tbody><tr class="us"><td><a href="https://apify.com/steadyfetch/amazon-product-scraper">steadyfetch/amazon-product-scraper</a></td><td>One product: price, buy box, stock, rating, review count, variants, ranks, images, full specs table</td><td class="num">$6</td><td class="num">$1.5</td><td class="num">none</td><td class="num">0</td></tr>
-<tr><td><a href="https://apify.com/junglee/Amazon-crawler" rel="nofollow">junglee/Amazon-crawler</a></td><td>Product rows; offers and sellers are separate events at $0.0025 / $0.0015 each, delivery-location pricing at $0.06 / $0.035</td><td class="num">$5</td><td class="num">$3</td><td class="num">none</td><td class="num">1,860</td></tr>
-<tr><td><a href="https://apify.com/automly/amazon-products-scraper---fast-efficient-with-sales-data" rel="nofollow">automly/amazon-products-scraper---fast-efficient-with-sales-data</a></td><td>Product rows with sales data, $0.05 per run</td><td class="num">$5.55</td><td class="num">$5.55</td><td class="num">$0.05</td><td class="num">246</td></tr></tbody>
-</table></div>
-<h3>Search results</h3>
-<div class="tbl-wrap"><table>
-<thead><tr><th>Actor</th><th>What a row is</th><th class="num">Free plan, per 1,000</th><th class="num">Business plan, per 1,000</th><th class="num">Fee per run</th><th class="num">Users, 30 days</th></tr></thead>
-<tbody><tr class="us"><td><a href="https://apify.com/steadyfetch/amazon-search-scraper">steadyfetch/amazon-search-scraper</a></td><td>One search result as a full product row, with rank, page and sponsored flag</td><td class="num">$6</td><td class="num">$1.5</td><td class="num">none</td><td class="num">0</td></tr>
-<tr><td><a href="https://apify.com/igview-owner/amazon-search-scraper" rel="nofollow">igview-owner/amazon-search-scraper</a></td><td>Search result rows</td><td class="num">$20</td><td class="num">$5</td><td class="num">$0.02</td><td class="num">67</td></tr>
-<tr><td><a href="https://apify.com/khadinakbar/amazon-search-scraper" rel="nofollow">khadinakbar/amazon-search-scraper</a></td><td>Search result rows</td><td class="num">$2</td><td class="num">$2</td><td class="num">$0.00005</td><td class="num">39</td></tr></tbody>
-</table></div>
-<h3>Bestsellers</h3>
-<div class="tbl-wrap"><table>
-<thead><tr><th>Actor</th><th>What a row is</th><th class="num">Free plan, per 1,000</th><th class="num">Business plan, per 1,000</th><th class="num">Fee per run</th><th class="num">Users, 30 days</th></tr></thead>
-<tbody><tr class="us"><td><a href="https://apify.com/steadyfetch/amazon-bestsellers-scraper">steadyfetch/amazon-bestsellers-scraper</a></td><td>One ranked bestseller as a full product row</td><td class="num">$6</td><td class="num">$1.5</td><td class="num">none</td><td class="num">0</td></tr>
-<tr><td><a href="https://apify.com/junglee/amazon-bestsellers" rel="nofollow">junglee/amazon-bestsellers</a></td><td>Bestseller rows</td><td class="num">$5.9</td><td class="num">$3.2</td><td class="num">none</td><td class="num">331</td></tr>
-<tr><td><a href="https://apify.com/amazon-scraper/amazon-bestsellers-scraper" rel="nofollow">amazon-scraper/amazon-bestsellers-scraper</a></td><td>Bestseller rows</td><td class="num">$2</td><td class="num">$0.29</td><td class="num">$0.00005</td><td class="num">139</td></tr>
-<tr><td><a href="https://apify.com/khadinakbar/amazon-bestsellers-scraper" rel="nofollow">khadinakbar/amazon-bestsellers-scraper</a></td><td>Bestseller rows</td><td class="num">$5</td><td class="num">$5</td><td class="num">$0.00005</td><td class="num">48</td></tr></tbody>
-</table></div>
-<h3>Sellers</h3>
-<div class="tbl-wrap"><table>
-<thead><tr><th>Actor</th><th>What a row is</th><th class="num">Free plan, per 1,000</th><th class="num">Business plan, per 1,000</th><th class="num">Fee per run</th><th class="num">Users, 30 days</th></tr></thead>
-<tbody><tr class="us"><td><a href="https://apify.com/steadyfetch/amazon-seller-scraper">steadyfetch/amazon-seller-scraper</a></td><td>One seller profile, or one of its listings as a full product row</td><td class="num">$6</td><td class="num">$1.5</td><td class="num">none</td><td class="num">0</td></tr>
-<tr><td><a href="https://apify.com/junglee/amazon-seller-scraper" rel="nofollow">junglee/amazon-seller-scraper</a></td><td>Seller rows</td><td class="num">$5</td><td class="num">$3</td><td class="num">none</td><td class="num">64</td></tr>
-<tr><td><a href="https://apify.com/pratikdani/amazon-seller-extractor" rel="nofollow">pratikdani/amazon-seller-extractor</a></td><td>Seller data rows</td><td class="num">$20</td><td class="num">$10</td><td class="num">$0.002</td><td class="num">11</td></tr></tbody>
-</table></div>
-<h3>Outside Apify</h3>
-<div class="tbl-wrap"><table>
-<thead><tr><th>Tool</th><th>What you get</th><th>Price as published</th></tr></thead>
-<tbody><tr><td><a href="https://trajectdata.com/pricing/rainforest-api" rel="nofollow">Rainforest API (Traject Data)</a></td><td>Amazon product, search, bestsellers, sellers, reviews and more, one request per page</td><td>$23 per month for 500 requests ($46 per 1,000) down to $9,000 for 20,000,000 ($0.45 per 1,000), annual billing.</td></tr></tbody>
-</table></div>
+<section class="plate">
+<div class="plate-head"><h3 id="amazon-plate-0">Product pages</h3><span class="label">3 actors</span></div>
+<div class="plate-scroll" role="region" tabindex="0" aria-labelledby="amazon-plate-0">
+<table>
+<thead><tr><th scope="col">Actor · what a row is</th><th scope="col" class="num">Free plan, per 1,000</th><th scope="col" class="num">Business plan, per 1,000</th><th scope="col" class="num">Fee per run</th><th scope="col" class="num">Users, 30 days</th></tr></thead>
+<tbody><tr class="us">
+<th scope="row"><a class="bi" href="https://apify.com/steadyfetch/amazon-product-scraper"><span class="acct">steadyfetch</span><span class="slash">/</span><wbr><span class="slug">amazon-product-scraper</span></a><span class="diag">One product: price, buy box, stock, rating, review count, variants, ranks, images, full specs table</span></th>
+<td class="num"><span class="v">$6.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num"><span class="v">$1.50</span><span class="gauge"><span style="--w:27.0%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">0</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/junglee/Amazon-crawler" rel="nofollow"><span class="acct">junglee</span><span class="slash">/</span><wbr><span class="slug">Amazon-crawler</span></a><span class="diag">Product rows; offers and sellers are separate events at $0.0025 / $0.0015 each, delivery-location pricing at $0.06 / $0.035</span></th>
+<td class="num"><span class="v">$5.00</span><span class="gauge"><span style="--w:83.3%"></span></span></td>
+<td class="num"><span class="v">$3.00</span><span class="gauge"><span style="--w:54.1%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">1,860</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/automly/amazon-products-scraper---fast-efficient-with-sales-data" rel="nofollow"><span class="acct">automly</span><span class="slash">/</span><wbr><span class="slug">amazon-products-scraper---fast-efficient-with-sales-data</span></a><span class="diag">Product rows with sales data, $0.05 per run</span></th>
+<td class="num"><span class="v">$5.55</span><span class="gauge"><span style="--w:92.5%"></span></span></td>
+<td class="num"><span class="v">$5.55</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num">$0.05</td>
+<td class="num">246</td>
+</tr></tbody>
+</table>
+</div>
+<p class="scale-note"><span class="swatch"></span>Bars are drawn per column against the dearest row on this plate.</p>
+</section>
+<section class="plate">
+<div class="plate-head"><h3 id="amazon-plate-1">Search results</h3><span class="label">3 actors</span></div>
+<div class="plate-scroll" role="region" tabindex="0" aria-labelledby="amazon-plate-1">
+<table>
+<thead><tr><th scope="col">Actor · what a row is</th><th scope="col" class="num">Free plan, per 1,000</th><th scope="col" class="num">Business plan, per 1,000</th><th scope="col" class="num">Fee per run</th><th scope="col" class="num">Users, 30 days</th></tr></thead>
+<tbody><tr class="us">
+<th scope="row"><a class="bi" href="https://apify.com/steadyfetch/amazon-search-scraper"><span class="acct">steadyfetch</span><span class="slash">/</span><wbr><span class="slug">amazon-search-scraper</span></a><span class="diag">One search result as a full product row, with rank, page and sponsored flag</span></th>
+<td class="num"><span class="v">$6.00</span><span class="gauge"><span style="--w:30.0%"></span></span></td>
+<td class="num"><span class="v">$1.50</span><span class="gauge"><span style="--w:30.0%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">0</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/igview-owner/amazon-search-scraper" rel="nofollow"><span class="acct">igview-owner</span><span class="slash">/</span><wbr><span class="slug">amazon-search-scraper</span></a><span class="diag">Search result rows</span></th>
+<td class="num"><span class="v">$20.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num"><span class="v">$5.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num">$0.02</td>
+<td class="num">67</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/khadinakbar/amazon-search-scraper" rel="nofollow"><span class="acct">khadinakbar</span><span class="slash">/</span><wbr><span class="slug">amazon-search-scraper</span></a><span class="diag">Search result rows</span></th>
+<td class="num"><span class="v">$2.00</span><span class="gauge"><span style="--w:10.0%"></span></span></td>
+<td class="num"><span class="v">$2.00</span><span class="gauge"><span style="--w:40.0%"></span></span></td>
+<td class="num">$0.00005</td>
+<td class="num">39</td>
+</tr></tbody>
+</table>
+</div>
+<p class="scale-note"><span class="swatch"></span>Bars are drawn per column against the dearest row on this plate.</p>
+</section>
+<section class="plate">
+<div class="plate-head"><h3 id="amazon-plate-2">Bestsellers</h3><span class="label">4 actors</span></div>
+<div class="plate-scroll" role="region" tabindex="0" aria-labelledby="amazon-plate-2">
+<table>
+<thead><tr><th scope="col">Actor · what a row is</th><th scope="col" class="num">Free plan, per 1,000</th><th scope="col" class="num">Business plan, per 1,000</th><th scope="col" class="num">Fee per run</th><th scope="col" class="num">Users, 30 days</th></tr></thead>
+<tbody><tr class="us">
+<th scope="row"><a class="bi" href="https://apify.com/steadyfetch/amazon-bestsellers-scraper"><span class="acct">steadyfetch</span><span class="slash">/</span><wbr><span class="slug">amazon-bestsellers-scraper</span></a><span class="diag">One ranked bestseller as a full product row</span></th>
+<td class="num"><span class="v">$6.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num"><span class="v">$1.50</span><span class="gauge"><span style="--w:30.0%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">0</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/junglee/amazon-bestsellers" rel="nofollow"><span class="acct">junglee</span><span class="slash">/</span><wbr><span class="slug">amazon-bestsellers</span></a><span class="diag">Bestseller rows</span></th>
+<td class="num"><span class="v">$5.90</span><span class="gauge"><span style="--w:98.3%"></span></span></td>
+<td class="num"><span class="v">$3.20</span><span class="gauge"><span style="--w:64.0%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">331</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/amazon-scraper/amazon-bestsellers-scraper" rel="nofollow"><span class="acct">amazon-scraper</span><span class="slash">/</span><wbr><span class="slug">amazon-bestsellers-scraper</span></a><span class="diag">Bestseller rows</span></th>
+<td class="num"><span class="v">$2.00</span><span class="gauge"><span style="--w:33.3%"></span></span></td>
+<td class="num"><span class="v">$0.29</span><span class="gauge"><span style="--w:5.8%"></span></span></td>
+<td class="num">$0.00005</td>
+<td class="num">139</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/khadinakbar/amazon-bestsellers-scraper" rel="nofollow"><span class="acct">khadinakbar</span><span class="slash">/</span><wbr><span class="slug">amazon-bestsellers-scraper</span></a><span class="diag">Bestseller rows</span></th>
+<td class="num"><span class="v">$5.00</span><span class="gauge"><span style="--w:83.3%"></span></span></td>
+<td class="num"><span class="v">$5.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num">$0.00005</td>
+<td class="num">48</td>
+</tr></tbody>
+</table>
+</div>
+<p class="scale-note"><span class="swatch"></span>Bars are drawn per column against the dearest row on this plate.</p>
+</section>
+<section class="plate">
+<div class="plate-head"><h3 id="amazon-plate-3">Sellers</h3><span class="label">3 actors</span></div>
+<div class="plate-scroll" role="region" tabindex="0" aria-labelledby="amazon-plate-3">
+<table>
+<thead><tr><th scope="col">Actor · what a row is</th><th scope="col" class="num">Free plan, per 1,000</th><th scope="col" class="num">Business plan, per 1,000</th><th scope="col" class="num">Fee per run</th><th scope="col" class="num">Users, 30 days</th></tr></thead>
+<tbody><tr class="us">
+<th scope="row"><a class="bi" href="https://apify.com/steadyfetch/amazon-seller-scraper"><span class="acct">steadyfetch</span><span class="slash">/</span><wbr><span class="slug">amazon-seller-scraper</span></a><span class="diag">One seller profile, or one of its listings as a full product row</span></th>
+<td class="num"><span class="v">$6.00</span><span class="gauge"><span style="--w:30.0%"></span></span></td>
+<td class="num"><span class="v">$1.50</span><span class="gauge"><span style="--w:15.0%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">0</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/junglee/amazon-seller-scraper" rel="nofollow"><span class="acct">junglee</span><span class="slash">/</span><wbr><span class="slug">amazon-seller-scraper</span></a><span class="diag">Seller rows</span></th>
+<td class="num"><span class="v">$5.00</span><span class="gauge"><span style="--w:25.0%"></span></span></td>
+<td class="num"><span class="v">$3.00</span><span class="gauge"><span style="--w:30.0%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">64</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/pratikdani/amazon-seller-extractor" rel="nofollow"><span class="acct">pratikdani</span><span class="slash">/</span><wbr><span class="slug">amazon-seller-extractor</span></a><span class="diag">Seller data rows</span></th>
+<td class="num"><span class="v">$20.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num"><span class="v">$10.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num">$0.002</td>
+<td class="num">11</td>
+</tr></tbody>
+</table>
+</div>
+<p class="scale-note"><span class="swatch"></span>Bars are drawn per column against the dearest row on this plate.</p>
+</section>
+<h3 class="outside">Outside Apify</h3>
+<div class="sheets"><article class="sheet vendor">
+<h3><a href="https://trajectdata.com/pricing/rainforest-api" rel="nofollow">Rainforest API (Traject Data)</a></h3>
+<p class="returns">Amazon product, search, bestsellers, sellers, reviews and more, one request per page</p>
+<p class="vprice"><span class="label">Price as published</span>$23 per month for 500 requests ($46 per 1,000) down to $9,000 for 20,000,000 ($0.45 per 1,000), annual billing.</p>
+</article></div>
+</section>
 
+<section class="section"><svg class="pulse" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
 <h2>How to read it</h2>
-<p>junglee's Amazon Product Scraper is the category's incumbent with 22,000 users. Its base row is $5 per 1,000 on the free plan; offers, sellers and delivery-location pricing are extra events. Our product row is $6 per 1,000 on the free plan and $1.50 on Business, with buy box, stock, variants, ranks, images and the specifications table included.</p>
-<p>Rainforest API is the dedicated off-Apify option: one request per page, from $46 per 1,000 on the smallest plan down to $0.45 per 1,000 at twenty million requests a month.</p>
+<div class="key"><p>junglee's Amazon Product Scraper is the category's incumbent with 22,000 users. Its base row is $5 per 1,000 on the free plan; offers, sellers and delivery-location pricing are extra events. Our product row is $6 per 1,000 on the free plan and $1.50 on Business, with buy box, stock, variants, ranks, images and the specifications table included.</p>
+<p>Rainforest API is the dedicated off-Apify option: one request per page, from $46 per 1,000 on the smallest plan down to $0.45 per 1,000 at twenty million requests a month.</p></div>
+</section>
 
+<section class="section"><svg class="pulse" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
 <h2>What we do not do</h2>
-<ul><li>We do not scrape reviews text.</li><li>We do not return delivery-location or Prime-specific pricing variants.</li><li>We do not provide seller contact details beyond what the public storefront shows.</li></ul>
+<ul class="list"><li>We do not scrape reviews text.</li><li>We do not return delivery-location or Prime-specific pricing variants.</li><li>We do not provide seller contact details beyond what the public storefront shows.</li></ul>
+</section>
 
+<section class="section"><svg class="pulse" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
 <h2>Run it your way</h2>
-<ul class="ways">
-<li><b>Console.</b> Open any store page above, fill the form, press Start. The free Apify plan covers test runs.</li>
-<li><b>API.</b> Every actor has a REST endpoint: <code>POST https://api.apify.com/v2/acts/steadyfetch~&lt;actor&gt;/run-sync-get-dataset-items?token=…</code> with the input as JSON. The API docs link on each card shows the exact body.</li>
-<li><b>MCP.</b> The "Pin to Apify MCP" link registers that one actor as a tool for Claude, Cursor or any MCP client.</li>
-<li><b>n8n.</b> Free, import-validated workflow templates for several actors live at <a href="https://github.com/steadyfetch/n8n-templates">steadyfetch/n8n-templates</a>.</li>
+<ul class="list ways">
+<li><b>Console</b>Open any store page above, fill the form, press Start. The free Apify plan covers test runs.</li>
+<li><b>API</b>Every actor has a REST endpoint: <code>POST https://api.apify.com/v2/acts/steadyfetch~&lt;actor&gt;/run-sync-get-dataset-items?token=…</code> with the input as JSON. The API docs link on each card shows the exact body.</li>
+<li><b>MCP</b>The "Pin to Apify MCP" link registers that one actor as a tool for Claude, Cursor or any MCP client.</li>
+<li><b>n8n</b>Free, import-validated workflow templates for several actors live at <a href="https://github.com/steadyfetch/n8n-templates">steadyfetch/n8n-templates</a>.</li>
 </ul>
+</section>
 </main>
 <footer>
+<svg class="pulse pulse--faint" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
+<div class="foot-in">
+<p class="foot-mark"><span class="plate-chip"><svg viewBox="0 0 512 512" width="100%" height="100%" aria-hidden="true" focusable="false"><path d="M64 306H200V177H311V306H447" fill="none" stroke="#26DC62" stroke-width="40"/></svg></span><span class="name">steadyfetch</span></p>
 <p>Prices on this page were read on 1 September 2026 from the public Apify store API (free-plan and Business-plan tiers) and from each vendor's own pricing page, and are quoted per 1,000 units unless stated. Apify actor prices change with notice; the store page is the source of truth at run time. Users are the store's 30-day user count on the same day.</p>
 <p>Steadyfetch actors are unofficial tools that read public pages. They are not affiliated with, endorsed by or sponsored by Meta, TikTok, LinkedIn, Google, Amazon, Indeed, Glassdoor or Instagram. Competitor and vendor names are their owners' trademarks and appear here only to identify the products compared.</p>
 <p>Something on this page wrong? Open an issue on the actor's page on Apify; every one is read. Last updated 1 September 2026.</p>
+</div>
 </footer>
+<script>(function(){var b=document.getElementById("theme");if(!b)return;var r=document.documentElement;function lab(){var d=(r.getAttribute("data-theme")||(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))==="dark";b.setAttribute("aria-label",d?"Switch to the light plate":"Switch to the dark plate")}lab();b.addEventListener("click",function(){var cur=r.getAttribute("data-theme")||(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");var next=cur==="dark"?"light":"dark";r.setAttribute("data-theme",next);try{localStorage.setItem("sf-theme",next)}catch(e){}lab()})})();</script>
 </body>
 </html>

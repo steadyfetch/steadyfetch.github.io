@@ -9,7 +9,7 @@ const ISO = "2026-09-01";
 const store = (slug) => `https://apify.com/steadyfetch/${slug}`;
 const mcp = (slug) => `https://mcp.apify.com?tools=steadyfetch/${slug}`;
 const tpl = (file) => `https://github.com/steadyfetch/n8n-templates/blob/master/${file}`;
-const perK = (v) => (v == null ? "—" : "$" + (v * 1000).toLocaleString("en-US", { maximumFractionDigits: 2 }));
+const perK = (v) => (v == null ? "—" : "$" + (v * 1000).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
 const usd = (v) => "$" + v.toLocaleString("en-US", { maximumFractionDigits: 5 });
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
@@ -296,6 +296,35 @@ const FAMILIES = [
 ];
 
 // ---------- RENDER ----------
+// Direction contract lives in the emitted markup (see `contract` below).
+const FONTS = "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=Azeret+Mono:wght@400;600&display=swap";
+const N_OURS = Object.keys(OURS).length;
+const N_COMP = Object.keys(C).length;
+const N_VEND = Object.keys(VENDORS).length;
+
+// The mark, stretched into a rule: one clean step up and back down.
+const pulse = (mod = "") => `<svg class="pulse${mod}" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>`;
+const chip = `<span class="plate-chip"><svg viewBox="0 0 512 512" width="100%" height="100%" aria-hidden="true" focusable="false"><path d="M64 306H200V177H311V306H447" fill="none" stroke="#26DC62" stroke-width="40"/></svg></span>`;
+const navLabel = (f) => f.h1.replace(", compared honestly", "");
+const binomial = (id) => {
+  const cut = id.indexOf("/");
+  return `<span class="acct">${esc(id.slice(0, cut))}</span><span class="slash">/</span><wbr><span class="slug">${esc(id.slice(cut + 1))}</span>`;
+};
+const contract = `<!--
+THESIS: a comparative plate, not a vendor comparison page: every actor in a family laid out as a
+specimen at one shared scale, its price bar drawn even where ours is the longest. Refuses the
+tick-and-cross "us vs them" table the category ships.
+OWN-WORLD: the plate ground runs edge to edge (herbarium stock in light, the brand's own #050911
+in dark); one ink, one accent (steadyfetch green), hairline rules, no shadowed cards. Archivo
+condensed for plate titles, Azeret Mono for every measured figure and every actor binomial.
+STORY: the visitor sees the field measured on one scale, finds the row that beats us, reads why,
+and goes to a store page to run an actor.
+FIRST VIEWPORT: plate title, the collection stamp (what was read, from where, when), the lead,
+then the proof — two Indeed specimens at identical scale where the competitor wins 60 to 1.
+FORM: candidate 4 of the grounded list (comparative field-guide plate); seed key 0838385b.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+-->`;
+
 function head(title, desc, path, extraJsonLd) {
   const url = SITE + path;
   return `<!doctype html>
@@ -310,101 +339,190 @@ function head(title, desc, path, extraJsonLd) {
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${url}">
 <meta property="og:type" content="article">
+<meta property="og:image" content="${SITE}/brand/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Steadyfetch">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow">
+<meta name="theme-color" content="#e7eae3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#050911" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/brand/favicon.ico" sizes="32x32">
+<link rel="icon" href="/brand/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
+<script>try{var t=localStorage.getItem("sf-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="${FONTS}">
 <link rel="stylesheet" href="/style.css">
 ${extraJsonLd ? `<script type="application/ld+json">${JSON.stringify(extraJsonLd)}</script>` : ""}
 </head>
 <body>
-<header class="top"><a class="brand" href="/">Steadyfetch</a><nav aria-label="Families">${FAMILIES.map(f => `<a href="/${f.dir}/">${esc(f.h1.replace(", compared honestly", ""))}</a>`).join("")}</nav></header>
-<main>`;
+${contract}
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+<div class="top-in">
+<a class="lockup" href="/">${chip}<span class="name">steadyfetch</span></a>
+<nav aria-label="Comparison pages">${FAMILIES.map(f => `<a href="/${f.dir}/"${path === `/${f.dir}/` ? ' aria-current="page"' : ""}>${esc(navLabel(f))}</a>`).join("")}</nav>
+<button class="theme" type="button" id="theme" aria-label="Switch colour theme"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="13" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.5H4A2.5 2.5 0 0 0 1.5 4v8A2.5 2.5 0 0 0 4 14.5h4z" fill="currentColor"/></svg></button>
+</div>
+${pulse(" pulse--lead")}
+</header>
+<main id="main">`;
 }
+
+const stampBand = (parts) => `<p class="stamp">${parts.map(p => `<span>${esc(p)}</span>`).join("")}</p>`;
+
 const foot = (updated) => `</main>
 <footer>
+${pulse(" pulse--faint")}
+<div class="foot-in">
+<p class="foot-mark">${chip}<span class="name">steadyfetch</span></p>
 <p>Prices on this page were read on ${CHECKED} from the public Apify store API (free-plan and Business-plan tiers) and from each vendor's own pricing page, and are quoted per 1,000 units unless stated. Apify actor prices change with notice; the store page is the source of truth at run time. Users are the store's 30-day user count on the same day.</p>
 <p>Steadyfetch actors are unofficial tools that read public pages. They are not affiliated with, endorsed by or sponsored by Meta, TikTok, LinkedIn, Google, Amazon, Indeed, Glassdoor or Instagram. Competitor and vendor names are their owners' trademarks and appear here only to identify the products compared.</p>
 <p>Something on this page wrong? Open an issue on the actor's page on Apify; every one is read. Last updated ${updated}.</p>
+</div>
 </footer>
+<script>(function(){var b=document.getElementById("theme");if(!b)return;var r=document.documentElement;function lab(){var d=(r.getAttribute("data-theme")||(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))==="dark";b.setAttribute("aria-label",d?"Switch to the light plate":"Switch to the dark plate")}lab();b.addEventListener("click",function(){var cur=r.getAttribute("data-theme")||(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");var next=cur==="dark"?"light":"dark";r.setAttribute("data-theme",next);try{localStorage.setItem("sf-theme",next)}catch(e){}lab()})})();</script>
 </body>
 </html>
 `;
 
+// A specimen sheet for one of our actors.
 function ourCard(slug) {
   const o = OURS[slug];
   const templates = [o.template, o.template2].filter(Boolean);
-  return `<article class="card" id="${slug}">
+  return `<article class="sheet" id="${slug}">
 <h3><a href="${store(slug)}">${esc(o.name)}</a></h3>
-<p class="price"><span class="k">Free plan</span> <b>${perK(o.free)}</b> per 1,000 ${esc(o.unit)}s <span class="sep">·</span> <span class="k">Business plan</span> <b>${perK(o.gold)}</b>${o.extra ? ` <span class="extra">${esc(o.extra)}</span>` : ""}</p>
-<p>${esc(o.returns)}</p>
+<div class="meter">
+<div><b>${perK(o.free)}</b><span class="label">Free plan / 1,000</span></div>
+<div><b>${perK(o.gold)}</b><span class="label">Business / 1,000</span></div>
+</div>
+<p class="unitline">per 1,000 ${esc(o.unit)}s${o.extra ? ` <span class="ext">${esc(o.extra)}</span>` : ""}</p>
+<p class="returns">${esc(o.returns)}</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
-<p class="links"><a href="${store(slug)}">Store page</a> <a href="${mcp(slug)}">Pin to Apify MCP</a>${templates.map(t => ` <a href="${tpl(t)}">n8n template</a>`).join("")} <a href="https://apify.com/steadyfetch/${slug}/api">API docs</a></p>
+<p class="links"><a href="${store(slug)}">Store page</a> <a href="${mcp(slug)}">Pin to Apify MCP</a>${templates.map(t => ` <a href="${tpl(t)}">n8n · ${esc(t.replace(".workflow.json", "").replace(/-/g, " "))}</a>`).join("")} <a href="https://apify.com/steadyfetch/${slug}/api">API docs</a></p>
 </article>`;
 }
 
-function compTable(g, family) {
+// One plate: the group's specimens at a single shared scale.
+function compTable(g, family, idx) {
   const minute = !!g.minute;
-  const rows = [];
-  const oursRow = (slug) => {
+  const wide = family.dir === "ad-transcripts" || family.dir === "youtube-media";
+  const users30 = { "google-trends-scraper": 16, "facebook-ads-transcript-scraper": 13, "keyword-search-volume-scraper": 3, "instagram-reel-transcript-scraper": 2, "instagram-profile-posts": 0, "amazon-product-scraper": 0, "amazon-search-scraper": 0, "amazon-bestsellers-scraper": 0, "amazon-seller-scraper": 0 };
+  const items = [];
+  const ourItem = (slug) => {
     const o = OURS[slug];
-    const users30 = { "google-trends-scraper": 16, "facebook-ads-transcript-scraper": 13, "keyword-search-volume-scraper": 3, "instagram-reel-transcript-scraper": 2, "instagram-profile-posts": 0, "amazon-product-scraper": 0, "amazon-search-scraper": 0, "amazon-bestsellers-scraper": 0, "amazon-seller-scraper": 0 }[slug] ?? 1;
-    const tcol = (family.dir === "ad-transcripts" || family.dir === "youtube-media") ? `<td>${esc(TRANSCRIPT_COL[slug] ?? "Yes")}</td>` : "";
-    return `<tr class="us"><td><a href="${store(slug)}">steadyfetch/${slug}</a></td><td>${esc(ROW[slug])}</td>${tcol}<td class="num">${perK(o.free)}</td><td class="num">${perK(o.gold)}</td><td class="num">none</td><td class="num">${users30}</td></tr>`;
+    items.push({ id: `steadyfetch/${slug}`, href: store(slug), rel: "", diag: ROW[slug], t: TRANSCRIPT_COL[slug] ?? "Yes", free: o.free, gold: o.gold, freeTxt: perK(o.free), goldTxt: perK(o.gold), note: "", start: 0, users: users30[slug] ?? 1, mine: true });
   };
-  rows.push(oursRow(g.ourSlug));
-  if (g.ourSlug2) rows.push(oursRow(g.ourSlug2));
+  ourItem(g.ourSlug);
+  if (g.ourSlug2) ourItem(g.ourSlug2);
   for (const id of g.ids) {
     const c = C[id];
-    const unitNote = c.batch ? " per batch of 1,000" : c.page ? " per page/item" : c.minute ? " per 1,000 minutes" : "";
-    const price = (v) => (c.batch || c.page ? usd(v) : perK(v)) + (c.batch || c.page ? unitNote : "");
-    rows.push(`<tr><td><a href="https://apify.com/${id}" rel="nofollow">${esc(id)}</a></td><td>${esc(c.returns)}</td>${family.dir === "ad-transcripts" || family.dir === "youtube-media" ? `<td>${esc(c.transcripts ?? "—")}</td>` : ""}<td class="num">${price(c.free)}</td><td class="num">${price(c.gold)}</td><td class="num">${c.start ? usd(c.start) : "none"}</td><td class="num">${c.users.toLocaleString("en-US")}</td></tr>`);
+    const odd = !!(c.batch || c.page);
+    const note = c.batch ? "per batch of 1,000" : c.page ? "per page/item" : "";
+    items.push({ id, href: `https://apify.com/${id}`, rel: ' rel="nofollow"', diag: c.returns, t: c.transcripts ?? "—", free: odd ? null : c.free, gold: odd ? null : c.gold, freeTxt: odd ? usd(c.free) : perK(c.free), goldTxt: odd ? usd(c.gold) : perK(c.gold), note, start: c.start, users: c.users, mine: false });
   }
-  const transcriptCol = family.dir === "ad-transcripts" || family.dir === "youtube-media" ? "<th>Transcripts</th>" : "";
-  return `<h3>${esc(g.label)}</h3>
-<div class="tbl-wrap"><table>
-<thead><tr><th>Actor</th><th>What a row is</th>${transcriptCol}<th class="num">Free plan, per 1,000${minute ? " min" : ""}</th><th class="num">Business plan, per 1,000${minute ? " min" : ""}</th><th class="num">Fee per run</th><th class="num">Users, 30 days</th></tr></thead>
-<tbody>${rows.join("\n")}</tbody>
-</table></div>`;
+  const peak = (k) => items.reduce((m, i) => (i[k] != null && i[k] > m ? i[k] : m), 0);
+  const mf = peak("free"), mg = peak("gold");
+  const bar = (v, max) => (v == null || max <= 0 ? "" : `<span class="gauge"><span style="--w:${((v / max) * 100).toFixed(1)}%"></span></span>`);
+  const per = `per 1,000${minute ? " min" : ""}`;
+  const id = `${family.dir}-plate-${idx}`;
+  const rows = items.map(i => `<tr${i.mine ? ' class="us"' : ""}>
+<th scope="row"><a class="bi" href="${i.href}"${i.rel}>${binomial(i.id)}</a><span class="diag">${esc(i.diag)}</span></th>${wide ? `<td>${esc(i.t)}</td>` : ""}
+<td class="num"><span class="v">${i.freeTxt}</span>${i.note ? `<span class="note">${esc(i.note)}</span>` : ""}${bar(i.free, mf)}</td>
+<td class="num"><span class="v">${i.goldTxt}</span>${i.note ? `<span class="note">${esc(i.note)}</span>` : ""}${bar(i.gold, mg)}</td>
+<td class="num">${i.start ? usd(i.start) : '<span class="none">none</span>'}</td>
+<td class="num">${i.users.toLocaleString("en-US")}</td>
+</tr>`).join("\n");
+  const unpriced = items.some(i => i.free == null);
+  return `<section class="plate">
+<div class="plate-head"><h3 id="${id}">${esc(g.label)}</h3><span class="label">${items.length} actors</span></div>
+<div class="plate-scroll" role="region" tabindex="0" aria-labelledby="${id}">
+<table>
+<thead><tr><th scope="col">Actor · what a row is</th>${wide ? "<th scope=\"col\">Transcripts</th>" : ""}<th scope="col" class="num">Free plan, ${per}</th><th scope="col" class="num">Business plan, ${per}</th><th scope="col" class="num">Fee per run</th><th scope="col" class="num">Users, 30 days</th></tr></thead>
+<tbody>${rows}</tbody>
+</table>
+</div>
+<p class="scale-note"><span class="swatch"></span>Bars are drawn per column against the dearest row on this plate${unpriced ? "; rows priced by batch or by page carry no bar, because the unit is not the same" : ""}.</p>
+</section>`;
 }
 
 function vendorRows(keys) {
   if (!keys.length) return "";
-  return `<h3>Outside Apify</h3>
-<div class="tbl-wrap"><table>
-<thead><tr><th>Tool</th><th>What you get</th><th>Price as published</th></tr></thead>
-<tbody>${keys.map(k => { const v = VENDORS[k]; return `<tr><td><a href="${v.url}" rel="nofollow">${esc(v.name)}</a></td><td>${esc(v.returns)}</td><td>${esc(v.price)}</td></tr>`; }).join("\n")}</tbody>
-</table></div>`;
+  return `<h3 class="outside">Outside Apify</h3>
+<div class="sheets">${keys.map(k => {
+    const v = VENDORS[k];
+    return `<article class="sheet vendor">
+<h3><a href="${v.url}" rel="nofollow">${esc(v.name)}</a></h3>
+<p class="returns">${esc(v.returns)}</p>
+<p class="vprice"><span class="label">Price as published</span>${esc(v.price)}</p>
+</article>`;
+  }).join("\n")}</div>`;
 }
 
 function familyPage(f) {
   const path = `/${f.dir}/`;
   const jsonld = { "@context": "https://schema.org", "@type": "WebPage", name: f.title, description: f.desc, url: SITE + path, dateModified: ISO, isPartOf: { "@type": "WebSite", name: "Steadyfetch", url: SITE }, about: f.ours.map(s => ({ "@type": "SoftwareApplication", name: OURS[s].name, url: store(s), applicationCategory: "DeveloperApplication", offers: { "@type": "Offer", price: OURS[s].free, priceCurrency: "USD", description: `per ${OURS[s].unit}, free plan` } })) };
+  const compared = f.ours.length + f.groups.reduce((n, g) => n + g.ids.length, 0);
   return head(f.title, f.desc, path, jsonld) + `
-<p class="crumbs"><a href="/">Steadyfetch</a> › ${esc(f.h1)}</p>
+<p class="crumbs"><a href="/">Steadyfetch</a><span class="sep">/</span>${esc(navLabel(f))}</p>
 <h1>${esc(f.h1)}</h1>
-<p class="checked">Prices checked ${CHECKED} · per 1,000 units · free plan and Business plan</p>
-${f.intro.map(p => `<p class="lead">${esc(p)}</p>`).join("\n")}
+${stampBand([`Prices checked ${CHECKED}`, "Per 1,000 units", "Free plan and Business plan", `${compared} actors compared`])}
+${f.intro.map((p, i) => `<p${i === 0 ? ' class="lead"' : ""}>${esc(p)}</p>`).join("\n")}
 
+<section class="section">${pulse()}
 <h2>Our actors in this family</h2>
-<div class="cards">${f.ours.map(ourCard).join("\n")}</div>
+<div class="sheets">${f.ours.map(ourCard).join("\n")}</div>
+</section>
 
+<section class="section">${pulse()}
 <h2>The field, side by side</h2>
 <p>Every actor that appears in Apify store search for these terms, with the price its store page publishes for a free-plan account and for a Business-plan account. Our rows are shaded.</p>
-${f.groups.map(g => compTable(g, f)).join("\n")}
+${f.groups.map((g, i) => compTable(g, f, i)).join("\n")}
 ${vendorRows(f.vendors)}
+</section>
 
+<section class="section">${pulse()}
 <h2>How to read it</h2>
-${f.reading.map(p => `<p>${esc(p)}</p>`).join("\n")}
+<div class="key">${f.reading.map(p => `<p>${esc(p)}</p>`).join("\n")}</div>
+</section>
 
+<section class="section">${pulse()}
 <h2>What we do not do</h2>
-<ul>${f.not.map(n => `<li>${esc(n)}</li>`).join("")}</ul>
+<ul class="list">${f.not.map(n => `<li>${esc(n)}</li>`).join("")}</ul>
+</section>
 
+<section class="section">${pulse()}
 <h2>Run it your way</h2>
-<ul class="ways">
-<li><b>Console.</b> Open any store page above, fill the form, press Start. The free Apify plan covers test runs.</li>
-<li><b>API.</b> Every actor has a REST endpoint: <code>POST https://api.apify.com/v2/acts/steadyfetch~&lt;actor&gt;/run-sync-get-dataset-items?token=…</code> with the input as JSON. The API docs link on each card shows the exact body.</li>
-<li><b>MCP.</b> The "Pin to Apify MCP" link registers that one actor as a tool for Claude, Cursor or any MCP client.</li>
-<li><b>n8n.</b> Free, import-validated workflow templates for several actors live at <a href="https://github.com/steadyfetch/n8n-templates">steadyfetch/n8n-templates</a>.</li>
+<ul class="list ways">
+<li><b>Console</b>Open any store page above, fill the form, press Start. The free Apify plan covers test runs.</li>
+<li><b>API</b>Every actor has a REST endpoint: <code>POST https://api.apify.com/v2/acts/steadyfetch~&lt;actor&gt;/run-sync-get-dataset-items?token=…</code> with the input as JSON. The API docs link on each card shows the exact body.</li>
+<li><b>MCP</b>The "Pin to Apify MCP" link registers that one actor as a tool for Claude, Cursor or any MCP client.</li>
+<li><b>n8n</b>Free, import-validated workflow templates for several actors live at <a href="https://github.com/steadyfetch/n8n-templates">steadyfetch/n8n-templates</a>.</li>
 </ul>
+</section>
 ` + foot(CHECKED);
+}
+
+// The proof: two specimens on one scale, and the competitor wins.
+function proofBlock() {
+  const jobs = FAMILIES.find(f => f.dir === "jobs");
+  const mine = { id: "steadyfetch/indeed-jobs-scraper", v: OURS["indeed-jobs-scraper"].free, mine: true };
+  const theirs = { id: "valig/indeed-jobs-scraper", v: C["valig/indeed-jobs-scraper"].free, mine: false };
+  const max = Math.max(mine.v, theirs.v);
+  const spec = (s) => `<div class="spec${s.mine ? " mine" : ""}">
+<p class="who">${binomial(s.id)}</p>
+<div class="track"><span class="rail"><span class="fill" style="--w:${((s.v / max) * 100).toFixed(1)}%"></span></span><span class="amt">${perK(s.v)}</span></div>
+</div>`;
+  return `<div class="proof">
+<h2>Where a competitor is cheaper, the table says so.</h2>
+<p class="sub">Indeed listings, free plan, per 1,000 — read from the store on ${CHECKED}.</p>
+<div class="specimens">${spec(theirs)}${spec(mine)}</div>
+<p class="verdict">${esc(jobs.reading[0])}</p>
+<p class="verdict">${esc(jobs.reading[1])}</p>
+<p class="more"><a href="/jobs/">See the whole jobs plate</a></p>
+</div>`;
 }
 
 function indexPage() {
@@ -413,21 +531,39 @@ function indexPage() {
   const jsonld = { "@context": "https://schema.org", "@type": "WebSite", name: "Steadyfetch", url: SITE, description: desc };
   return head(title, desc, "/", jsonld) + `
 <h1>Data actors on Apify, compared honestly</h1>
+${stampBand([`All prices read ${CHECKED}`, "Public Apify store API and vendor pricing pages", `${N_OURS} actors · ${N_COMP} competing actors · ${N_VEND} vendors`])}
 <p class="lead">Steadyfetch builds 25 pay-per-event actors on the Apify platform. They share one rule: you are charged only when a row lands in your dataset, and a miss tells you why it was free. These pages put each family next to every competing actor and the main outside vendors, with the same price columns, so you can decide with the numbers in front of you.</p>
-<p class="checked">All prices read ${CHECKED} from the public Apify store API and vendor pricing pages.</p>
-<div class="cards hub">
-${FAMILIES.map(f => `<article class="card"><h2><a href="/${f.dir}/">${esc(f.h1.replace(", compared honestly", ""))}</a></h2><p>${esc(f.desc.replace(/ Prices checked.*$/, ""))}</p><p class="links">${f.ours.map(s => `<a href="${store(s)}">${esc(OURS[s].name)}</a>`).join(" ")}</p></article>`).join("\n")}
+
+<section class="section first">${pulse()}
+${proofBlock()}
+</section>
+
+<section class="section">${pulse()}
+<div class="plate-index">
+${FAMILIES.map(f => `<article class="entry">
+<h2><a href="/${f.dir}/">${esc(navLabel(f))}</a></h2>
+<p class="count">${f.ours.length} of ours · ${f.groups.reduce((n, g) => n + g.ids.length, 0)} competing${f.vendors.length ? ` · ${f.vendors.length} outside Apify` : ""}</p>
+<p class="desc">${esc(f.desc.replace(/ Prices checked.*$/, ""))}</p>
+<p class="roster">${f.ours.map(s => `<a href="${store(s)}">${esc(OURS[s].name)}</a>`).join("")}</p>
+</article>`).join("\n")}
 </div>
+</section>
+
+<section class="section">${pulse()}
 <h2>What every Steadyfetch actor promises</h2>
-<ul>
-<li><b>Charged on delivery only.</b> Expired links, blocked pages, empty results and unreadable media come back as rows with a status and <code>charged: false</code>.</li>
-<li><b>Your caps are exact.</b> A result limit of 30 returns 30. A run deadline stops the run cleanly and reports what is left.</li>
-<li><b>No start fees, no minimums.</b> Two exceptions are stated on their cards: an optional per-minute surcharge on videos longer than three minutes, and optional second events like Indeed descriptions.</li>
-<li><b>Chainable.</b> Every transcript actor accepts another scraper's dataset ID, so you can keep the scraper you already use.</li>
-<li><b>Agent-ready.</b> Each actor has a one-click MCP pin link and a REST endpoint; the store's agentic-payments allow-list covers all 25.</li>
+<ul class="promise">
+<li><b>Charged on delivery only</b>Expired links, blocked pages, empty results and unreadable media come back as rows with a status and <code>charged: false</code>.</li>
+<li><b>Your caps are exact</b>A result limit of 30 returns 30. A run deadline stops the run cleanly and reports what is left.</li>
+<li><b>No start fees, no minimums</b>Two exceptions are stated on their cards: an optional per-minute surcharge on videos longer than three minutes, and optional second events like Indeed descriptions.</li>
+<li><b>Chainable</b>Every transcript actor accepts another scraper's dataset ID, so you can keep the scraper you already use.</li>
+<li><b>Agent-ready</b>Each actor has a one-click MCP pin link and a REST endpoint; the store's agentic-payments allow-list covers all 25.</li>
 </ul>
+</section>
+
+<section class="section">${pulse()}
 <h2>Free n8n templates</h2>
 <p>Import-validated workflows for the ad-transcript, keyword-volume and Instagram actors are at <a href="https://github.com/steadyfetch/n8n-templates">github.com/steadyfetch/n8n-templates</a>. No community nodes, plain HTTP, paste one token.</p>
+</section>
 ` + foot(CHECKED);
 }
 

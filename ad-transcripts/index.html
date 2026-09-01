@@ -10,122 +10,344 @@
 <meta property="og:description" content="Which tools turn competitor ads into transcripts and hooks in bulk, what each one returns, and what a thousand ads cost on Apify, Foreplay and ScrapeCreators. Prices checked 1 September 2026.">
 <meta property="og:url" content="https://steadyfetch.com/ad-transcripts/">
 <meta property="og:type" content="article">
+<meta property="og:image" content="https://steadyfetch.com/brand/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Steadyfetch">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow">
+<meta name="theme-color" content="#e7eae3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#050911" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/brand/favicon.ico" sizes="32x32">
+<link rel="icon" href="/brand/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
+<script>try{var t=localStorage.getItem("sf-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=Azeret+Mono:wght@400;600&display=swap">
 <link rel="stylesheet" href="/style.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Bulk ad transcripts: Facebook, TikTok, LinkedIn and Google Ads scrapers compared","description":"Which tools turn competitor ads into transcripts and hooks in bulk, what each one returns, and what a thousand ads cost on Apify, Foreplay and ScrapeCreators. Prices checked 1 September 2026.","url":"https://steadyfetch.com/ad-transcripts/","dateModified":"2026-09-01","isPartOf":{"@type":"WebSite","name":"Steadyfetch","url":"https://steadyfetch.com"},"about":[{"@type":"SoftwareApplication","name":"Facebook Ad Library transcripts","url":"https://apify.com/steadyfetch/facebook-ads-transcript-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.02,"priceCurrency":"USD","description":"per ad creative, free plan"}},{"@type":"SoftwareApplication","name":"TikTok Top Ads transcripts","url":"https://apify.com/steadyfetch/tiktok-ads-transcript-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.02,"priceCurrency":"USD","description":"per ad, free plan"}},{"@type":"SoftwareApplication","name":"LinkedIn Ad Library transcripts","url":"https://apify.com/steadyfetch/linkedin-ads-transcript-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.02,"priceCurrency":"USD","description":"per ad, free plan"}},{"@type":"SoftwareApplication","name":"Google Ads video transcripts","url":"https://apify.com/steadyfetch/google-ads-video-transcript-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.02,"priceCurrency":"USD","description":"per ad, free plan"}},{"@type":"SoftwareApplication","name":"Google Ads creative text (OCR)","url":"https://apify.com/steadyfetch/google-ads-creative-text-scraper","applicationCategory":"DeveloperApplication","offers":{"@type":"Offer","price":0.015,"priceCurrency":"USD","description":"per creative, free plan"}}]}</script>
 </head>
 <body>
-<header class="top"><a class="brand" href="/">Steadyfetch</a><nav aria-label="Families"><a href="/ad-transcripts/">Bulk ad transcripts</a><a href="/trends-keywords/">Google Trends and keyword data</a><a href="/jobs/">Job listing scrapers</a><a href="/amazon/">Amazon product data</a><a href="/youtube-media/">Video and audio to text</a></nav></header>
-<main>
-<p class="crumbs"><a href="/">Steadyfetch</a> › Bulk ad transcripts, compared honestly</p>
+<!--
+THESIS: a comparative plate, not a vendor comparison page: every actor in a family laid out as a
+specimen at one shared scale, its price bar drawn even where ours is the longest. Refuses the
+tick-and-cross "us vs them" table the category ships.
+OWN-WORLD: the plate ground runs edge to edge (herbarium stock in light, the brand's own #050911
+in dark); one ink, one accent (steadyfetch green), hairline rules, no shadowed cards. Archivo
+condensed for plate titles, Azeret Mono for every measured figure and every actor binomial.
+STORY: the visitor sees the field measured on one scale, finds the row that beats us, reads why,
+and goes to a store page to run an actor.
+FIRST VIEWPORT: plate title, the collection stamp (what was read, from where, when), the lead,
+then the proof — two Indeed specimens at identical scale where the competitor wins 60 to 1.
+FORM: candidate 4 of the grounded list (comparative field-guide plate); seed key 0838385b.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+-->
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+<div class="top-in">
+<a class="lockup" href="/"><span class="plate-chip"><svg viewBox="0 0 512 512" width="100%" height="100%" aria-hidden="true" focusable="false"><path d="M64 306H200V177H311V306H447" fill="none" stroke="#26DC62" stroke-width="40"/></svg></span><span class="name">steadyfetch</span></a>
+<nav aria-label="Comparison pages"><a href="/ad-transcripts/" aria-current="page">Bulk ad transcripts</a><a href="/trends-keywords/">Google Trends and keyword data</a><a href="/jobs/">Job listing scrapers</a><a href="/amazon/">Amazon product data</a><a href="/youtube-media/">Video and audio to text</a></nav>
+<button class="theme" type="button" id="theme" aria-label="Switch colour theme"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.5" y="1.5" width="13" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.5H4A2.5 2.5 0 0 0 1.5 4v8A2.5 2.5 0 0 0 4 14.5h4z" fill="currentColor"/></svg></button>
+</div>
+<svg class="pulse pulse--lead" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
+</header>
+<main id="main">
+<p class="crumbs"><a href="/">Steadyfetch</a><span class="sep">/</span>Bulk ad transcripts</p>
 <h1>Bulk ad transcripts, compared honestly</h1>
-<p class="checked">Prices checked 1 September 2026 · per 1,000 units · free plan and Business plan</p>
+<p class="stamp"><span>Prices checked 1 September 2026</span><span>Per 1,000 units</span><span>Free plan and Business plan</span><span>21 actors compared</span></p>
 <p class="lead">Ad libraries hand you metadata: advertiser, dates, a media URL. The creative itself, what the ad actually says in its first three seconds, is the part a media buyer, a creative strategist or an ad-intelligence pipeline needs, and almost no scraper delivers it.</p>
-<p class="lead">This page compares every Apify actor that comes up for those searches, plus the two subscription tools people ask about, on what they return and what a thousand ads cost. Our five actors are on it, priced the same way, so you can judge them against the field.</p>
+<p>This page compares every Apify actor that comes up for those searches, plus the two subscription tools people ask about, on what they return and what a thousand ads cost. Our five actors are on it, priced the same way, so you can judge them against the field.</p>
 
+<section class="section"><svg class="pulse" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
 <h2>Our actors in this family</h2>
-<div class="cards"><article class="card" id="facebook-ads-transcript-scraper">
+<div class="sheets"><article class="sheet" id="facebook-ads-transcript-scraper">
 <h3><a href="https://apify.com/steadyfetch/facebook-ads-transcript-scraper">Facebook Ad Library transcripts</a></h3>
-<p class="price"><span class="k">Free plan</span> <b>$20</b> per 1,000 ad creatives <span class="sep">·</span> <span class="k">Business plan</span> <b>$10</b> <span class="extra">+ $0.005 per minute beyond the first 3 minutes of a video</span></p>
-<p>Search the Ad Library by keyword or advertiser, or chain any Ad Library scraper's dataset. Video ads come back as a full transcript, the first-3-seconds hook, CTA and timestamped segments; image ads as headline, body and CTA read off the creative.</p>
+<div class="meter">
+<div><b>$20.00</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$10.00</b><span class="label">Business / 1,000</span></div>
+</div>
+<p class="unitline">per 1,000 ad creatives <span class="ext">+ $0.005 per minute beyond the first 3 minutes of a video</span></p>
+<p class="returns">Search the Ad Library by keyword or advertiser, or chain any Ad Library scraper's dataset. Video ads come back as a full transcript, the first-3-seconds hook, CTA and timestamped segments; image ads as headline, body and CTA read off the creative.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
-<p class="links"><a href="https://apify.com/steadyfetch/facebook-ads-transcript-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/facebook-ads-transcript-scraper">Pin to Apify MCP</a> <a href="https://github.com/steadyfetch/n8n-templates/blob/master/facebook-ad-transcripts.workflow.json">n8n template</a> <a href="https://github.com/steadyfetch/n8n-templates/blob/master/competitor-ad-teardown.workflow.json">n8n template</a> <a href="https://apify.com/steadyfetch/facebook-ads-transcript-scraper/api">API docs</a></p>
+<p class="links"><a href="https://apify.com/steadyfetch/facebook-ads-transcript-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/facebook-ads-transcript-scraper">Pin to Apify MCP</a> <a href="https://github.com/steadyfetch/n8n-templates/blob/master/facebook-ad-transcripts.workflow.json">n8n · facebook ad transcripts</a> <a href="https://github.com/steadyfetch/n8n-templates/blob/master/competitor-ad-teardown.workflow.json">n8n · competitor ad teardown</a> <a href="https://apify.com/steadyfetch/facebook-ads-transcript-scraper/api">API docs</a></p>
 </article>
-<article class="card" id="tiktok-ads-transcript-scraper">
+<article class="sheet" id="tiktok-ads-transcript-scraper">
 <h3><a href="https://apify.com/steadyfetch/tiktok-ads-transcript-scraper">TikTok Top Ads transcripts</a></h3>
-<p class="price"><span class="k">Free plan</span> <b>$20</b> per 1,000 ads <span class="sep">·</span> <span class="k">Business plan</span> <b>$8</b> <span class="extra">+ $0.005 per minute beyond the first 3 minutes</span></p>
-<p>Pick a region and industry and it finds the current Creative Center Top Ads itself, then transcribes them: transcript, hook, brand, CTR, cost and likes on one row. Also accepts video URLs, material IDs or a scraper's dataset ID.</p>
+<div class="meter">
+<div><b>$20.00</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$8.00</b><span class="label">Business / 1,000</span></div>
+</div>
+<p class="unitline">per 1,000 ads <span class="ext">+ $0.005 per minute beyond the first 3 minutes</span></p>
+<p class="returns">Pick a region and industry and it finds the current Creative Center Top Ads itself, then transcribes them: transcript, hook, brand, CTR, cost and likes on one row. Also accepts video URLs, material IDs or a scraper's dataset ID.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/tiktok-ads-transcript-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/tiktok-ads-transcript-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/tiktok-ads-transcript-scraper/api">API docs</a></p>
 </article>
-<article class="card" id="linkedin-ads-transcript-scraper">
+<article class="sheet" id="linkedin-ads-transcript-scraper">
 <h3><a href="https://apify.com/steadyfetch/linkedin-ads-transcript-scraper">LinkedIn Ad Library transcripts</a></h3>
-<p class="price"><span class="k">Free plan</span> <b>$20</b> per 1,000 ads <span class="sep">·</span> <span class="k">Business plan</span> <b>$8</b> <span class="extra">+ $0.005 per minute beyond the first 3 minutes</span></p>
-<p>Advertiser names, keywords, or just a market and date range. Video ads become transcripts with the hook; image ads (about four in five LinkedIn ads) have their on-image copy read out. Advertiser, headline, paying entity and language on every row.</p>
+<div class="meter">
+<div><b>$20.00</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$8.00</b><span class="label">Business / 1,000</span></div>
+</div>
+<p class="unitline">per 1,000 ads <span class="ext">+ $0.005 per minute beyond the first 3 minutes</span></p>
+<p class="returns">Advertiser names, keywords, or just a market and date range. Video ads become transcripts with the hook; image ads (about four in five LinkedIn ads) have their on-image copy read out. Advertiser, headline, paying entity and language on every row.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/linkedin-ads-transcript-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/linkedin-ads-transcript-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/linkedin-ads-transcript-scraper/api">API docs</a></p>
 </article>
-<article class="card" id="google-ads-video-transcript-scraper">
+<article class="sheet" id="google-ads-video-transcript-scraper">
 <h3><a href="https://apify.com/steadyfetch/google-ads-video-transcript-scraper">Google Ads video transcripts</a></h3>
-<p class="price"><span class="k">Free plan</span> <b>$20</b> per 1,000 ads <span class="sep">·</span> <span class="k">Business plan</span> <b>$8</b> <span class="extra">+ $0.005 per minute beyond the first 3 minutes</span></p>
-<p>Advertiser names, domains or Transparency Center links in; one row per video ad with the transcript (caption track first, speech-to-text otherwise), hook, creative ID and language.</p>
+<div class="meter">
+<div><b>$20.00</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$8.00</b><span class="label">Business / 1,000</span></div>
+</div>
+<p class="unitline">per 1,000 ads <span class="ext">+ $0.005 per minute beyond the first 3 minutes</span></p>
+<p class="returns">Advertiser names, domains or Transparency Center links in; one row per video ad with the transcript (caption track first, speech-to-text otherwise), hook, creative ID and language.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/google-ads-video-transcript-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/google-ads-video-transcript-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/google-ads-video-transcript-scraper/api">API docs</a></p>
 </article>
-<article class="card" id="google-ads-creative-text-scraper">
+<article class="sheet" id="google-ads-creative-text-scraper">
 <h3><a href="https://apify.com/steadyfetch/google-ads-creative-text-scraper">Google Ads creative text (OCR)</a></h3>
-<p class="price"><span class="k">Free plan</span> <b>$15</b> per 1,000 creatives <span class="sep">·</span> <span class="k">Business plan</span> <b>$4</b></p>
-<p>The Transparency Center renders every ad as an image, so metadata scrapers never return the copy. This one reads it: headline, body, CTA, display URL and the raw text per creative.</p>
+<div class="meter">
+<div><b>$15.00</b><span class="label">Free plan / 1,000</span></div>
+<div><b>$4.00</b><span class="label">Business / 1,000</span></div>
+</div>
+<p class="unitline">per 1,000 creatives</p>
+<p class="returns">The Transparency Center renders every ad as an image, so metadata scrapers never return the copy. This one reads it: headline, body, CTA, display URL and the raw text per creative.</p>
 <p class="law">Charged only when a row lands in your dataset. Misses carry a status and <code>charged: false</code>.</p>
 <p class="links"><a href="https://apify.com/steadyfetch/google-ads-creative-text-scraper">Store page</a> <a href="https://mcp.apify.com?tools=steadyfetch/google-ads-creative-text-scraper">Pin to Apify MCP</a> <a href="https://apify.com/steadyfetch/google-ads-creative-text-scraper/api">API docs</a></p>
 </article></div>
+</section>
 
+<section class="section"><svg class="pulse" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
 <h2>The field, side by side</h2>
 <p>Every actor that appears in Apify store search for these terms, with the price its store page publishes for a free-plan account and for a Business-plan account. Our rows are shaded.</p>
-<h3>Facebook / Meta Ad Library</h3>
-<div class="tbl-wrap"><table>
-<thead><tr><th>Actor</th><th>What a row is</th><th>Transcripts</th><th class="num">Free plan, per 1,000</th><th class="num">Business plan, per 1,000</th><th class="num">Fee per run</th><th class="num">Users, 30 days</th></tr></thead>
-<tbody><tr class="us"><td><a href="https://apify.com/steadyfetch/facebook-ads-transcript-scraper">steadyfetch/facebook-ads-transcript-scraper</a></td><td>One ad creative: transcript, first-3s hook, CTA and segments for video; headline, body and CTA for image ads</td><td>Yes</td><td class="num">$20</td><td class="num">$10</td><td class="num">none</td><td class="num">13</td></tr>
-<tr><td><a href="https://apify.com/apify/facebook-ads-scraper" rel="nofollow">apify/facebook-ads-scraper</a></td><td>Ad Library metadata rows (advertiser, text, dates, media URLs); optional e-commerce enrichment</td><td>No</td><td class="num">$5.8</td><td class="num">$3.4</td><td class="num">none</td><td class="num">5,515</td></tr>
-<tr><td><a href="https://apify.com/curious_coder/facebook-ads-library-scraper" rel="nofollow">curious_coder/facebook-ads-library-scraper</a></td><td>Ad Library metadata rows with media URLs</td><td>No</td><td class="num">$0.75</td><td class="num">$0.75</td><td class="num">$0.00005</td><td class="num">5,455</td></tr>
-<tr><td><a href="https://apify.com/igolaizola/facebook-ad-library-scraper" rel="nofollow">igolaizola/facebook-ad-library-scraper</a></td><td>Ad Library rows; optional detail fetch at the same price again</td><td>No</td><td class="num">$0.75</td><td class="num">$0.3</td><td class="num">$0.0075</td><td class="num">790</td></tr>
-<tr><td><a href="https://apify.com/brilliant_gum/facebook-ads-library-scraper" rel="nofollow">brilliant_gum/facebook-ads-library-scraper</a></td><td>Meta and Instagram ads from the Ad Library</td><td>No</td><td class="num">$15</td><td class="num">$15</td><td class="num">$0.001</td><td class="num">263</td></tr>
-<tr><td><a href="https://apify.com/automation-lab/facebook-ads-transcript-scraper" rel="nofollow">automation-lab/facebook-ads-transcript-scraper</a></td><td>Priced per item; 11 users since its August 25 launch</td><td>Yes (per its title)</td><td class="num">$0.45</td><td class="num">$0.24</td><td class="num">$0.005</td><td class="num">5</td></tr></tbody>
-</table></div>
-<h3>TikTok ads and TikTok transcripts</h3>
-<div class="tbl-wrap"><table>
-<thead><tr><th>Actor</th><th>What a row is</th><th>Transcripts</th><th class="num">Free plan, per 1,000</th><th class="num">Business plan, per 1,000</th><th class="num">Fee per run</th><th class="num">Users, 30 days</th></tr></thead>
-<tbody><tr class="us"><td><a href="https://apify.com/steadyfetch/tiktok-ads-transcript-scraper">steadyfetch/tiktok-ads-transcript-scraper</a></td><td>One Top Ad: transcript, hook, brand, CTR, cost, likes</td><td>Yes</td><td class="num">$20</td><td class="num">$8</td><td class="num">none</td><td class="num">1</td></tr>
-<tr><td><a href="https://apify.com/lexis-solutions/tiktok-ads-scraper" rel="nofollow">lexis-solutions/tiktok-ads-scraper</a></td><td>Creative Center ad metadata rows</td><td>No</td><td class="num">$0.49</td><td class="num">$0.49</td><td class="num">$0.00001</td><td class="num">164</td></tr>
-<tr><td><a href="https://apify.com/khadinakbar/tiktok-ads-scraper" rel="nofollow">khadinakbar/tiktok-ads-scraper</a></td><td>Creative Center Top Ads metadata</td><td>No</td><td class="num">$3</td><td class="num">$3</td><td class="num">$0.00005</td><td class="num">53</td></tr>
-<tr><td><a href="https://apify.com/brilliant_gum/tiktok-ads-library-scraper" rel="nofollow">brilliant_gum/tiktok-ads-library-scraper</a></td><td>EU Ad Library and Creative Center rows</td><td>No</td><td class="num">$15</td><td class="num">$15</td><td class="num">$0.001</td><td class="num">75</td></tr>
-<tr><td><a href="https://apify.com/clockworks/tiktok-transcript-extractor" rel="nofollow">clockworks/tiktok-transcript-extractor</a></td><td>Organic TikTok videos, not ads; transcription billed per minute at $0.048 (free plan) / $0.027 (Business)</td><td>Yes, organic videos</td><td class="num">$3.7</td><td class="num">$1.7</td><td class="num">none</td><td class="num">126</td></tr>
-<tr><td><a href="https://apify.com/sian.agency/best-tiktok-ai-transcript-extractor" rel="nofollow">sian.agency/best-tiktok-ai-transcript-extractor</a></td><td>Organic TikTok content processed with AI transcripts</td><td>Yes, organic videos</td><td class="num">$25</td><td class="num">$10</td><td class="num">$0.005</td><td class="num">161</td></tr>
-<tr><td><a href="https://apify.com/scrape-creators/best-tiktok-transcripts-scraper" rel="nofollow">scrape-creators/best-tiktok-transcripts-scraper</a></td><td>Organic TikTok captions/transcripts</td><td>Yes, organic videos</td><td class="num">$1</td><td class="num">$1</td><td class="num">none</td><td class="num">228</td></tr></tbody>
-</table></div>
-<h3>LinkedIn Ad Library</h3>
-<div class="tbl-wrap"><table>
-<thead><tr><th>Actor</th><th>What a row is</th><th>Transcripts</th><th class="num">Free plan, per 1,000</th><th class="num">Business plan, per 1,000</th><th class="num">Fee per run</th><th class="num">Users, 30 days</th></tr></thead>
-<tbody><tr class="us"><td><a href="https://apify.com/steadyfetch/linkedin-ads-transcript-scraper">steadyfetch/linkedin-ads-transcript-scraper</a></td><td>One ad: transcript and hook (video) or on-image copy (image), advertiser, paying entity</td><td>Yes</td><td class="num">$20</td><td class="num">$8</td><td class="num">none</td><td class="num">1</td></tr>
-<tr><td><a href="https://apify.com/s-r/linkedin-ads-library" rel="nofollow">s-r/linkedin-ads-library</a></td><td>LinkedIn Ad Library rows</td><td>No</td><td class="num">$5</td><td class="num">$5</td><td class="num">none</td><td class="num">40</td></tr>
-<tr><td><a href="https://apify.com/data_xplorer/linkedin-ad-library-scraper" rel="nofollow">data_xplorer/linkedin-ad-library-scraper</a></td><td>LinkedIn Ad Library rows</td><td>No</td><td class="num">$1.5</td><td class="num">$0.5</td><td class="num">none</td><td class="num">15</td></tr>
-<tr><td><a href="https://apify.com/azzouzana/linkedin-ads-library-scraper" rel="nofollow">azzouzana/linkedin-ads-library-scraper</a></td><td>LinkedIn Ad Library rows; ad details at the same price again</td><td>No</td><td class="num">$0.5</td><td class="num">$0.5</td><td class="num">$0.005</td><td class="num">32</td></tr></tbody>
-</table></div>
-<h3>Google Ads Transparency Center</h3>
-<div class="tbl-wrap"><table>
-<thead><tr><th>Actor</th><th>What a row is</th><th>Transcripts</th><th class="num">Free plan, per 1,000</th><th class="num">Business plan, per 1,000</th><th class="num">Fee per run</th><th class="num">Users, 30 days</th></tr></thead>
-<tbody><tr class="us"><td><a href="https://apify.com/steadyfetch/google-ads-video-transcript-scraper">steadyfetch/google-ads-video-transcript-scraper</a></td><td>One video ad: transcript, hook, creative ID, language</td><td>Yes</td><td class="num">$20</td><td class="num">$8</td><td class="num">none</td><td class="num">1</td></tr>
-<tr class="us"><td><a href="https://apify.com/steadyfetch/google-ads-creative-text-scraper">steadyfetch/google-ads-creative-text-scraper</a></td><td>One creative: headline, body, CTA, display URL, raw text read from the rendered ad</td><td>Image text (OCR)</td><td class="num">$15</td><td class="num">$4</td><td class="num">none</td><td class="num">1</td></tr>
-<tr><td><a href="https://apify.com/solidcode/ads-transparency-scraper" rel="nofollow">solidcode/ads-transparency-scraper</a></td><td>Google Ads Transparency metadata rows (IDs, dates, formats, screenshot URLs)</td><td>No</td><td class="num">$1.5</td><td class="num">$0.8</td><td class="num">$0.001</td><td class="num">508</td></tr>
-<tr><td><a href="https://apify.com/scrapesage/google-ads-transparency-scraper" rel="nofollow">scrapesage/google-ads-transparency-scraper</a></td><td>Transparency Center ads; details and advertiser lookups at $0.003 each</td><td>No</td><td class="num">$2</td><td class="num">$2</td><td class="num">none</td><td class="num">418</td></tr></tbody>
-</table></div>
-<h3>Outside Apify</h3>
-<div class="tbl-wrap"><table>
-<thead><tr><th>Tool</th><th>What you get</th><th>Price as published</th></tr></thead>
-<tbody><tr><td><a href="https://www.foreplay.co/pricing" rel="nofollow">Foreplay (subscription)</a></td><td>A saved-ads workspace with automated transcription and boards; priced per seat, not per ad</td><td>$59 / $175 / $459 per month (Basic / Workflow / Agency; $49 / $149 / $389 on annual billing). Transcripts included; API access 10,000 credits per month.</td></tr>
-<tr><td><a href="https://scrapecreators.com/" rel="nofollow">ScrapeCreators API</a></td><td>37+ REST endpoints; TikTok video transcript endpoint listed; Facebook Ad Library endpoints listed without a transcript endpoint on the pricing page</td><td>$47 for 25,000 credits ($1.88 per 1,000 requests); $497 for 500,000 ($0.99 per 1,000). Credits never expire.</td></tr></tbody>
-</table></div>
+<section class="plate">
+<div class="plate-head"><h3 id="ad-transcripts-plate-0">Facebook / Meta Ad Library</h3><span class="label">6 actors</span></div>
+<div class="plate-scroll" role="region" tabindex="0" aria-labelledby="ad-transcripts-plate-0">
+<table>
+<thead><tr><th scope="col">Actor · what a row is</th><th scope="col">Transcripts</th><th scope="col" class="num">Free plan, per 1,000</th><th scope="col" class="num">Business plan, per 1,000</th><th scope="col" class="num">Fee per run</th><th scope="col" class="num">Users, 30 days</th></tr></thead>
+<tbody><tr class="us">
+<th scope="row"><a class="bi" href="https://apify.com/steadyfetch/facebook-ads-transcript-scraper"><span class="acct">steadyfetch</span><span class="slash">/</span><wbr><span class="slug">facebook-ads-transcript-scraper</span></a><span class="diag">One ad creative: transcript, first-3s hook, CTA and segments for video; headline, body and CTA for image ads</span></th><td>Yes</td>
+<td class="num"><span class="v">$20.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num"><span class="v">$10.00</span><span class="gauge"><span style="--w:66.7%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">13</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/apify/facebook-ads-scraper" rel="nofollow"><span class="acct">apify</span><span class="slash">/</span><wbr><span class="slug">facebook-ads-scraper</span></a><span class="diag">Ad Library metadata rows (advertiser, text, dates, media URLs); optional e-commerce enrichment</span></th><td>No</td>
+<td class="num"><span class="v">$5.80</span><span class="gauge"><span style="--w:29.0%"></span></span></td>
+<td class="num"><span class="v">$3.40</span><span class="gauge"><span style="--w:22.7%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">5,515</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/curious_coder/facebook-ads-library-scraper" rel="nofollow"><span class="acct">curious_coder</span><span class="slash">/</span><wbr><span class="slug">facebook-ads-library-scraper</span></a><span class="diag">Ad Library metadata rows with media URLs</span></th><td>No</td>
+<td class="num"><span class="v">$0.75</span><span class="gauge"><span style="--w:3.8%"></span></span></td>
+<td class="num"><span class="v">$0.75</span><span class="gauge"><span style="--w:5.0%"></span></span></td>
+<td class="num">$0.00005</td>
+<td class="num">5,455</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/igolaizola/facebook-ad-library-scraper" rel="nofollow"><span class="acct">igolaizola</span><span class="slash">/</span><wbr><span class="slug">facebook-ad-library-scraper</span></a><span class="diag">Ad Library rows; optional detail fetch at the same price again</span></th><td>No</td>
+<td class="num"><span class="v">$0.75</span><span class="gauge"><span style="--w:3.8%"></span></span></td>
+<td class="num"><span class="v">$0.30</span><span class="gauge"><span style="--w:2.0%"></span></span></td>
+<td class="num">$0.0075</td>
+<td class="num">790</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/brilliant_gum/facebook-ads-library-scraper" rel="nofollow"><span class="acct">brilliant_gum</span><span class="slash">/</span><wbr><span class="slug">facebook-ads-library-scraper</span></a><span class="diag">Meta and Instagram ads from the Ad Library</span></th><td>No</td>
+<td class="num"><span class="v">$15.00</span><span class="gauge"><span style="--w:75.0%"></span></span></td>
+<td class="num"><span class="v">$15.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num">$0.001</td>
+<td class="num">263</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/automation-lab/facebook-ads-transcript-scraper" rel="nofollow"><span class="acct">automation-lab</span><span class="slash">/</span><wbr><span class="slug">facebook-ads-transcript-scraper</span></a><span class="diag">Priced per item; 11 users since its August 25 launch</span></th><td>Yes (per its title)</td>
+<td class="num"><span class="v">$0.45</span><span class="gauge"><span style="--w:2.3%"></span></span></td>
+<td class="num"><span class="v">$0.24</span><span class="gauge"><span style="--w:1.6%"></span></span></td>
+<td class="num">$0.005</td>
+<td class="num">5</td>
+</tr></tbody>
+</table>
+</div>
+<p class="scale-note"><span class="swatch"></span>Bars are drawn per column against the dearest row on this plate.</p>
+</section>
+<section class="plate">
+<div class="plate-head"><h3 id="ad-transcripts-plate-1">TikTok ads and TikTok transcripts</h3><span class="label">7 actors</span></div>
+<div class="plate-scroll" role="region" tabindex="0" aria-labelledby="ad-transcripts-plate-1">
+<table>
+<thead><tr><th scope="col">Actor · what a row is</th><th scope="col">Transcripts</th><th scope="col" class="num">Free plan, per 1,000</th><th scope="col" class="num">Business plan, per 1,000</th><th scope="col" class="num">Fee per run</th><th scope="col" class="num">Users, 30 days</th></tr></thead>
+<tbody><tr class="us">
+<th scope="row"><a class="bi" href="https://apify.com/steadyfetch/tiktok-ads-transcript-scraper"><span class="acct">steadyfetch</span><span class="slash">/</span><wbr><span class="slug">tiktok-ads-transcript-scraper</span></a><span class="diag">One Top Ad: transcript, hook, brand, CTR, cost, likes</span></th><td>Yes</td>
+<td class="num"><span class="v">$20.00</span><span class="gauge"><span style="--w:80.0%"></span></span></td>
+<td class="num"><span class="v">$8.00</span><span class="gauge"><span style="--w:53.3%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">1</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/lexis-solutions/tiktok-ads-scraper" rel="nofollow"><span class="acct">lexis-solutions</span><span class="slash">/</span><wbr><span class="slug">tiktok-ads-scraper</span></a><span class="diag">Creative Center ad metadata rows</span></th><td>No</td>
+<td class="num"><span class="v">$0.49</span><span class="gauge"><span style="--w:2.0%"></span></span></td>
+<td class="num"><span class="v">$0.49</span><span class="gauge"><span style="--w:3.3%"></span></span></td>
+<td class="num">$0.00001</td>
+<td class="num">164</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/khadinakbar/tiktok-ads-scraper" rel="nofollow"><span class="acct">khadinakbar</span><span class="slash">/</span><wbr><span class="slug">tiktok-ads-scraper</span></a><span class="diag">Creative Center Top Ads metadata</span></th><td>No</td>
+<td class="num"><span class="v">$3.00</span><span class="gauge"><span style="--w:12.0%"></span></span></td>
+<td class="num"><span class="v">$3.00</span><span class="gauge"><span style="--w:20.0%"></span></span></td>
+<td class="num">$0.00005</td>
+<td class="num">53</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/brilliant_gum/tiktok-ads-library-scraper" rel="nofollow"><span class="acct">brilliant_gum</span><span class="slash">/</span><wbr><span class="slug">tiktok-ads-library-scraper</span></a><span class="diag">EU Ad Library and Creative Center rows</span></th><td>No</td>
+<td class="num"><span class="v">$15.00</span><span class="gauge"><span style="--w:60.0%"></span></span></td>
+<td class="num"><span class="v">$15.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num">$0.001</td>
+<td class="num">75</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/clockworks/tiktok-transcript-extractor" rel="nofollow"><span class="acct">clockworks</span><span class="slash">/</span><wbr><span class="slug">tiktok-transcript-extractor</span></a><span class="diag">Organic TikTok videos, not ads; transcription billed per minute at $0.048 (free plan) / $0.027 (Business)</span></th><td>Yes, organic videos</td>
+<td class="num"><span class="v">$3.70</span><span class="gauge"><span style="--w:14.8%"></span></span></td>
+<td class="num"><span class="v">$1.70</span><span class="gauge"><span style="--w:11.3%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">126</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/sian.agency/best-tiktok-ai-transcript-extractor" rel="nofollow"><span class="acct">sian.agency</span><span class="slash">/</span><wbr><span class="slug">best-tiktok-ai-transcript-extractor</span></a><span class="diag">Organic TikTok content processed with AI transcripts</span></th><td>Yes, organic videos</td>
+<td class="num"><span class="v">$25.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num"><span class="v">$10.00</span><span class="gauge"><span style="--w:66.7%"></span></span></td>
+<td class="num">$0.005</td>
+<td class="num">161</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/scrape-creators/best-tiktok-transcripts-scraper" rel="nofollow"><span class="acct">scrape-creators</span><span class="slash">/</span><wbr><span class="slug">best-tiktok-transcripts-scraper</span></a><span class="diag">Organic TikTok captions/transcripts</span></th><td>Yes, organic videos</td>
+<td class="num"><span class="v">$1.00</span><span class="gauge"><span style="--w:4.0%"></span></span></td>
+<td class="num"><span class="v">$1.00</span><span class="gauge"><span style="--w:6.7%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">228</td>
+</tr></tbody>
+</table>
+</div>
+<p class="scale-note"><span class="swatch"></span>Bars are drawn per column against the dearest row on this plate.</p>
+</section>
+<section class="plate">
+<div class="plate-head"><h3 id="ad-transcripts-plate-2">LinkedIn Ad Library</h3><span class="label">4 actors</span></div>
+<div class="plate-scroll" role="region" tabindex="0" aria-labelledby="ad-transcripts-plate-2">
+<table>
+<thead><tr><th scope="col">Actor · what a row is</th><th scope="col">Transcripts</th><th scope="col" class="num">Free plan, per 1,000</th><th scope="col" class="num">Business plan, per 1,000</th><th scope="col" class="num">Fee per run</th><th scope="col" class="num">Users, 30 days</th></tr></thead>
+<tbody><tr class="us">
+<th scope="row"><a class="bi" href="https://apify.com/steadyfetch/linkedin-ads-transcript-scraper"><span class="acct">steadyfetch</span><span class="slash">/</span><wbr><span class="slug">linkedin-ads-transcript-scraper</span></a><span class="diag">One ad: transcript and hook (video) or on-image copy (image), advertiser, paying entity</span></th><td>Yes</td>
+<td class="num"><span class="v">$20.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num"><span class="v">$8.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">1</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/s-r/linkedin-ads-library" rel="nofollow"><span class="acct">s-r</span><span class="slash">/</span><wbr><span class="slug">linkedin-ads-library</span></a><span class="diag">LinkedIn Ad Library rows</span></th><td>No</td>
+<td class="num"><span class="v">$5.00</span><span class="gauge"><span style="--w:25.0%"></span></span></td>
+<td class="num"><span class="v">$5.00</span><span class="gauge"><span style="--w:62.5%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">40</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/data_xplorer/linkedin-ad-library-scraper" rel="nofollow"><span class="acct">data_xplorer</span><span class="slash">/</span><wbr><span class="slug">linkedin-ad-library-scraper</span></a><span class="diag">LinkedIn Ad Library rows</span></th><td>No</td>
+<td class="num"><span class="v">$1.50</span><span class="gauge"><span style="--w:7.5%"></span></span></td>
+<td class="num"><span class="v">$0.50</span><span class="gauge"><span style="--w:6.3%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">15</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/azzouzana/linkedin-ads-library-scraper" rel="nofollow"><span class="acct">azzouzana</span><span class="slash">/</span><wbr><span class="slug">linkedin-ads-library-scraper</span></a><span class="diag">LinkedIn Ad Library rows; ad details at the same price again</span></th><td>No</td>
+<td class="num"><span class="v">$0.50</span><span class="gauge"><span style="--w:2.5%"></span></span></td>
+<td class="num"><span class="v">$0.50</span><span class="gauge"><span style="--w:6.3%"></span></span></td>
+<td class="num">$0.005</td>
+<td class="num">32</td>
+</tr></tbody>
+</table>
+</div>
+<p class="scale-note"><span class="swatch"></span>Bars are drawn per column against the dearest row on this plate.</p>
+</section>
+<section class="plate">
+<div class="plate-head"><h3 id="ad-transcripts-plate-3">Google Ads Transparency Center</h3><span class="label">4 actors</span></div>
+<div class="plate-scroll" role="region" tabindex="0" aria-labelledby="ad-transcripts-plate-3">
+<table>
+<thead><tr><th scope="col">Actor · what a row is</th><th scope="col">Transcripts</th><th scope="col" class="num">Free plan, per 1,000</th><th scope="col" class="num">Business plan, per 1,000</th><th scope="col" class="num">Fee per run</th><th scope="col" class="num">Users, 30 days</th></tr></thead>
+<tbody><tr class="us">
+<th scope="row"><a class="bi" href="https://apify.com/steadyfetch/google-ads-video-transcript-scraper"><span class="acct">steadyfetch</span><span class="slash">/</span><wbr><span class="slug">google-ads-video-transcript-scraper</span></a><span class="diag">One video ad: transcript, hook, creative ID, language</span></th><td>Yes</td>
+<td class="num"><span class="v">$20.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num"><span class="v">$8.00</span><span class="gauge"><span style="--w:100.0%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">1</td>
+</tr>
+<tr class="us">
+<th scope="row"><a class="bi" href="https://apify.com/steadyfetch/google-ads-creative-text-scraper"><span class="acct">steadyfetch</span><span class="slash">/</span><wbr><span class="slug">google-ads-creative-text-scraper</span></a><span class="diag">One creative: headline, body, CTA, display URL, raw text read from the rendered ad</span></th><td>Image text (OCR)</td>
+<td class="num"><span class="v">$15.00</span><span class="gauge"><span style="--w:75.0%"></span></span></td>
+<td class="num"><span class="v">$4.00</span><span class="gauge"><span style="--w:50.0%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">1</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/solidcode/ads-transparency-scraper" rel="nofollow"><span class="acct">solidcode</span><span class="slash">/</span><wbr><span class="slug">ads-transparency-scraper</span></a><span class="diag">Google Ads Transparency metadata rows (IDs, dates, formats, screenshot URLs)</span></th><td>No</td>
+<td class="num"><span class="v">$1.50</span><span class="gauge"><span style="--w:7.5%"></span></span></td>
+<td class="num"><span class="v">$0.80</span><span class="gauge"><span style="--w:10.0%"></span></span></td>
+<td class="num">$0.001</td>
+<td class="num">508</td>
+</tr>
+<tr>
+<th scope="row"><a class="bi" href="https://apify.com/scrapesage/google-ads-transparency-scraper" rel="nofollow"><span class="acct">scrapesage</span><span class="slash">/</span><wbr><span class="slug">google-ads-transparency-scraper</span></a><span class="diag">Transparency Center ads; details and advertiser lookups at $0.003 each</span></th><td>No</td>
+<td class="num"><span class="v">$2.00</span><span class="gauge"><span style="--w:10.0%"></span></span></td>
+<td class="num"><span class="v">$2.00</span><span class="gauge"><span style="--w:25.0%"></span></span></td>
+<td class="num"><span class="none">none</span></td>
+<td class="num">418</td>
+</tr></tbody>
+</table>
+</div>
+<p class="scale-note"><span class="swatch"></span>Bars are drawn per column against the dearest row on this plate.</p>
+</section>
+<h3 class="outside">Outside Apify</h3>
+<div class="sheets"><article class="sheet vendor">
+<h3><a href="https://www.foreplay.co/pricing" rel="nofollow">Foreplay (subscription)</a></h3>
+<p class="returns">A saved-ads workspace with automated transcription and boards; priced per seat, not per ad</p>
+<p class="vprice"><span class="label">Price as published</span>$59 / $175 / $459 per month (Basic / Workflow / Agency; $49 / $149 / $389 on annual billing). Transcripts included; API access 10,000 credits per month.</p>
+</article>
+<article class="sheet vendor">
+<h3><a href="https://scrapecreators.com/" rel="nofollow">ScrapeCreators API</a></h3>
+<p class="returns">37+ REST endpoints; TikTok video transcript endpoint listed; Facebook Ad Library endpoints listed without a transcript endpoint on the pricing page</p>
+<p class="vprice"><span class="label">Price as published</span>$47 for 25,000 credits ($1.88 per 1,000 requests); $497 for 500,000 ($0.99 per 1,000). Credits never expire.</p>
+</article></div>
+</section>
 
+<section class="section"><svg class="pulse" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
 <h2>How to read it</h2>
-<p>Metadata scrapers are cheaper per row because they deliver less per row. A thousand Ad Library rows from the most-used scraper cost $0.75; a thousand transcribed video ads from us cost $10 to $20 depending on your Apify plan. If you only need who is running ads, use the metadata scraper. If you need what the ads say, chain it into ours by dataset ID and pay only for the ads that transcribe.</p>
+<div class="key"><p>Metadata scrapers are cheaper per row because they deliver less per row. A thousand Ad Library rows from the most-used scraper cost $0.75; a thousand transcribed video ads from us cost $10 to $20 depending on your Apify plan. If you only need who is running ads, use the metadata scraper. If you need what the ads say, chain it into ours by dataset ID and pay only for the ads that transcribe.</p>
 <p>Foreplay is a workspace, not a pipeline: transcripts are included in a per-seat subscription starting at $59 a month, with API access capped by credits. That is the right shape for a small team browsing ads by hand and the wrong shape for a scheduled feed of thousands of creatives.</p>
-<p>The TikTok transcript actors above work on organic videos, not ads. Ours discovers Creative Center Top Ads for a region and industry on its own, so the first run works with nothing to prepare.</p>
+<p>The TikTok transcript actors above work on organic videos, not ads. Ours discovers Creative Center Top Ads for a region and industry on its own, so the first run works with nothing to prepare.</p></div>
+</section>
 
+<section class="section"><svg class="pulse" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
 <h2>What we do not do</h2>
-<ul><li>We do not estimate spend, reach or audience; the ad libraries do not publish those and we do not model them.</li><li>We do not store a browsable library or boards. Output is a dataset you keep, export or pipe onward.</li><li>A silent or music-only video is not charged unless you switch on on-screen text reading, in which case a video with readable on-screen text is delivered as a charged row.</li><li>We do not cover Snapchat, Pinterest or Reddit ad libraries.</li></ul>
+<ul class="list"><li>We do not estimate spend, reach or audience; the ad libraries do not publish those and we do not model them.</li><li>We do not store a browsable library or boards. Output is a dataset you keep, export or pipe onward.</li><li>A silent or music-only video is not charged unless you switch on on-screen text reading, in which case a video with readable on-screen text is delivered as a charged row.</li><li>We do not cover Snapchat, Pinterest or Reddit ad libraries.</li></ul>
+</section>
 
+<section class="section"><svg class="pulse" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
 <h2>Run it your way</h2>
-<ul class="ways">
-<li><b>Console.</b> Open any store page above, fill the form, press Start. The free Apify plan covers test runs.</li>
-<li><b>API.</b> Every actor has a REST endpoint: <code>POST https://api.apify.com/v2/acts/steadyfetch~&lt;actor&gt;/run-sync-get-dataset-items?token=…</code> with the input as JSON. The API docs link on each card shows the exact body.</li>
-<li><b>MCP.</b> The "Pin to Apify MCP" link registers that one actor as a tool for Claude, Cursor or any MCP client.</li>
-<li><b>n8n.</b> Free, import-validated workflow templates for several actors live at <a href="https://github.com/steadyfetch/n8n-templates">steadyfetch/n8n-templates</a>.</li>
+<ul class="list ways">
+<li><b>Console</b>Open any store page above, fill the form, press Start. The free Apify plan covers test runs.</li>
+<li><b>API</b>Every actor has a REST endpoint: <code>POST https://api.apify.com/v2/acts/steadyfetch~&lt;actor&gt;/run-sync-get-dataset-items?token=…</code> with the input as JSON. The API docs link on each card shows the exact body.</li>
+<li><b>MCP</b>The "Pin to Apify MCP" link registers that one actor as a tool for Claude, Cursor or any MCP client.</li>
+<li><b>n8n</b>Free, import-validated workflow templates for several actors live at <a href="https://github.com/steadyfetch/n8n-templates">steadyfetch/n8n-templates</a>.</li>
 </ul>
+</section>
 </main>
 <footer>
+<svg class="pulse pulse--faint" viewBox="0 0 1200 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 11H196V4H286V11H1200"/></svg>
+<div class="foot-in">
+<p class="foot-mark"><span class="plate-chip"><svg viewBox="0 0 512 512" width="100%" height="100%" aria-hidden="true" focusable="false"><path d="M64 306H200V177H311V306H447" fill="none" stroke="#26DC62" stroke-width="40"/></svg></span><span class="name">steadyfetch</span></p>
 <p>Prices on this page were read on 1 September 2026 from the public Apify store API (free-plan and Business-plan tiers) and from each vendor's own pricing page, and are quoted per 1,000 units unless stated. Apify actor prices change with notice; the store page is the source of truth at run time. Users are the store's 30-day user count on the same day.</p>
 <p>Steadyfetch actors are unofficial tools that read public pages. They are not affiliated with, endorsed by or sponsored by Meta, TikTok, LinkedIn, Google, Amazon, Indeed, Glassdoor or Instagram. Competitor and vendor names are their owners' trademarks and appear here only to identify the products compared.</p>
 <p>Something on this page wrong? Open an issue on the actor's page on Apify; every one is read. Last updated 1 September 2026.</p>
+</div>
 </footer>
+<script>(function(){var b=document.getElementById("theme");if(!b)return;var r=document.documentElement;function lab(){var d=(r.getAttribute("data-theme")||(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))==="dark";b.setAttribute("aria-label",d?"Switch to the light plate":"Switch to the dark plate")}lab();b.addEventListener("click",function(){var cur=r.getAttribute("data-theme")||(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");var next=cur==="dark"?"light":"dark";r.setAttribute("data-theme",next);try{localStorage.setItem("sf-theme",next)}catch(e){}lab()})})();</script>
 </body>
 </html>
