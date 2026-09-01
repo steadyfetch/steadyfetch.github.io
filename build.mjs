@@ -297,11 +297,9 @@ const FAMILIES = [
 
 // ---------- RENDER ----------
 // Direction contract lives in the emitted markup (see `contract` below).
-// Archivo is display=optional: it either arrives before first paint or this view keeps the
-// metric-matched fallback, so the swap can never reflow a heading. Azeret is swap-safe,
-// because every figure it sets lives in a fixed-width table column.
-const FONT_SANS = "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&display=optional";
-const FONT_MONO = "https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;600&display=swap";
+// Both faces are self-hosted, subsetted variable woff2 under /brand/fonts (SIL OFL).
+// Same origin + preload means Archivo is there at first paint on a cold load, and the
+// metric-matched fallbacks below cover the swap window without moving anything.
 const N_OURS = Object.keys(OURS).length;
 const N_COMP = Object.keys(C).length;
 const N_VEND = Object.keys(VENDORS).length;
@@ -359,10 +357,8 @@ function head(title, desc, path, extraJsonLd) {
 <link rel="icon" href="/brand/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
 <script>try{var t=localStorage.getItem("sf-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="${FONT_SANS}">
-<link rel="stylesheet" href="${FONT_MONO}">
+<link rel="preload" href="/brand/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/brand/fonts/azeret-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
 ${extraJsonLd ? `<script type="application/ld+json">${JSON.stringify(extraJsonLd)}</script>` : ""}
 </head>
