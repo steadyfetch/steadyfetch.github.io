@@ -105,7 +105,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <div class="meter">
 <div><b>$8.00</b><span class="label">Free plan / 1,000</span></div>
 <div><b>$2.00</b><span class="label">Business / 1,000</span></div>
-<p class="unitline">per 1,000 keyword results</p>
+<p class="unitline">per 1,000 keyword results<span class="ext">+ $0.19 per run that buys fresh data, from 16 September 2026 (runs answered from the 30-day cache pay none)</span></p>
 </div>
 <div class="act-main">
 <p class="returns">Google Ads Keyword Planner figures through a licensed provider: average monthly searches, competition, top-of-page bid range, 12-month series and trend direction, CPC where Google publishes one. No minimum batch, no charge on keywords with no data.</p>
@@ -424,7 +424,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 <h2>How to read it</h2>
 <div class="key"><p>The official Apify Google Trends actor is the cheapest per row on the Business plan ($0.30 per 1,000) and has the most users by far. Ours costs more per report and returns each keyword as one schema-stable row per surface, with related topics carrying their knowledge-graph IDs and a compare mode that scores up to five keywords on one shared scale. Pick by what your pipeline needs downstream.</p>
 <p>Per-run fees matter on schedules. An actor with a $0.02 start fee costs $14.40 a month before the first row if it runs hourly. Our Trends Now and autocomplete actors have no start fee for that reason.</p>
-<p>On keyword volume, iskander's actor bills per batch of 1,000 keywords and is much cheaper per keyword when your batches are full. Ours charges per keyword with no minimum and never charges a keyword Google returns no data for, which is the better deal for lists of ten and the worse deal for lists of ten thousand.</p>
+<p>On keyword volume, iskander's actor bills per batch of 1,000 keywords and is much cheaper per keyword when your batches are full. Ours charges per keyword with no minimum batch and never charges a keyword Google returns no data for; from 16 September 2026 a run that buys fresh data also pays one $0.19 fresh-lookup fee, waived when the run is answered from the 30-day cache. That is still the better deal for lists of ten and the worse deal for lists of ten thousand.</p>
 <p>SerpApi's Google Trends API returns the same four surfaces one search at a time, from $25 per 1,000 searches on its smallest plan.</p>
 <p>Rising and Breakout queries are one surface of Google Trends, so most of the actors on that plate are general Trends scrapers that also return them. Two are priced per completed analysis or per keyword group rather than per row, which is cheap on a long seed list and dear on a short one. Ours charges per rising or Breakout query returned and puts the growth percentage on the row.</p>
 <p>Social trends is a field of one actor per platform. X, TikTok and Pinterest each have their own, and one Pinterest actor charges nothing at all, so you pay only Apify platform usage for it. Ours returns X, TikTok, Pinterest, YouTube Charts and Google in one run on one row shape, and costs more per row than the cheapest single-platform actors.</p></div>
