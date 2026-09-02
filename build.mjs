@@ -1,11 +1,11 @@
 // Static builder for steadyfetch.com (hosted on GitHub Pages) — run `node build.mjs`, commit the output.
-// Every price below was read on 1 September 2026 from the public Apify store API
-// (currentPricingInfo / pricingInfos, FREE-plan and GOLD-plan tiers) or the vendor's own pricing page.
+// Every price below was read on 2 September 2026 from the public Apify store API
+// (pricingInfos, latest entry already in effect; FREE-plan and GOLD-plan tiers) or the vendor's own pricing page.
 import { writeFileSync, mkdirSync } from "node:fs";
 
 const SITE = "https://steadyfetch.com";
-const CHECKED = "1 September 2026";
-const ISO = "2026-09-01";
+const CHECKED = "2 September 2026";
+const ISO = "2026-09-02";
 const store = (slug) => `https://apify.com/steadyfetch/${slug}`;
 const mcp = (slug) => `https://mcp.apify.com?tools=steadyfetch/${slug}`;
 const tpl = (file) => `https://github.com/steadyfetch/n8n-templates/blob/master/${file}`;
@@ -76,50 +76,64 @@ const TRANSCRIPT_COL = { "google-ads-creative-text-scraper": "Image text (OCR)",
 const C = {
   // ads
   "apify/facebook-ads-scraper": { free: 0.0058, gold: 0.0034, start: 0, users: 5515, returns: "Ad Library metadata rows (advertiser, text, dates, media URLs); optional e-commerce enrichment", transcripts: "No" },
-  "curious_coder/facebook-ads-library-scraper": { free: 0.00075, gold: 0.00075, start: 0.00005, users: 5455, returns: "Ad Library metadata rows with media URLs", transcripts: "No" },
-  "igolaizola/facebook-ad-library-scraper": { free: 0.00075, gold: 0.0003, start: 0.0075, users: 790, returns: "Ad Library rows; optional detail fetch at the same price again", transcripts: "No" },
-  "brilliant_gum/facebook-ads-library-scraper": { free: 0.015, gold: 0.015, start: 0.001, users: 263, returns: "Meta and Instagram ads from the Ad Library", transcripts: "No" },
-  "automation-lab/facebook-ads-transcript-scraper": { free: 0.00045, gold: 0.00024, start: 0.005, users: 5, returns: "Priced per item; 11 users since its August 25 launch", transcripts: "Yes (per its title)" },
-  "lexis-solutions/tiktok-ads-scraper": { free: 0.00049, gold: 0.00049, start: 0.00001, users: 164, returns: "Creative Center ad metadata rows", transcripts: "No" },
+  "curious_coder/facebook-ads-library-scraper": { free: 0.00075, gold: 0.00075, start: 0.00005, users: 5454, returns: "Ad Library metadata rows with media URLs", transcripts: "No" },
+  "igolaizola/facebook-ad-library-scraper": { free: 0.00075, gold: 0.0003, start: 0.0075, users: 787, returns: "Ad Library rows; optional detail fetch at the same price again", transcripts: "No" },
+  "brilliant_gum/facebook-ads-library-scraper": { free: 0.015, gold: 0.015, start: 0.001, users: 260, returns: "Meta and Instagram ads from the Ad Library", transcripts: "No" },
+  "automation-lab/facebook-ads-transcript-scraper": { free: 0.00045329, gold: 0.0002365, start: 0.005, users: 5, returns: "Priced per item; 11 users since its August 25 launch", transcripts: "Yes (per its title)" },
+  "lexis-solutions/tiktok-ads-scraper": { free: 0.00049, gold: 0.00049, start: 0.00001, users: 163, returns: "Creative Center ad metadata rows", transcripts: "No" },
   "khadinakbar/tiktok-ads-scraper": { free: 0.003, gold: 0.003, start: 0.00005, users: 53, returns: "Creative Center Top Ads metadata", transcripts: "No" },
-  "brilliant_gum/tiktok-ads-library-scraper": { free: 0.015, gold: 0.015, start: 0.001, users: 75, returns: "EU Ad Library and Creative Center rows", transcripts: "No" },
-  "s-r/linkedin-ads-library": { free: 0.005, gold: 0.005, start: 0, users: 40, returns: "LinkedIn Ad Library rows", transcripts: "No" },
+  "brilliant_gum/tiktok-ads-library-scraper": { free: 0.015, gold: 0.015, start: 0.001, users: 74, returns: "EU Ad Library and Creative Center rows", transcripts: "No" },
+  "s-r/linkedin-ads-library": { free: 0.005, gold: 0.005, start: 0, users: 41, returns: "LinkedIn Ad Library rows", transcripts: "No" },
   "data_xplorer/linkedin-ad-library-scraper": { free: 0.0015, gold: 0.0005, start: 0, users: 15, returns: "LinkedIn Ad Library rows", transcripts: "No" },
   "azzouzana/linkedin-ads-library-scraper": { free: 0.0005, gold: 0.0005, start: 0.005, users: 32, returns: "LinkedIn Ad Library rows; ad details at the same price again", transcripts: "No" },
-  "solidcode/ads-transparency-scraper": { free: 0.0015, gold: 0.0008, start: 0.001, users: 508, returns: "Google Ads Transparency metadata rows (IDs, dates, formats, screenshot URLs)", transcripts: "No" },
+  "solidcode/ads-transparency-scraper": { free: 0.0015, gold: 0.0008, start: 0.001, users: 509, returns: "Google Ads Transparency metadata rows (IDs, dates, formats, screenshot URLs)", transcripts: "No" },
   "scrapesage/google-ads-transparency-scraper": { free: 0.002, gold: 0.002, start: 0, users: 418, returns: "Transparency Center ads; details and advertiser lookups at $0.003 each", transcripts: "No" },
   "clockworks/tiktok-transcript-extractor": { free: 0.0037, gold: 0.0017, start: 0, users: 126, returns: "Organic TikTok videos, not ads; transcription billed per minute at $0.048 (free plan) / $0.027 (Business)", transcripts: "Yes, organic videos" },
-  "sian.agency/best-tiktok-ai-transcript-extractor": { free: 0.025, gold: 0.01, start: 0.005, users: 161, returns: "Organic TikTok content processed with AI transcripts", transcripts: "Yes, organic videos" },
+  "sian.agency/best-tiktok-ai-transcript-extractor": { free: 0.025, gold: 0.01, start: 0.005, users: 163, returns: "Organic TikTok content processed with AI transcripts", transcripts: "Yes, organic videos" },
   "scrape-creators/best-tiktok-transcripts-scraper": { free: 0.001, gold: 0.001, start: 0, users: 228, returns: "Organic TikTok captions/transcripts", transcripts: "Yes, organic videos" },
   // trends + keywords
-  "apify/google-trends-scraper": { free: 0.003, gold: 0.0003, start: 0, users: 1199, returns: "Interest over time and related data as rows; the official Apify actor", transcripts: null },
-  "data_xplorer/google-trends-fast-scraper": { free: 0.002, gold: 0.0005, start: 0.02, users: 366, returns: "Trends rows with a $0.02 fee on every run", transcripts: null },
+  "apify/google-trends-scraper": { free: 0.003, gold: 0.0003, start: 0, users: 1195, returns: "Interest over time and related data as rows; the official Apify actor", transcripts: null },
+  "data_xplorer/google-trends-fast-scraper": { free: 0.002, gold: 0.0005, start: 0.02, users: 364, returns: "Trends rows with a $0.02 fee on every run", transcripts: null },
   "khadinakbar/google-trends-scraper": { free: 0.005, gold: 0.005, start: 0.00005, users: 72, returns: "Interest, regions and related queries", transcripts: null },
   "automation-lab/google-trends-scraper": { free: 0.138, gold: 0.072, start: 0.005, users: 58, returns: "Charged per keyword analysed ($0.138 free plan / $0.072 Business) plus $0.00115 per trend row", transcripts: null },
   "vnx0/google-trends-scraper": { free: 0.0012, gold: 0.0012, start: 0, users: 118, returns: "Daily trending keywords", transcripts: null },
   "data_xplorer/google-trends-trending-now": { free: 0.001, gold: 0.00025, start: 0.02, users: 43, returns: "Trending Now rows with a $0.02 fee on every run", transcripts: null },
   "iskander/google-keyword-search-volume-api": { free: 1.99, gold: 0.4, start: 0.00005, users: 131, returns: "Volume and CPC, billed per batch of up to 1,000 keywords ($1.99 free plan / $0.40 Business per batch, even for 10 keywords)", transcripts: null, batch: true },
-  "aitorsm/keyword-volume": { free: 0.012, gold: 0.008, start: 0.00005, users: 369, returns: "Bulk Google metrics with CPC and trend; an 'AI volume' event at the same price", transcripts: null },
+  "aitorsm/keyword-volume": { free: 0.012, gold: 0.008, start: 0.00005, users: 367, returns: "Bulk Google metrics with CPC and trend; an 'AI volume' event at the same price", transcripts: null },
   "crawlerbros/google-keywords-suggest-scraper-pro": { free: 0.002, gold: 0.001, start: 0.005, users: 20, returns: "Google autocomplete suggestions", transcripts: null },
   "memo23/google-suggest-scraper": { free: 0.0005, gold: 0.0005, start: 0.005, users: 43, returns: "Google autocomplete suggestions", transcripts: null },
+  "easyapi/google-trends-keywords-discovery-tool": { free: 0.00299, gold: 0.00299, start: 0.09, users: 31, returns: "Rising queries, trending topics and interest by region as rows", transcripts: null },
+  "simpleapi/google-trends-scraper": { free: 0.00299, gold: 0.00299, start: 0.00005, users: 1, returns: "Search interest, rising topics, comparisons and regional stats as rows", transcripts: null },
+  "apiagent/google-trends-mcp": { free: 0.0003, gold: 0.0003, start: 0.02, users: 1, returns: "Rising keyword rows with a five-year seasonality timeline and timing fields", transcripts: null },
+  "automa-flow/google-trends-monitor": { free: 0.004, gold: 0.004, start: 0, users: 1, returns: "Charged per completed keyword group, not per row; a Trending Now feed is $0.002", transcripts: null, unitNote: "per keyword group" },
+  "razorkaan/google-trends-keyword-opportunity-finder": { free: 0.15, gold: 0.15, start: 0, users: 1, returns: "Expands one seed niche into ranked keyword opportunities; charged per completed analysis, not per row", transcripts: null, unitNote: "per completed analysis" },
+  "doesaiknow/keyword-seasonality-breakout-tracker": { free: 0.018, gold: 0.012, start: 0.005, users: 0, returns: "One row per keyword: five years of weekly interest, peak and trough weeks, a breakout alert", transcripts: null },
+  // social trends
+  "data_xplorer/tiktok-trends": { free: 0.0015, gold: 0.0005, start: 0.025, users: 231, returns: "TikTok Creative Center hashtags, videos and creators with rankings and engagement stats", transcripts: null },
+  "automation-lab/tiktok-trends-scraper": { free: 0.015, gold: 0.0082, start: 0.05, users: 189, returns: "Creative Center hashtags plus the videos, sounds and creators on TikTok Explore", transcripts: null },
+  "karamelo/twitter-trends-scraper": { free: 0.00039, gold: 0.00009, start: 0, users: 156, returns: "X trends by country across eight time windows, with tweet volumes", transcripts: null },
+  "automation-lab/twitter-trends-scraper": { free: 0.00023, gold: 0.00012, start: 0.003, users: 80, returns: "X trends for a country, city or worldwide; up to 50 per location with tweet volumes", transcripts: null },
+  "automation-lab/pinterest-trends-scraper": { free: 0.00115, gold: 0.0006, start: 0.005, users: 36, returns: "Pinterest trend keywords with growth scores, seasonality and country metadata", transcripts: null },
+  "yumitori/pinterest-trends-scraper": { free: 0, gold: 0, start: 0, users: 34, returns: "Pinterest trending keywords with search volume and 52-week history; the actor charges nothing, so you pay only Apify platform usage", transcripts: null },
+  "zentrafoundry/social-trend-radar-reddit-x-youtube": { free: 0.029, gold: 0.029, start: 0, users: 1, returns: "Reddit, X and YouTube inputs returned as rising topics, clusters and source leaderboards", transcripts: null },
   // jobs
-  "valig/indeed-jobs-scraper": { free: 0.0001, gold: 0.00007, start: 0.001, users: 3673, returns: "Indeed listings; the category's most-used actor", transcripts: null },
-  "borderline/indeed-scraper": { free: 0.005, gold: 0.005, start: 0, users: 2536, returns: "Indeed listings, pay per result", transcripts: null },
-  "kaix/indeed-scraper": { free: 0.00005, gold: 0.00004, start: 0.00001, users: 1397, returns: "Indeed listings", transcripts: null },
+  "valig/indeed-jobs-scraper": { free: 0.0001, gold: 0.00007, start: 0.001, users: 3670, returns: "Indeed listings; the category's most-used actor", transcripts: null },
+  "borderline/indeed-scraper": { free: 0.005, gold: 0.005, start: 0, users: 2541, returns: "Indeed listings, pay per result", transcripts: null },
+  "kaix/indeed-scraper": { free: 0.00005, gold: 0.00004, start: 0.00001, users: 1398, returns: "Indeed listings", transcripts: null },
   "cheap_scraper/indeed-job-scraper": { free: 0.001, gold: 0.0007, start: 0.00005, users: 328, returns: "Indeed listings with duplicate removal", transcripts: null },
   "valig/glassdoor-jobs-scraper": { free: 0.0004, gold: 0.00028, start: 0.001, users: 1409, returns: "Glassdoor listings", transcripts: null },
-  "orgupdate/glassdoor-jobs-scraper": { free: 0.004, gold: 0.004, start: 0.002, users: 162, returns: "Glassdoor listings", transcripts: null },
+  "orgupdate/glassdoor-jobs-scraper": { free: 0.004, gold: 0.004, start: 0.002, users: 160, returns: "Glassdoor listings", transcripts: null },
   "memo23/glassdoor-scraper-ppr": { free: 0.00475, gold: 0.00475, start: 0.005, users: 192, returns: "Glassdoor reviews and jobs, with paid AI employer-intel add-ons", transcripts: null },
   "gio21/google-jobs-scraper": { free: 0.003, gold: 0.003, start: 0, users: 242, returns: "Google Jobs listings", transcripts: null },
-  "johnvc/Google-Jobs-Scraper": { free: 0.15, gold: 0.1, start: 0.00005, users: 322, returns: "Charged per page processed ($0.15 free plan / $0.10 Business), not per job", transcripts: null, page: true },
-  "orgupdate/google-jobs-scraper": { free: 0.2, gold: 0.15, start: 0.2, users: 214, returns: "Charged $0.20 per dataset item plus a $0.20 run fee as priced on the store", transcripts: null, page: true },
+  "johnvc/Google-Jobs-Scraper": { free: 0.15, gold: 0.1, start: 0.00005, users: 320, returns: "Charged per page processed ($0.15 free plan / $0.10 Business), not per job", transcripts: null, page: true },
+  "orgupdate/google-jobs-scraper": { free: 0.2, gold: 0.15, start: 0.2, users: 213, returns: "Charged $0.20 per dataset item plus a $0.20 run fee as priced on the store", transcripts: null, page: true },
   "openclawai/job-board-scraper": { free: 0.005, gold: 0.005, start: 0.00005, users: 388, returns: "LinkedIn, Indeed, Glassdoor and more in one run", transcripts: null },
   "doggo/uk-jobs-board-scraper": { free: 0.005, gold: 0.004, start: 0.1, users: 41, returns: "Indeed, Reed, Adzuna, RemoteOK and more, with a $0.10 fee per run", transcripts: null },
   // amazon
   "junglee/Amazon-crawler": { free: 0.005, gold: 0.003, start: 0, users: 1860, returns: "Product rows; offers and sellers are separate events at $0.0025 / $0.0015 each, delivery-location pricing at $0.06 / $0.035", transcripts: null },
-  "junglee/amazon-bestsellers": { free: 0.0059, gold: 0.0032, start: 0, users: 331, returns: "Bestseller rows", transcripts: null },
+  "junglee/amazon-bestsellers": { free: 0.0059, gold: 0.0032, start: 0, users: 330, returns: "Bestseller rows", transcripts: null },
   "junglee/amazon-seller-scraper": { free: 0.005, gold: 0.003, start: 0, users: 64, returns: "Seller rows", transcripts: null },
-  "automly/amazon-products-scraper---fast-efficient-with-sales-data": { free: 0.00555, gold: 0.00555, start: 0.05, users: 246, returns: "Product rows with sales data, $0.05 per run", transcripts: null },
+  "automly/amazon-products-scraper---fast-efficient-with-sales-data": { free: 0.00555, gold: 0.00555, start: 0.05, users: 245, returns: "Product rows with sales data, $0.05 per run", transcripts: null },
   "igview-owner/amazon-search-scraper": { free: 0.02, gold: 0.005, start: 0.02, users: 67, returns: "Search result rows", transcripts: null },
   "amazon-scraper/amazon-bestsellers-scraper": { free: 0.002, gold: 0.00029, start: 0.00005, users: 139, returns: "Bestseller rows", transcripts: null },
   "khadinakbar/amazon-bestsellers-scraper": { free: 0.005, gold: 0.005, start: 0.00005, users: 48, returns: "Bestseller rows", transcripts: null },
@@ -127,8 +141,8 @@ const C = {
   "pratikdani/amazon-seller-extractor": { free: 0.02, gold: 0.01, start: 0.002, users: 11, returns: "Seller data rows", transcripts: null },
   // youtube + media
   "pintostudio/youtube-transcript-scraper": { free: 0.01, gold: 0.007, start: 0, users: 2547, returns: "Caption transcripts; the category's most-used actor", transcripts: "Captions" },
-  "starvibe/youtube-video-transcript": { free: 0.005, gold: 0.005, start: 0, users: 2072, returns: "Caption transcripts", transcripts: "Captions" },
-  "karamelo/youtube-transcripts": { free: 0.007, gold: 0.005, start: 0, users: 843, returns: "Caption transcripts", transcripts: "Captions" },
+  "starvibe/youtube-video-transcript": { free: 0.005, gold: 0.005, start: 0, users: 2074, returns: "Caption transcripts", transcripts: "Captions" },
+  "karamelo/youtube-transcripts": { free: 0.007, gold: 0.005, start: 0, users: 844, returns: "Caption transcripts", transcripts: "Captions" },
   "supreme_coder/youtube-transcript-scraper": { free: 0.001, gold: 0.0007, start: 0.00005, users: 621, returns: "Caption transcripts", transcripts: "Captions" },
   "codepoetry/youtube-transcript-ai-scraper": { free: 0.001, gold: 0.0007, start: 0.0025, users: 407, returns: "Captions, with an AI fallback at $0.012 / $0.009 per minute", transcripts: "Captions + AI fallback" },
   "scrape-creators/best-youtube-transcripts-scraper": { free: 0.001, gold: 0.001, start: 0, users: 241, returns: "Caption transcripts", transcripts: "Captions" },
@@ -136,10 +150,10 @@ const C = {
   "sauliusautomatesit/media-transcriber": { free: 0.04, gold: 0.034, start: 0.00005, users: 28, returns: "Whisper speech to text, per audio minute", transcripts: "Speech to text", minute: true },
   "makework36/instagram-reels-transcript-scraper": { free: 0.015, gold: 0.015, start: 0.005, users: 77, returns: "$0.003 to scrape each reel plus $0.012 to transcribe it", transcripts: "Speech to text" },
   "linen_snack/instagram-reel-transcript-ai-extractor": { free: 0.02, gold: 0.02, start: 0, users: 65, returns: "AI transcript per reel", transcripts: "Speech to text" },
-  "afanasenko/instagram-reel-script-extractor": { free: 0.075, gold: 0.066, start: 0, users: 167, returns: "Transcript, on-screen text and hooks per reel", transcripts: "Speech to text + on-screen text" },
+  "afanasenko/instagram-reel-script-extractor": { free: 0.075, gold: 0.066, start: 0, users: 166, returns: "Transcript, on-screen text and hooks per reel", transcripts: "Speech to text + on-screen text" },
   "scraping_solutions/instagram-reels-transcript-scraper-audio-to-text": { free: 0.0028, gold: 0.0025, start: 0, users: 98, returns: "Per reel plus $0.0065 / $0.0049 per audio minute", transcripts: "Speech to text" },
-  "instagram-scraper/fast-instagram-post-scraper": { free: 0.001, gold: 0.0003, start: 0.0005, users: 927, returns: "Profile posts; filtered rows and restricted profiles are charged separately", transcripts: null },
-  "instagram-scraper/instagram-profile-posts-scraper": { free: 0.001, gold: 0.00045, start: 0.0005, users: 613, returns: "Profile posts; filtered-out rows and restricted profiles charged separately", transcripts: null },
+  "instagram-scraper/fast-instagram-post-scraper": { free: 0.001, gold: 0.0003, start: 0.0005, users: 926, returns: "Profile posts; filtered rows and restricted profiles are charged separately", transcripts: null },
+  "instagram-scraper/instagram-profile-posts-scraper": { free: 0.001, gold: 0.00045, start: 0.0005, users: 611, returns: "Profile posts; filtered-out rows and restricted profiles charged separately", transcripts: null },
   "data-slayer/instagram-posts": { free: 0.0025, gold: 0.0015, start: 0.002, users: 225, returns: "Profile posts and reels, no login", transcripts: null },
 };
 
@@ -196,6 +210,8 @@ const FAMILIES = [
     groups: [
       { label: "Google Trends", ids: ["apify/google-trends-scraper", "data_xplorer/google-trends-fast-scraper", "khadinakbar/google-trends-scraper", "automation-lab/google-trends-scraper"], ourSlug: "google-trends-scraper" },
       { label: "Trending now", ids: ["vnx0/google-trends-scraper", "data_xplorer/google-trends-trending-now"], ourSlug: "google-trends-now-scraper" },
+      { label: "Rising and breakout keywords", ids: ["easyapi/google-trends-keywords-discovery-tool", "simpleapi/google-trends-scraper", "apiagent/google-trends-mcp", "automa-flow/google-trends-monitor", "razorkaan/google-trends-keyword-opportunity-finder", "doesaiknow/keyword-seasonality-breakout-tracker"], ourSlug: "breakout-keywords-scraper" },
+      { label: "Social trends feeds", ids: ["data_xplorer/tiktok-trends", "automation-lab/tiktok-trends-scraper", "karamelo/twitter-trends-scraper", "automation-lab/twitter-trends-scraper", "automation-lab/pinterest-trends-scraper", "yumitori/pinterest-trends-scraper", "zentrafoundry/social-trend-radar-reddit-x-youtube"], ourSlug: "social-trends-scraper" },
       { label: "Keyword search volume and CPC", ids: ["iskander/google-keyword-search-volume-api", "aitorsm/keyword-volume"], ourSlug: "keyword-search-volume-scraper" },
       { label: "Autocomplete suggestions", ids: ["crawlerbros/google-keywords-suggest-scraper-pro", "memo23/google-suggest-scraper"], ourSlug: "google-keyword-suggest-scraper" },
     ],
@@ -205,6 +221,8 @@ const FAMILIES = [
       "Per-run fees matter on schedules. An actor with a $0.02 start fee costs $14.40 a month before the first row if it runs hourly. Our Trends Now and autocomplete actors have no start fee for that reason.",
       "On keyword volume, iskander's actor bills per batch of 1,000 keywords and is much cheaper per keyword when your batches are full. Ours charges per keyword with no minimum and never charges a keyword Google returns no data for, which is the better deal for lists of ten and the worse deal for lists of ten thousand.",
       "SerpApi's Google Trends API returns the same four surfaces one search at a time, from $25 per 1,000 searches on its smallest plan.",
+      "Rising and Breakout queries are one surface of Google Trends, so most of the actors on that plate are general Trends scrapers that also return them. Two are priced per completed analysis or per keyword group rather than per row, which is cheap on a long seed list and dear on a short one. Ours charges per rising or Breakout query returned and puts the growth percentage on the row.",
+      "Social trends is a field of one actor per platform. X, TikTok and Pinterest each have their own, and one Pinterest actor charges nothing at all, so you pay only Apify platform usage for it. Ours returns X, TikTok, Pinterest, YouTube Charts and Google in one run on one row shape, and costs more per row than the cheapest single-platform actors.",
     ],
     not: [
       "We do not invent a keyword-difficulty score or an 'AI search volume'. Every figure is Google's own, and the field says so.",
@@ -418,15 +436,15 @@ function compTable(g, family, idx) {
   const wide = family.dir === "ad-transcripts" || family.dir === "youtube-media";
   const our = (slug) => {
     const o = OURS[slug];
-    const u = { "google-trends-scraper": 16, "facebook-ads-transcript-scraper": 13, "keyword-search-volume-scraper": 3, "instagram-reel-transcript-scraper": 2, "instagram-profile-posts": 0, "amazon-product-scraper": 0, "amazon-search-scraper": 0, "amazon-bestsellers-scraper": 0, "amazon-seller-scraper": 0 }[slug] ?? 1;
+    const u = { "google-trends-scraper": 16, "facebook-ads-transcript-scraper": 13, "media-transcriber": 4, "keyword-search-volume-scraper": 3, "glassdoor-jobs-scraper": 2, "instagram-reel-transcript-scraper": 2, "social-trends-scraper": 2, "youtube-transcript-scraper": 2, "instagram-profile-posts": 0 }[slug] ?? 1;
     return { id: `steadyfetch/${slug}`, href: store(slug), rel: "", diag: ROW[slug], t: TRANSCRIPT_COL[slug] ?? "Yes", free: o.free, gold: o.gold, freeTxt: perK(o.free), goldTxt: perK(o.gold), note: "", start: 0, users: u, mine: true };
   };
   const items = [our(g.ourSlug)];
   if (g.ourSlug2) items.push(our(g.ourSlug2));
   for (const id of g.ids) {
     const c = C[id];
-    const odd = !!(c.batch || c.page);
-    const note = c.batch ? "per batch of 1,000" : c.page ? "per page/item" : "";
+    const odd = !!(c.batch || c.page || c.unitNote);
+    const note = c.batch ? "per batch of 1,000" : c.page ? "per page/item" : c.unitNote || "";
     items.push({ id, href: `https://apify.com/${id}`, rel: ' rel="nofollow"', diag: c.returns, t: c.transcripts ?? "—", free: odd ? null : c.free, gold: odd ? null : c.gold, freeTxt: odd ? usd(c.free) : perK(c.free), goldTxt: odd ? usd(c.gold) : perK(c.gold), note, start: c.start, users: c.users, mine: false });
   }
   const peak = (k) => items.reduce((m, i) => (i[k] != null && i[k] > m ? i[k] : m), 0);
@@ -455,7 +473,7 @@ function compTable(g, family, idx) {
 <tbody>${rows}</tbody>
 </table>
 </div>
-<p class="scale-note"><span class="swatch"></span>Bars are drawn per column against the dearest row on this plate${unpriced ? "; rows priced by batch or by page carry no bar, because the unit is not the same" : ""}.</p>
+<p class="scale-note"><span class="swatch"></span>Bars are drawn per column against the dearest row on this plate${unpriced ? "; rows sold by a different unit carry no bar, because the unit is not the same" : ""}.</p>
 </section>`;
 }
 
