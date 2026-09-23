@@ -20,13 +20,13 @@ const OURS = {
   "linkedin-ads-transcript-scraper": { name: "LinkedIn Ad Library transcripts", unit: "ad", free: 0.02, gold: 0.008, extra: "+ $0.005 per minute beyond the first 3 minutes", returns: "Advertiser names, keywords, or just a market and date range. Video ads become transcripts with the hook; image ads (about four in five LinkedIn ads) have their on-image copy read out. Advertiser, headline, paying entity and language on every row." },
   "google-ads-video-transcript-scraper": { name: "Google Ads video transcripts", unit: "ad", free: 0.02, gold: 0.008, extra: "+ $0.005 per minute beyond the first 3 minutes", returns: "Advertiser names, domains or Transparency Center links in; one row per video ad with the transcript (caption track first, speech-to-text otherwise), hook, creative ID and language." },
   "google-ads-creative-text-scraper": { name: "Google Ads creative text (OCR)", unit: "creative", free: 0.015, gold: 0.006, returns: "The Transparency Center renders every ad as an image, so metadata scrapers never return the copy. This one reads it: headline, body, CTA, display URL and the raw text per creative." },
-  "google-trends-scraper": { name: "Google Trends", unit: "report", free: 0.009, gold: 0.0075, returns: "Interest over time, multi-keyword compare on one shared scale, related queries (top and rising with growth), related topics with knowledge-graph IDs, interest by region and Trending Now. Schema-stable JSON, one row per keyword and surface.", template: null },
+  "google-trends-scraper": { name: "Google Trends", unit: "report", free: 0.009, gold: 0.00225, extra: "+ $0.0075 per related-topics report, only when you ask for topics", returns: "Interest over time, multi-keyword compare on one shared scale, related queries (top and rising with growth), related topics with knowledge-graph IDs, interest by region and Trending Now. Schema-stable JSON, one row per keyword and surface.", template: null },
   "google-trends-now-scraper": { name: "Google Trends Now", unit: "trending search", free: 0.002, gold: 0.0005, returns: "Trending searches for any country with rank, Google's traffic floor, start time and the news behind each trend. No start fee, built for hourly schedules." },
   "breakout-keywords-scraper": { name: "Breakout keywords", unit: "keyword row", free: 0.006, gold: 0.0015, returns: "Rising and Breakout queries for seed keywords, with the growth percentage Google's UI hides behind the word Breakout." },
   "google-keyword-suggest-scraper": { name: "Autocomplete keywords, 5 engines", unit: "suggestion", free: 0.002, gold: 0.0005, returns: "Google, YouTube, Amazon, Bing and App Store autocomplete for one seed in one run. No API key, no login, no start fee." },
   "keyword-search-volume-scraper": { name: "Keyword volume and CPC", unit: "keyword result", free: 0.008, gold: 0.002, extra: "+ $0.19 per run that buys fresh data, from 16 September 2026 (runs answered from the 30-day cache pay none)", returns: "Google Ads Keyword Planner figures through a licensed provider: average monthly searches, competition, top-of-page bid range, 12-month series and trend direction, CPC where Google publishes one. No minimum batch, no charge on keywords with no data.", template: "keyword-search-volume.workflow.json" },
   "social-trends-scraper": { name: "Social trends, 5 platforms", unit: "trend", free: 0.004, gold: 0.001, returns: "What is trending on X, TikTok, Pinterest, YouTube Charts and Google, normalised to one row shape with rank, metric and link." },
-  "indeed-jobs-scraper": { name: "Indeed jobs", unit: "listing", free: 0.006, gold: 0.0015, extra: "+ $0.0008 per full job description (optional)", returns: "Exact-country search that stops exactly at your row cap and deadline. Optional full descriptions as a second event." },
+  "indeed-jobs-scraper": { name: "Indeed jobs", unit: "listing", free: 0.006, gold: 0.0015, extra: "+ $0.003 per full job description (optional)", returns: "Exact-country search that stops exactly at your row cap and deadline. Optional full descriptions as a second event." },
   "glassdoor-jobs-scraper": { name: "Glassdoor jobs with employer rating", unit: "listing", free: 0.0048, gold: 0.0012, returns: "Job listings with the employer's star rating on the same row (about four in five rows carry one), so there is no second run for the rating." },
   "google-jobs-scraper": { name: "Google Jobs", unit: "listing", free: 0.004, gold: 0.001, extra: "+ $0.004 per search that returns listings, from 16 September 2026", returns: "The full Google Jobs panel, about 90 to 130 cards per search where Google has them, with apply links. Stops at your cap." },
   "company-jobs-by-domain": { name: "Career-site jobs by domain", unit: "job", free: 0.0032, gold: 0.0008, extra: "+ $0.002 per company domain checked", returns: "Paste a company domain; it finds the Greenhouse, Lever, Ashby or Workday board (nine ATS platforms) and returns every live opening." },
@@ -55,7 +55,7 @@ const ROW = {
   "keyword-search-volume-scraper": "One keyword: monthly searches, competition, bid range, 12-month series, CPC where Google publishes it",
   "google-keyword-suggest-scraper": "One autocomplete suggestion from Google, YouTube, Amazon, Bing or the App Store",
   "social-trends-scraper": "One trending item on X, TikTok, Pinterest, YouTube Charts or Google: rank, metric, link",
-  "indeed-jobs-scraper": "One listing card; the full description is an optional second event at $0.0008",
+  "indeed-jobs-scraper": "One listing card; the full description is an optional second event at $0.003",
   "glassdoor-jobs-scraper": "One listing with the employer's star rating on the same row",
   "google-jobs-scraper": "One job card from the full panel, with apply links",
   "company-jobs-by-domain": "One live opening from a company's own ATS board; $0.002 per domain checked",
@@ -255,7 +255,7 @@ const FAMILIES = [
     not: [
       "We do not scrape LinkedIn Jobs.",
       "We do not enrich listings with recruiter emails or phone numbers.",
-      "Indeed full descriptions are a separate, optional event on our Indeed actor ($0.0008 each); the listing price alone returns the card fields.",
+      "Indeed full descriptions are a separate, optional event on our Indeed actor ($0.003 each); the listing price alone returns the card fields.",
     ],
   },
   {
@@ -303,7 +303,7 @@ const FAMILIES = [
     reading: [
       "On YouTube captions we are mid-pack on price: $5 per 1,000 videos on the free plan, $1.20 on Business, against $1 for the cheapest caption scrapers and $10 for the most-used one. The difference is the fallback: a video with no captions still comes back with real text, billed per minute at $0.008, and a video we cannot transcribe is not charged.",
       "On speech to text per minute, our media transcriber is $3 per 1,000 minutes on every plan; the next actor charges $10 and the Whisper transcriber $34 to $40. Supadata's API charges 2 credits per generated minute, from $33 per 1,000 minutes on its smallest plan to $1.80 on its largest.",
-      "For Instagram Reels, the actors that also read on-screen text charge up to $75 per 1,000. Ours is $15 on the free plan and $5 on Business for the spoken transcript with the hook; on-screen text is an opt-in.",
+      "For Instagram Reels, the actors that also read on-screen text charge up to $75 per 1,000. Ours is $15 on the free plan and $7.50 on Business for the spoken transcript with the hook; on-screen text is an opt-in.",
     ],
     not: [
       "We do not do speaker diarization or chapter generation.",
